@@ -1,26 +1,26 @@
 export default [
-  {
-    categoryName: 'Dashboard',
-    items: [
-      {
-        itemName: 'Dashboard',
-        itemLink: '/admin/dashboard',
-      },
-    ],
-  },
-  {
-    categoryName: 'Statistics',
-    items: [
-      {
-        itemName: 'Charts',
-        itemLink: '/admin/statistics/charts',
-      },
-      {
-        itemName: 'Progress bars',
-        itemLink: '/admin/statistics/progress-bars',
-      },
-    ],
-  },
+  // {
+  //   categoryName: 'Dashboard',
+  //   items: [
+  //     {
+  //       itemName: 'Dashboard',
+  //       itemLink: '/admin/dashboard',
+  //     },
+  //   ],
+  // },
+  // {
+  //   categoryName: 'Statistics',
+  //   items: [
+  //     {
+  //       itemName: 'Charts',
+  //       itemLink: '/admin/statistics/charts',
+  //     },
+  //     {
+  //       itemName: 'Progress bars',
+  //       itemLink: '/admin/statistics/progress-bars',
+  //     },
+  //   ],
+  // },
   {
     categoryName: 'Forms',
     items: [
@@ -120,29 +120,29 @@ export default [
       },
     ],
   },
-  {
-    categoryName: 'Maps',
-    items: [
-      {
-        itemName: 'MapLibre Maps',
-        itemLink: '/admin/maps/maplibre-maps',
-      },
-      {
-        itemName: 'Yandex Maps',
-        itemLink: '/admin/maps/yandex-maps',
-      },
-      {
-        itemName: 'Leaflet Maps',
-        itemLink: '/admin/maps/leaflet-maps',
-      },
-      {
-        itemName: 'Bubble Maps',
-        itemLink: '/admin/maps/bubble-maps',
-      },
-      {
-        itemName: 'Line Maps',
-        itemLink: '/admin/maps/line-maps',
-      },
-    ],
-  },
+  // {
+  //   categoryName: 'Maps',
+  //   items: [
+  //     {
+  //       itemName: 'MapLibre Maps',
+  //       itemLink: '/admin/maps/maplibre-maps',
+  //     },
+  //     {
+  //       itemName: 'Yandex Maps',
+  //       itemLink: '/admin/maps/yandex-maps',
+  //     },
+  //     {
+  //       itemName: 'Leaflet Maps',
+  //       itemLink: '/admin/maps/leaflet-maps',
+  //     },
+  //     {
+  //       itemName: 'Bubble Maps',
+  //       itemLink: '/admin/maps/bubble-maps',
+  //     },
+  //     {
+  //       itemName: 'Line Maps',
+  //       itemLink: '/admin/maps/line-maps',
+  //     },
+  //   ],
+  // },
 ]

@@ -51,6 +51,14 @@ const routes: Array<RouteRecordRaw> = [
         component: RouteViewComponent,
         children: [
           {
+            name: 'new-user',
+            path: 'new-user',
+            component: () => import('../pages/admin/forms/new-user/NewUserForm.vue'),
+            meta: {
+              wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/inputs',
+            },
+          },
+          {
             name: 'form-elements',
             path: 'form-elements',
             component: () => import('../pages/admin/forms/form-elements/FormElements.vue'),

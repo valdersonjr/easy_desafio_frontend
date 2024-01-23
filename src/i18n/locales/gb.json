@@ -3,9 +3,12 @@
     "agree": "I agree to",
     "createAccount": "Create account",
     "createNewAccount": "Create New Account",
+    "name": "Name",
     "email": "Email",
     "login": "Login",
     "password": "Password",
+    "password_confirmation": "Password Confirmation",
+    "profile": "Profile",
     "recover_password": "Recover password",
     "sign_up": "Sign Up",
     "keep_logged_in": "Keep me logged in",
@@ -265,7 +268,8 @@
       "searchable": "Select with search",
       "searchableMulti": "Multi Select with search",
       "title": "Selects"
-    }
+    },
+    "newUser": "New User"
   },
   "grid": {
     "desktop": "Desktop Grid",
@@ -337,7 +341,10 @@
     "line-maps": "Line Maps",
     "login-singup": "Login/Signup",
     "404-pages": "404 Pages",
-    "faq": "Faq"
+    "faq": "Faq",
+    "newUserForm": {
+      "title": "New User"
+    }
   },
   "messages": {
     "all": "See all messages",

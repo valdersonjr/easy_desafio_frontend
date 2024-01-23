@@ -11,31 +11,31 @@ export default {
     displayName: 'navigationRoutes.home',
   },
   routes: [
-    {
-      name: 'dashboard',
-      displayName: 'menu.dashboard',
-      meta: {
-        icon: 'vuestic-iconset-dashboard',
-      },
-    },
-    {
-      name: 'statistics',
-      displayName: 'menu.statistics',
-      meta: {
-        icon: 'vuestic-iconset-statistics',
-      },
-      disabled: true,
-      children: [
-        {
-          name: 'charts',
-          displayName: 'menu.charts',
-        },
-        {
-          name: 'progress-bars',
-          displayName: 'menu.progressBars',
-        },
-      ],
-    },
+    // {
+    //   name: 'dashboard',
+    //   displayName: 'menu.dashboard',
+    //   meta: {
+    //     icon: 'vuestic-iconset-dashboard',
+    //   },
+    // },
+    // {
+    //   name: 'statistics',
+    //   displayName: 'menu.statistics',
+    //   meta: {
+    //     icon: 'vuestic-iconset-statistics',
+    //   },
+    //   disabled: true,
+    //   children: [
+    //     {
+    //       name: 'charts',
+    //       displayName: 'menu.charts',
+    //     },
+    //     {
+    //       name: 'progress-bars',
+    //       displayName: 'menu.progressBars',
+    //     },
+    //   ],
+    // },
     {
       name: 'forms',
       displayName: 'menu.forms',
@@ -44,6 +44,10 @@ export default {
       },
       disabled: true,
       children: [
+        {
+          name: 'new-user',
+          displayName: 'menu.newUserForm.title',
+        },
         {
           name: 'form-elements',
           displayName: 'menu.formElements',
@@ -167,36 +171,36 @@ export default {
         },
       ],
     },
-    {
-      name: 'maps',
-      displayName: 'menu.maps',
-      meta: {
-        icon: 'vuestic-iconset-maps',
-      },
-      disabled: true,
-      children: [
-        {
-          name: 'maplibre-maps',
-          displayName: 'menu.maplibre-maps',
-        },
-        {
-          name: 'yandex-maps',
-          displayName: 'menu.yandex-maps',
-        },
-        {
-          name: 'leaflet-maps',
-          displayName: 'menu.leaflet-maps',
-        },
-        {
-          name: 'bubble-maps',
-          displayName: 'menu.bubble-maps',
-        },
-        {
-          name: 'line-maps',
-          displayName: 'menu.line-maps',
-        },
-      ],
-    },
+    // {
+    //   name: 'maps',
+    //   displayName: 'menu.maps',
+    //   meta: {
+    //     icon: 'vuestic-iconset-maps',
+    //   },
+    //   disabled: true,
+    //   children: [
+    //     {
+    //       name: 'maplibre-maps',
+    //       displayName: 'menu.maplibre-maps',
+    //     },
+    //     {
+    //       name: 'yandex-maps',
+    //       displayName: 'menu.yandex-maps',
+    //     },
+    //     {
+    //       name: 'leaflet-maps',
+    //       displayName: 'menu.leaflet-maps',
+    //     },
+    //     {
+    //       name: 'bubble-maps',
+    //       displayName: 'menu.bubble-maps',
+    //     },
+    //     {
+    //       name: 'line-maps',
+    //       displayName: 'menu.line-maps',
+    //     },
+    //   ],
+    // },
     {
       name: 'pages',
       displayName: 'menu.pages',
