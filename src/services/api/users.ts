@@ -11,7 +11,7 @@ interface SignUpData {
 
 const usersService = {
   signUp: ({ name, email, password, password_confirmation, profile }: SignUpData): Promise<apiResponseDto> => {
-    return api.post<apiResponseDto>('user/sign_up', {
+    return api.post('user/sign_up', {
       user: {
         name: name,
         email: email,

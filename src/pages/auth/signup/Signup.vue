@@ -46,20 +46,28 @@
       </router-link>
     </div>
 
-    <div class="flex justify-center mt-4">
-      <va-button class="my-0" @click="onsubmit">{{ t('auth.sign_up') }}</va-button>
+    <div class="relative flex items-center justify-center mt-4">
+      <va-button :color="'primary'" class="my-0" @click="onsubmit">
+        <div v-if="!loadingStatus">
+          {{ t('auth.sign_up') }}
+        </div>
+        <FulfillingSquareSpinner v-if="loadingStatus" :color="'#fff'" :size="14" :animation-duration="2000" />
+      </va-button>
     </div>
   </form>
 </template>
 
 <script setup lang="ts">
+  import { useColors } from 'vuestic-ui/web-components'
   import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import UsersService from '../../../services/api/users'
   import apiResponseDto from '../../../../dtos/apiResponseDto'
   import { validateEmailFormat } from '../../../services/utils/validations'
   import router from '../../../router'
+  import { FulfillingSquareSpinner } from 'epic-spinners'
 
+  // const { colors } = useColors()
   const { t } = useI18n()
 
   const name = ref('')
@@ -67,12 +75,11 @@
   const password = ref('')
   const password_confirmation = ref('')
   const profile = ref()
-
   const emailErrors = ref<string[]>([])
   const passwordErrors = ref<string[]>([])
   const passwordConfirmationErrors = ref<string[]>([])
-
   const simpleOptions = ref([{ id: 1, description: 'Client' }])
+  const loadingStatus = ref(false)
 
   const formReady = computed(() => {
     return !(emailErrors.value.length || passwordErrors.value.length || passwordConfirmationErrors.value.length)
@@ -87,6 +94,8 @@
       password_confirmation.value === password.value ? [] : ['Password confirmation must be equal to password']
 
     if (formReady.value) {
+      loadingStatus.value = true
+
       UsersService.signUp({
         name: name.value,
         email: email.value,
@@ -99,6 +108,9 @@
         })
         .catch((error: any) => {
           if (error.response.data.message) alert(error.response.data.message)
+        })
+        .finally(() => {
+          loadingStatus.value = false
         })
     }
   }
