@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="onsubmit()">
-    <va-input v-model="name" class="mb-4" type="text" placeholder="easy pallet" :label="t('auth.name')" />
+    <va-input v-model="name" class="mb-4" type="text" placeholder="Easy Pallet" :label="t('auth.name')" />
     <va-input
       v-model="email"
       class="mb-4"
       type="email"
-      placeholder="easy@pallet"
+      placeholder="easy@pallet.com"
       :label="t('auth.email')"
       :error="!!emailErrors.length"
       :error-messages="emailErrors"
@@ -62,12 +62,11 @@
   import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import UsersService from '../../../services/api/users'
-  import apiResponseDto from '../../../../dtos/apiResponseDto'
+  import { ApiResponseDto } from '../../../../dtos'
   import { validateEmailFormat } from '../../../services/utils/validations'
   import router from '../../../router'
   import { FulfillingSquareSpinner } from 'epic-spinners'
 
-  // const { colors } = useColors()
   const { t } = useI18n()
 
   const name = ref('')
@@ -103,11 +102,11 @@
         password_confirmation: password_confirmation.value,
         profile: profile.value,
       })
-        .then((response: apiResponseDto) => {
+        .then((response: ApiResponseDto) => {
           if (response.status === 200) router.push({ name: 'login' })
         })
         .catch((error: any) => {
-          if (error.response.data.message) alert(error.response.data.message)
+          if (error) alert(error.response.data.message)
         })
         .finally(() => {
           loadingStatus.value = false

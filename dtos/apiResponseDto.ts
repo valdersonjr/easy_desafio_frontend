@@ -5,7 +5,8 @@ interface jsonResponseStructure {
   meta?: any | null
 }
 
-export default interface apiResponseDto {
+export interface ApiResponseDto {
   data: jsonResponseStructure
   status: number
+  headers: { authorization: string }
 }

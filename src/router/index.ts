@@ -3,9 +3,9 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import AuthLayout from '../layouts/AuthLayout.vue'
 import AppLayout from '../layouts/AppLayout.vue'
 import Page404Layout from '../layouts/Page404Layout.vue'
-
 import RouteViewComponent from '../layouts/RouterBypass.vue'
 import UIRoute from '../pages/admin/ui/route'
+import { useGlobalStore } from '../stores/global-store'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,10 +16,14 @@ const routes: Array<RouteRecordRaw> = [
     name: 'admin',
     path: '/admin',
     component: AppLayout,
+    meta: {
+      auth: true,
+    },
     children: [
       {
         name: 'dashboard',
         path: 'dashboard',
+
         component: () => import('../pages/admin/dashboard/Dashboard.vue'),
       },
       {
@@ -30,6 +34,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'charts',
             path: 'charts',
+
             component: () => import('../pages/admin/statistics/charts/Charts.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Charts',
@@ -38,6 +43,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'progress-bars',
             path: 'progress-bars',
+
             component: () => import('../pages/admin/statistics/progress-bars/ProgressBars.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Progress-Bars',
@@ -53,6 +59,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'new-user',
             path: 'new-user',
+
             component: () => import('../pages/admin/forms/new-user/NewUserForm.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/inputs',
@@ -61,6 +68,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'form-elements',
             path: 'form-elements',
+
             component: () => import('../pages/admin/forms/form-elements/FormElements.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/inputs',
@@ -69,6 +77,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'medium-editor',
             path: 'medium-editor',
+
             component: () => import('../pages/admin/forms/medium-editor/MediumEditor.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Medium-Editor',
@@ -84,6 +93,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'maplibre-maps',
             path: 'maplibre-maps',
+
             component: () => import('../pages/admin/maps/maplibre-maps/MapLibreMapsPage.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
@@ -92,6 +102,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'yandex-maps',
             path: 'yandex-maps',
+
             component: () => import('../pages/admin/maps/yandex-maps/YandexMapsPage.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
@@ -100,6 +111,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'leaflet-maps',
             path: 'leaflet-maps',
+
             component: () => import('../pages/admin/maps/leaflet-maps/LeafletMapsPage.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
@@ -108,6 +120,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'bubble-maps',
             path: 'bubble-maps',
+
             component: () => import('../pages/admin/maps/bubble-maps/BubbleMapsPage.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
@@ -116,6 +129,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'line-maps',
             path: 'line-maps',
+
             component: () => import('../pages/admin/maps/line-maps/LineMapsPage.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
@@ -131,6 +145,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'markup',
             path: 'markup',
+
             component: () => import('../pages/admin/tables/markup-tables/MarkupTables.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Tables',
@@ -139,6 +154,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: 'data',
             path: 'data',
+
             component: () => import('../pages/admin/tables/data-tables/DataTables.vue'),
             meta: {
               wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Tables',
@@ -154,11 +170,13 @@ const routes: Array<RouteRecordRaw> = [
           {
             name: '404-pages',
             path: '404-pages',
+
             component: () => import('../pages/admin/pages/404PagesPage.vue'),
           },
           {
             name: 'faq',
             path: 'faq',
+
             component: () => import('../pages/admin/pages/FaqPage.vue'),
           },
         ],
@@ -173,16 +191,19 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'login',
         path: 'login',
+
         component: () => import('../pages/auth/login/Login.vue'),
       },
       {
         name: 'signup',
         path: 'signup',
+
         component: () => import('../pages/auth/signup/Signup.vue'),
       },
       {
         name: 'recover-password',
         path: 'recover-password',
+
         component: () => import('../pages/auth/recover-password/RecoverPassword.vue'),
       },
       {
@@ -198,21 +219,25 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'not-found-advanced',
         path: 'not-found-advanced',
+
         component: () => import('../pages/404-pages/VaPageNotFoundSearch.vue'),
       },
       {
         name: 'not-found-simple',
         path: 'not-found-simple',
+
         component: () => import('../pages/404-pages/VaPageNotFoundSimple.vue'),
       },
       {
         name: 'not-found-custom',
         path: 'not-found-custom',
+
         component: () => import('../pages/404-pages/VaPageNotFoundCustom.vue'),
       },
       {
         name: 'not-found-large-text',
         path: '/pages/not-found-large-text',
+
         component: () => import('../pages/404-pages/VaPageNotFoundLargeText.vue'),
       },
     ],
@@ -233,6 +258,15 @@ const router = createRouter({
     }
   },
   routes,
+})
+
+router.beforeEach(async (to, from, next) => {
+  if (to.meta?.auth) {
+    const isAuth = await useGlobalStore().checkToken()
+    isAuth ? next() : next({ name: 'login' })
+  } else {
+    next()
+  }
 })
 
 export default router

@@ -7,6 +7,7 @@
       :label="t('auth.email')"
       :error="!!emailErrors.length"
       :error-messages="emailErrors"
+      placeholder="easy@pallet.com"
     />
 
     <va-input
@@ -16,10 +17,10 @@
       :label="t('auth.password')"
       :error="!!passwordErrors.length"
       :error-messages="passwordErrors"
+      placeholder="******"
     />
 
     <div class="auth-layout__options flex items-center justify-between">
-      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="t('auth.keep_logged_in')" />
       <router-link class="ml-1 va-link" :to="{ name: 'recover-password' }">{{
         t('auth.recover_password')
       }}</router-link>
@@ -35,23 +36,49 @@
   import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useI18n } from 'vue-i18n'
+  import usersService from '../../../services/api/users'
+  import { validateEmailFormat } from '../../../services/utils/validations'
+  import { ApiResponseDto } from '../../../../dtos'
+  import { useGlobalStore } from '../../../stores/global-store'
+
   const { t } = useI18n()
+  const GlobalStore = useGlobalStore()
 
   const email = ref('')
   const password = ref('')
-  const keepLoggedIn = ref(false)
   const emailErrors = ref<string[]>([])
   const passwordErrors = ref<string[]>([])
   const router = useRouter()
+  const loadingStatus = ref(false)
 
   const formReady = computed(() => !emailErrors.value.length && !passwordErrors.value.length)
 
   function onsubmit() {
-    if (!formReady.value) return
-
     emailErrors.value = email.value ? [] : ['Email is required']
+    if (!validateEmailFormat(email.value)) emailErrors.value = ['Invalid format']
     passwordErrors.value = password.value ? [] : ['Password is required']
 
-    router.push({ name: 'dashboard' })
+    if (formReady.value) {
+      loadingStatus.value = true
+
+      usersService
+        .signIn({
+          email: email.value,
+          password: password.value,
+        })
+        .then((response: ApiResponseDto) => {
+          if (response.status === 200) {
+            GlobalStore.setToken(response.headers.authorization.split(' ')[1])
+            GlobalStore.setUser(response.data.data)
+            router.push({ name: 'dashboard' })
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+          loadingStatus.value = false
+        })
+    }
   }
 </script>
