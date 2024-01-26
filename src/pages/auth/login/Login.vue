@@ -74,7 +74,9 @@
           }
         })
         .catch((error) => {
-          console.log(error)
+          if (error.response.status === 401) {
+            passwordErrors.value = ['Invalid credentials']
+          }
         })
         .finally(() => {
           loadingStatus.value = false

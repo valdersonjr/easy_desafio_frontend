@@ -1,4 +1,4 @@
-import { ApiResponseDto } from '../../../dtos'
+import { ApiResponseDto } from '../../dtos'
 import api from './api'
 
 const authService = {

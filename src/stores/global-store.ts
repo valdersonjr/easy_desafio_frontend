@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
-import { UserDto } from '../../dtos'
+import { UserDto } from '../dtos'
 import authService from '../services/api/auth'
 
 export const useGlobalStore = defineStore('global', () => {
@@ -56,5 +56,6 @@ export const useGlobalStore = defineStore('global', () => {
     setUser,
     checkToken,
     logout,
+    user,
   }
 })

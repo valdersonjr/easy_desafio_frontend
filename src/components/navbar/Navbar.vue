@@ -8,11 +8,13 @@
           :color="colors.primary"
           @click="isSidebarMinimized = !isSidebarMinimized"
         />
-        <router-link to="/"> Desafio Easy (mudar depois) </router-link>
+        <router-link to="/">
+          <img alt="Vuestic UI Logo" width="90" src="../../../public/logo_easypallet.png" />
+        </router-link>
       </div>
     </template>
     <template #right>
-      <app-navbar-actions class="app-navbar__actions" :user-name="userName" />
+      <app-navbar-actions class="app-navbar__actions" :user-name="user.name" />
     </template>
   </va-navbar>
 </template>
@@ -23,15 +25,13 @@
   import { useGlobalStore } from '../../stores/global-store'
   import { useI18n } from 'vue-i18n'
   import { useColors } from 'vuestic-ui'
-  import VuesticLogo from '../VuesticLogo.vue'
   import VaIconMenuCollapsed from '../icons/VaIconMenuCollapsed.vue'
   import AppNavbarActions from './components/AppNavbarActions.vue'
 
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
 
-  const { isSidebarMinimized, userName } = storeToRefs(GlobalStore)
-
+  const { isSidebarMinimized, user } = storeToRefs(GlobalStore)
   const { getColors } = useColors()
   const colors = computed(() => getColors())
 </script>

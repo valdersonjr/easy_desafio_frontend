@@ -1,5 +1,5 @@
 import api from './api'
-import { ApiResponseDto, SignUpDataDto, SignInDataDto } from '../../../dtos'
+import { ApiResponseDto, SignUpDataDto, SignInDataDto } from '../../dtos'
 
 const usersService = {
   signUp: ({ name, email, password, password_confirmation, profile }: SignUpDataDto): Promise<ApiResponseDto> => {
