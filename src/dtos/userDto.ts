@@ -16,4 +16,14 @@ export interface UserDto {
   name: string
   email: string
   profile: string
+  created_at: string
+}
+
+export interface updateByIdDataDto {
+  id: number
+  name?: string
+  email?: string
+  password: string
+  password_confirmation: string
+  profile?: string
 }

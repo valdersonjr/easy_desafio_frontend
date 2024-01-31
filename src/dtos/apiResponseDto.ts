@@ -1,8 +1,15 @@
+interface meta {
+  current_page: number
+  per_page: number
+  total_entries: number
+  total_pages: number
+}
+
 interface jsonResponseStructure {
   code: number
-  message?: string[] | string | null
-  data?: any | null
-  meta?: any | null
+  message?: string[] | string
+  data?: any
+  meta?: meta
 }
 
 export interface ApiResponseDto {

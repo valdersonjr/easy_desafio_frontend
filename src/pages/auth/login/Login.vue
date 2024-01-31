@@ -38,8 +38,8 @@
   import { useI18n } from 'vue-i18n'
   import usersService from '../../../services/api/users'
   import { validateEmailFormat } from '../../../services/utils/validations'
-  import { ApiResponseDto } from '../../../../dtos'
   import { useGlobalStore } from '../../../stores/global-store'
+  import { ApiResponseDto } from '../../../dtos'
 
   const { t } = useI18n()
   const GlobalStore = useGlobalStore()

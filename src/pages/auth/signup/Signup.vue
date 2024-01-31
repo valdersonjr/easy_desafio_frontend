@@ -37,7 +37,7 @@
       :label="t('auth.profile')"
       text-by="description"
       track-by="id"
-      :options="simpleOptions"
+      :options="profileOptions"
     />
 
     <div class="auth-layout__options flex items-center justify-between">
@@ -58,14 +58,13 @@
 </template>
 
 <script setup lang="ts">
-  import { useColors } from 'vuestic-ui/web-components'
   import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import UsersService from '../../../services/api/users'
-  import { ApiResponseDto } from '../../../../dtos'
   import { validateEmailFormat } from '../../../services/utils/validations'
   import router from '../../../router'
   import { FulfillingSquareSpinner } from 'epic-spinners'
+  import { ApiResponseDto } from '../../../dtos'
 
   const { t } = useI18n()
 
@@ -77,7 +76,7 @@
   const emailErrors = ref<string[]>([])
   const passwordErrors = ref<string[]>([])
   const passwordConfirmationErrors = ref<string[]>([])
-  const simpleOptions = ref([{ id: 1, description: 'Client' }])
+  const profileOptions = ref([{ id: 1, description: 'Client' }])
   const loadingStatus = ref(false)
 
   const formReady = computed(() => {
@@ -106,7 +105,7 @@
           if (response.status === 200) router.push({ name: 'login' })
         })
         .catch((error: any) => {
-          if (error) alert(error.response.data.message)
+          if (error) console.log('Error:', error)
         })
         .finally(() => {
           loadingStatus.value = false

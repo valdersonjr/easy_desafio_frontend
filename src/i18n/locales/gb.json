@@ -327,6 +327,9 @@
     "typography": "Typography",
     "uiElements": "UI Elements",
     "treeView": "Tree view",
+    "user": "Users",
+    "userInfo": "Informations",
+    "newUser": "New User",
     "dateTimePickers": "Date time pickers",
     "fileUpload": "File Upload",
     "colors": "Colors",
@@ -341,10 +344,7 @@
     "line-maps": "Line Maps",
     "login-singup": "Login/Signup",
     "404-pages": "404 Pages",
-    "faq": "Faq",
-    "newUserForm": {
-      "title": "New User"
-    }
+    "faq": "Faq"
   },
   "messages": {
     "all": "See all messages",
@@ -470,6 +470,13 @@
     "starterKit": "Starter Kit",
     "notifications": "Notifications",
     "routerSupport": "Router Support"
+  },
+  "users": {
+    "informations": {
+      "table": "Users Informations",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
   },
   "tables": {
     "basic": "Basic Table",

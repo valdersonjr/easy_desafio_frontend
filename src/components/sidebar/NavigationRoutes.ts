@@ -12,6 +12,23 @@ export default {
   },
   routes: [
     {
+      name: 'user',
+      displayName: 'menu.user',
+      meta: {
+        icon: 'vuestic-iconset-user',
+      },
+      children: [
+        {
+          name: 'user-info',
+          displayName: 'menu.userInfo',
+        },
+        {
+          name: 'new-user',
+          displayName: 'menu.newUser',
+        },
+      ],
+    },
+    {
       name: 'dashboard',
       displayName: 'menu.dashboard',
       meta: {
@@ -44,10 +61,6 @@ export default {
       },
       disabled: true,
       children: [
-        {
-          name: 'new-user',
-          displayName: 'menu.newUserForm.title',
-        },
         {
           name: 'form-elements',
           displayName: 'menu.formElements',
