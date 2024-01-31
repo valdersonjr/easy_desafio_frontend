@@ -105,7 +105,8 @@
           if (response.status === 200) router.push({ name: 'login' })
         })
         .catch((error: any) => {
-          if (error) console.log('Error:', error)
+          console.log('Error:', error)
+          if (error.response.status === 422) emailErrors.value = ['Email already exists']
         })
         .finally(() => {
           loadingStatus.value = false

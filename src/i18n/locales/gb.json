@@ -69,6 +69,22 @@
           }
         }
       }
+    },
+    "newUser": {
+      "title": "New user",
+      "form": {
+        "inputs": {
+          "name": "Name",
+          "email": "Email",
+          "password": "Password",
+          "password_confirmation": "Password confirmation",
+          "profile": "Profile"
+        },
+        "buttons": {
+          "submit": "Create",
+          "reset": "Clear"
+        }
+      }
     }
   },
   "language": {
