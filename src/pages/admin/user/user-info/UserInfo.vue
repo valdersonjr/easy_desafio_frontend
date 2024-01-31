@@ -9,33 +9,48 @@
     <ConfirmationModal
       v-if="isConfirmationModalOpen"
       :is-open="isConfirmationModalOpen"
-      :message="'Are you sure?'"
-      :ok-text="'Yes'"
-      :cancel-text="'Cancel'"
+      :message="t('users.informations.delete.confirmation_modal.title')"
+      :ok-text="t('users.informations.delete.confirmation_modal.buttons.confirm')"
+      :cancel-text="t('users.informations.delete.confirmation_modal.buttons.deny')"
       :is-loading="isConfirmationModalLoading"
       @isOpenValueChange="handleIsOpenConfirmationModalValueChange"
       @isLoadingValueChange="handleIsLoadingConfirmationModalValueChange"
     />
     <va-card class="w-full pb-4">
-      <va-card-title>Filters</va-card-title>
+      <va-card-title>{{ t('users.informations.filter.title') }}</va-card-title>
       <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFormSubmit">
-        <va-input v-model="nameFilter" type="text" :label="'Name'" placeholder="Easy Pallet" />
-        <va-input v-model="emailFilter" type="email" :label="'Email'" placeholder="easy@pallet.com" />
-        <va-button type="submit" class="px-2" color="info">Submit</va-button>
+        <va-input
+          v-model="nameFilter"
+          type="text"
+          :label="t('users.informations.filter.form.inputs.name')"
+          placeholder="Easy Pallet"
+        />
+        <va-input
+          v-model="emailFilter"
+          type="email"
+          :label="t('users.informations.filter.form.inputs.email')"
+          placeholder="easy@pallet.com"
+        />
+        <va-button class="px-2" color="primary" @click="handleFilterClear">{{
+          t('users.informations.filter.form.buttons.clear')
+        }}</va-button>
+        <va-button type="submit" class="px-2" color="info">{{
+          t('users.informations.filter.form.buttons.search')
+        }}</va-button>
       </form>
     </va-card>
     <va-card class="w-full">
-      <va-card-title>{{ t('users.informations.table') }}</va-card-title>
+      <va-card-title>{{ t('users.informations.table.title') }}</va-card-title>
       <va-card-content class="overflow-auto">
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Profile</th>
-              <th>Created Date</th>
-              <th>Update</th>
-              <th>Delete</th>
+              <th>{{ t('users.informations.table.headers.name') }}</th>
+              <th>{{ t('users.informations.table.headers.email') }}</th>
+              <th>{{ t('users.informations.table.headers.profile') }}</th>
+              <th>{{ t('users.informations.table.headers.created_date') }}</th>
+              <th>{{ t('users.informations.table.headers.update') }}</th>
+              <th>{{ t('users.informations.table.headers.delete') }}</th>
             </tr>
           </thead>
 
@@ -140,6 +155,12 @@
   }
 
   const onFormSubmit = () => {
+    fetchUsers()
+  }
+
+  const handleFilterClear = () => {
+    nameFilter.value = ''
+    emailFilter.value = ''
     fetchUsers()
   }
 

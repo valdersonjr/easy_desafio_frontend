@@ -1,16 +1,20 @@
 <template>
-  <VaModal v-model="isOpenChild" size="small" hide-default-actions @close="handleModalClose">
-    <div class="flex flex-col gap-3">
-      <span class="text-lg font-bold"> {{ props.message }}</span>
-      <div class="flex flex-row items-center gap-3 px-3 py-2">
-        <va-button preset="secondary" class="min-w-[6rem]" @click="handleModalClose">{{ props.cancelText }}</va-button>
-        <va-button color="primary" class="min-w-[6rem]" @click="handleSubmitClick">
-          <fulfilling-square-spinner v-if="isLoadingChild" :size="10" :animation-duration="2000" />
-          <span v-if="!isLoadingChild">{{ props.okText }}</span>
-        </va-button>
+  <div class="absolute">
+    <VaModal v-model="isOpenChild" size="small" hide-default-actions @close="handleModalClose">
+      <div class="flex flex-col gap-3">
+        <span class="text-lg font-bold"> {{ props.message }}</span>
+        <div class="flex flex-row items-center gap-3 px-3 py-2">
+          <va-button preset="secondary" class="min-w-[6rem]" @click="handleModalClose">{{
+            props.cancelText
+          }}</va-button>
+          <va-button color="primary" class="min-w-[6rem]" @click="handleSubmitClick">
+            <fulfilling-square-spinner v-if="isLoadingChild" :size="10" :animation-duration="2000" />
+            <span v-if="!isLoadingChild">{{ props.okText }}</span>
+          </va-button>
+        </div>
       </div>
-    </div>
-  </VaModal>
+    </VaModal>
+  </div>
 </template>
 
 <script setup lang="ts">

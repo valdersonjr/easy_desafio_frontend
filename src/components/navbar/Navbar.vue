@@ -9,7 +9,7 @@
           @click="isSidebarMinimized = !isSidebarMinimized"
         />
         <router-link to="/">
-          <img alt="Vuestic UI Logo" width="90" src="../../../public/logo_easypallet.png" />
+          <img alt="Easy Pallet Logo" width="90" src="../../../public/logo_easypallet.png" />
         </router-link>
       </div>
     </template>

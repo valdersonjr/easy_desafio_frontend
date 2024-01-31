@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="absolute">
     <VaModal v-model="isOpenChild" ok-text="Submit" hide-default-actions close-button @close="handleModalClose">
-      <h3 class="va-h3">User Edit</h3>
+      <h3 class="va-h3">{{ t('users.informations.edit.modal.title') }}</h3>
       <form class="flex flex-col gap-3" @submit.prevent="handleFormSubmit">
-        <va-input v-model="name" label="Name" type="text" />
+        <va-input v-model="name" :label="t('users.informations.edit.modal.form.inputs.name')" type="text" />
         <va-input
           v-model="email"
-          label="Email"
+          :label="t('users.informations.edit.modal.form.inputs.email')"
           :error="!!emailErrors.length"
           :error-messages="emailErrors"
           type="email"
         />
         <va-input
           v-model="password"
-          label="Password"
+          :label="t('users.informations.edit.modal.form.inputs.password')"
           :error="!!passwordErrors.length"
           :error-messages="passwordErrors"
           type="password"
@@ -21,14 +21,25 @@
         />
         <va-input
           v-model="passwordConfirmation"
-          label="Password Confirmation"
+          :label="t('users.informations.edit.modal.form.inputs.password_confirmation')"
           :error="!!passwordConfirmationErrors.length"
           :error-messages="passwordConfirmationErrors"
           type="password"
           placeholder="********"
         />
-        <va-select v-model="profile" label="Profile" :options="profileOptions" />
-        <va-button type="submit">Submit</va-button>
+        <va-select
+          v-model="profile"
+          :label="t('users.informations.edit.modal.form.inputs.profile')"
+          :options="profileOptions"
+        />
+        <div class="flex flex-row justify-around">
+          <va-button preset="secondary" class="min-w-[6rem]" type="Cancel" @click="handleModalCancel">{{
+            t('users.informations.edit.modal.form.buttons.cancel')
+          }}</va-button>
+          <va-button class="min-w-[6rem]" type="submit">{{
+            t('users.informations.edit.modal.form.buttons.save')
+          }}</va-button>
+        </div>
       </form>
     </VaModal>
   </div>
@@ -39,6 +50,9 @@
   import usersService from '../../../../../services/api/users'
   import { ApiResponseDto } from '../../../../../dtos'
   import { validateEmailFormat } from '../../../../../services/utils/validations'
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
 
   const props = defineProps(['isOpen', 'user'])
 
@@ -72,6 +86,8 @@
       passwordConfirmationErrors.value.length
     )
   })
+
+  const handleModalCancel = () => handleModalClose()
 
   const handleFormSubmit = () => {
     emailErrors.value = email.value ? [] : ['Email is required']
