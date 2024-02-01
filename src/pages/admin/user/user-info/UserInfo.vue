@@ -115,6 +115,8 @@
       totalPages.value = response.data.meta?.total_pages || 1
     } catch (error: any) {
       if (error.response.status === 404) users.value = []
+      currentPage.value = 1
+      totalPages.value = 1
     }
   }
 
