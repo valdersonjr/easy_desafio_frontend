@@ -10,11 +10,24 @@
     "recover_password": "Recuperar contraseña",
     "profile": "Perfil"
   },
+  "dashboard": {
+    "info": {
+      "products": "Productos",
+      "users": "Usuarios",
+      "loads": "Cargas"
+    }
+  },
   "menu": {
     "dashboard": "Tablero",
     "user": "Usuario",
-    "userInfo": "Informaciones",
-    "newUser": "Nuevo usuario"
+    "userInfo": "Información",
+    "newUser": "Nuevo usuario",
+    "product": "Producto",
+    "productInfo": "Información",
+    "newProduct": "Nuevo producto",
+    "load": "Carga",
+    "loadInfo": "Información",
+    "newLoad": "Nueva carga"
   },
   "users": {
     "informations": {
@@ -69,6 +82,150 @@
           }
         }
       }
+    },
+    "newUser": {
+      "title": "Nuevo usuario",
+      "form": {
+        "inputs": {
+          "name": "Nombre",
+          "email": "Correo electrónico",
+          "password": "Contraseña",
+          "password_confirmation": "Confirmación de contraseña",
+          "profile": "Perfil"
+        },
+        "buttons": {
+          "submit": "Crear",
+          "reset": "Limpiar"
+        }
+      }
+    }
+  },
+  "products": {
+    "informations": {
+      "table": {
+        "title": "Lista de productos",
+        "headers": {
+          "name": "Nombre",
+          "ballast": "Lastre",
+          "created_date": "Fecha de creación",
+          "update": "Actualizar",
+          "delete": "Eliminar"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "name": "Nombre",
+            "ballast": "Lastre"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpiar"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Editar producto",
+          "form": {
+            "inputs": {
+              "name": "Nombre",
+              "description": "Descripción",
+              "price": "Precio"
+            },
+            "buttons": {
+              "save": "Guardar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "¿Estás seguro?",
+          "buttons": {
+            "confirm": "Sí",
+            "deny": "No"
+          }
+        }
+      }
+    },
+    "newProduct": {
+      "title": "Nuevo producto",
+      "form": {
+        "inputs": {
+          "name": "Nombre",
+          "ballast": "Lastre"
+        },
+        "buttons": {
+          "submit": "Crear",
+          "reset": "Limpiar"
+        }
+      }
+    }
+  },
+  "loads": {
+    "informations": {
+      "table": {
+        "title": "Lista de cargas",
+        "headers": {
+          "code": "Código",
+          "delivery_date": "Fecha de entrega",
+          "update": "Actualizar",
+          "delete": "Eliminar"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "code": "Código",
+            "delivery_date": "Fecha de entrega"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpiar"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Editar carga",
+          "form": {
+            "inputs": {
+              "code": "Código",
+              "delivery_date": "Fecha de entrega"
+            },
+            "buttons": {
+              "save": "Guardar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "¿Estás seguro?",
+          "buttons": {
+            "confirm": "Sí",
+            "deny": "No"
+          }
+        }
+      }
+    },
+    "newLoad": {
+      "title": "Nueva carga",
+      "form": {
+        "inputs": {
+          "code": "Código",
+          "delivery_date": "Fecha de entrega"
+        },
+        "buttons": {
+          "submit": "Crear",
+          "reset": "Limpiar"
+        }
+      }
     }
   },
   "language": {
@@ -76,6 +233,6 @@
     "brazilian_portuguese": "Portugués Brasileño",
     "spanish": "Español",
     "persian": "Persa",
-    "simplified_chinese": "Chino simplificado"
+    "simplified_chinese": "Chino Simplificado"
   }
 }

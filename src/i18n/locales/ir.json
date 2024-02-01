@@ -2,19 +2,32 @@
   "auth": {
     "login": "ورود",
     "sign_up": "ثبت نام",
-    "createNewAccount": "ایجاد حساب کاربری جدید",
+    "createNewAccount": "ساخت حساب جدید",
     "name": "نام",
     "email": "ایمیل",
     "password": "رمز عبور",
-    "password_confirmation": "تأیید رمز عبور",
+    "password_confirmation": "تایید رمز عبور",
     "recover_password": "بازیابی رمز عبور",
     "profile": "پروفایل"
+  },
+  "dashboard": {
+    "info": {
+      "products": "محصولات",
+      "users": "کاربران",
+      "loads": "بارها"
+    }
   },
   "menu": {
     "dashboard": "داشبورد",
     "user": "کاربر",
     "userInfo": "اطلاعات",
-    "newUser": "کاربر جدید"
+    "newUser": "کاربر جدید",
+    "product": "محصول",
+    "productInfo": "اطلاعات",
+    "newProduct": "محصول جدید",
+    "load": "بار",
+    "loadInfo": "اطلاعات",
+    "newLoad": "بار جدید"
   },
   "users": {
     "informations": {
@@ -25,7 +38,7 @@
           "email": "ایمیل",
           "profile": "پروفایل",
           "created_date": "تاریخ ایجاد",
-          "update": "به‌روزرسانی",
+          "update": "بروزرسانی",
           "delete": "حذف"
         }
       },
@@ -50,7 +63,7 @@
               "name": "نام",
               "email": "ایمیل",
               "password": "رمز عبور",
-              "password_confirmation": "تأیید رمز عبور",
+              "password_confirmation": "تایید رمز عبور",
               "profile": "پروفایل"
             },
             "buttons": {
@@ -67,6 +80,150 @@
             "confirm": "بله",
             "deny": "خیر"
           }
+        }
+      }
+    },
+    "newUser": {
+      "title": "کاربر جدید",
+      "form": {
+        "inputs": {
+          "name": "نام",
+          "email": "ایمیل",
+          "password": "رمز عبور",
+          "password_confirmation": "تایید رمز عبور",
+          "profile": "پروفایل"
+        },
+        "buttons": {
+          "submit": "ایجاد",
+          "reset": "پاک کردن"
+        }
+      }
+    }
+  },
+  "products": {
+    "informations": {
+      "table": {
+        "title": "لیست محصولات",
+        "headers": {
+          "name": "نام",
+          "ballast": "بالاست",
+          "created_date": "تاریخ ایجاد",
+          "update": "بروزرسانی",
+          "delete": "حذف"
+        }
+      },
+      "filter": {
+        "title": "فیلترها",
+        "form": {
+          "inputs": {
+            "name": "نام",
+            "ballast": "بالاست"
+          },
+          "buttons": {
+            "search": "جستجو",
+            "clear": "پاک کردن"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "ویرایش محصول",
+          "form": {
+            "inputs": {
+              "name": "نام",
+              "description": "توضیحات",
+              "price": "قیمت"
+            },
+            "buttons": {
+              "save": "ذخیره",
+              "cancel": "لغو"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "آیا اطمینان دارید؟",
+          "buttons": {
+            "confirm": "بله",
+            "deny": "خیر"
+          }
+        }
+      }
+    },
+    "newProduct": {
+      "title": "محصول جدید",
+      "form": {
+        "inputs": {
+          "name": "نام",
+          "ballast": "بالاست"
+        },
+        "buttons": {
+          "submit": "ایجاد",
+          "reset": "پاک کردن"
+        }
+      }
+    }
+  },
+  "loads": {
+    "informations": {
+      "table": {
+        "title": "لیست بارها",
+        "headers": {
+          "code": "کد",
+          "delivery_date": "تاریخ تحویل",
+          "update": "بروزرسانی",
+          "delete": "حذف"
+        }
+      },
+      "filter": {
+        "title": "فیلترها",
+        "form": {
+          "inputs": {
+            "code": "کد",
+            "delivery_date": "تاریخ تحویل"
+          },
+          "buttons": {
+            "search": "جستجو",
+            "clear": "پاک کردن"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "ویرایش بار",
+          "form": {
+            "inputs": {
+              "code": "کد",
+              "delivery_date": "تاریخ تحویل"
+            },
+            "buttons": {
+              "save": "ذخیره",
+              "cancel": "لغو"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "آیا اطمینان دارید؟",
+          "buttons": {
+            "confirm": "بله",
+            "deny": "خیر"
+          }
+        }
+      }
+    },
+    "newLoad": {
+      "title": "بار جدید",
+      "form": {
+        "inputs": {
+          "code": "کد",
+          "delivery_date": "تاریخ تحویل"
+        },
+        "buttons": {
+          "submit": "ایجاد",
+          "reset": "پاک کردن"
         }
       }
     }

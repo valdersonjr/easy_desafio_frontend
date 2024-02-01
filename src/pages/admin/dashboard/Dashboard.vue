@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div>
     <dashboard-info-block />
 
     <div class="flex justify-center mt-2">
@@ -20,15 +20,3 @@
 <script setup lang="ts">
   import DashboardInfoBlock from './DashboardInfoBlock.vue'
 </script>
-
-<style lang="scss">
-  .dashboard {
-    .va-card {
-      margin-bottom: 0 !important;
-      &__title {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  }
-</style>

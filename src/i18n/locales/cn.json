@@ -2,26 +2,39 @@
   "auth": {
     "login": "登录",
     "sign_up": "注册",
-    "createNewAccount": "创建新账户",
-    "name": "姓名",
+    "createNewAccount": "创建新帐户",
+    "name": "名称",
     "email": "电子邮件",
     "password": "密码",
     "password_confirmation": "确认密码",
     "recover_password": "找回密码",
     "profile": "个人资料"
   },
+  "dashboard": {
+    "info": {
+      "products": "产品",
+      "users": "用户",
+      "loads": "货物"
+    }
+  },
   "menu": {
     "dashboard": "仪表板",
     "user": "用户",
     "userInfo": "信息",
-    "newUser": "新用户"
+    "newUser": "新用户",
+    "product": "产品",
+    "productInfo": "信息",
+    "newProduct": "新产品",
+    "load": "货物",
+    "loadInfo": "信息",
+    "newLoad": "新货物"
   },
   "users": {
     "informations": {
       "table": {
         "title": "用户列表",
         "headers": {
-          "name": "姓名",
+          "name": "名称",
           "email": "电子邮件",
           "profile": "个人资料",
           "created_date": "创建日期",
@@ -33,7 +46,7 @@
         "title": "筛选器",
         "form": {
           "inputs": {
-            "name": "姓名",
+            "name": "名称",
             "email": "电子邮件"
           },
           "buttons": {
@@ -47,7 +60,7 @@
           "title": "编辑用户",
           "form": {
             "inputs": {
-              "name": "姓名",
+              "name": "名称",
               "email": "电子邮件",
               "password": "密码",
               "password_confirmation": "确认密码",
@@ -67,6 +80,150 @@
             "confirm": "是",
             "deny": "否"
           }
+        }
+      }
+    },
+    "newUser": {
+      "title": "新用户",
+      "form": {
+        "inputs": {
+          "name": "名称",
+          "email": "电子邮件",
+          "password": "密码",
+          "password_confirmation": "确认密码",
+          "profile": "个人资料"
+        },
+        "buttons": {
+          "submit": "创建",
+          "reset": "清除"
+        }
+      }
+    }
+  },
+  "products": {
+    "informations": {
+      "table": {
+        "title": "产品列表",
+        "headers": {
+          "name": "名称",
+          "ballast": "配重",
+          "created_date": "创建日期",
+          "update": "更新",
+          "delete": "删除"
+        }
+      },
+      "filter": {
+        "title": "筛选器",
+        "form": {
+          "inputs": {
+            "name": "名称",
+            "ballast": "配重"
+          },
+          "buttons": {
+            "search": "搜索",
+            "clear": "清除"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "编辑产品",
+          "form": {
+            "inputs": {
+              "name": "名称",
+              "description": "描述",
+              "price": "价格"
+            },
+            "buttons": {
+              "save": "保存",
+              "cancel": "取消"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "您确定吗？",
+          "buttons": {
+            "confirm": "是",
+            "deny": "否"
+          }
+        }
+      }
+    },
+    "newProduct": {
+      "title": "新产品",
+      "form": {
+        "inputs": {
+          "name": "名称",
+          "ballast": "配重"
+        },
+        "buttons": {
+          "submit": "创建",
+          "reset": "清除"
+        }
+      }
+    }
+  },
+  "loads": {
+    "informations": {
+      "table": {
+        "title": "货物列表",
+        "headers": {
+          "code": "编码",
+          "delivery_date": "交货日期",
+          "update": "更新",
+          "delete": "删除"
+        }
+      },
+      "filter": {
+        "title": "筛选器",
+        "form": {
+          "inputs": {
+            "code": "编码",
+            "delivery_date": "交货日期"
+          },
+          "buttons": {
+            "search": "搜索",
+            "clear": "清除"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "编辑货物",
+          "form": {
+            "inputs": {
+              "code": "编码",
+              "delivery_date": "交货日期"
+            },
+            "buttons": {
+              "save": "保存",
+              "cancel": "取消"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "您确定吗？",
+          "buttons": {
+            "confirm": "是",
+            "deny": "否"
+          }
+        }
+      }
+    },
+    "newLoad": {
+      "title": "新货物",
+      "form": {
+        "inputs": {
+          "code": "编码",
+          "delivery_date": "交货日期"
+        },
+        "buttons": {
+          "submit": "创建",
+          "reset": "清除"
         }
       }
     }

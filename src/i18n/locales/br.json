@@ -1,7 +1,11 @@
 {
+  "user": {
+    "profile": "Perfil",
+    "logout": "Sair"
+  },
   "auth": {
     "login": "Entrar",
-    "sign_up": "Cadastrar-se",
+    "sign_up": "Cadastrar",
     "createNewAccount": "Criar nova conta",
     "name": "Nome",
     "email": "E-mail",
@@ -10,11 +14,24 @@
     "recover_password": "Recuperar senha",
     "profile": "Perfil"
   },
+  "dashboard": {
+    "info": {
+      "products": "Produtos",
+      "users": "Usuários",
+      "loads": "Cargas"
+    }
+  },
   "menu": {
     "dashboard": "Painel",
     "user": "Usuário",
     "userInfo": "Informações",
-    "newUser": "Novo usuário"
+    "newUser": "Novo usuário",
+    "product": "Produto",
+    "productInfo": "Informações",
+    "newProduct": "Novo produto",
+    "load": "Carga",
+    "loadInfo": "Informações",
+    "newLoad": "Nova carga"
   },
   "users": {
     "informations": {
@@ -62,11 +79,155 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "Você tem certeza?",
+          "title": "Tem certeza?",
           "buttons": {
             "confirm": "Sim",
             "deny": "Não"
           }
+        }
+      }
+    },
+    "newUser": {
+      "title": "Novo usuário",
+      "form": {
+        "inputs": {
+          "name": "Nome",
+          "email": "E-mail",
+          "password": "Senha",
+          "password_confirmation": "Confirmação de senha",
+          "profile": "Perfil"
+        },
+        "buttons": {
+          "submit": "Criar",
+          "reset": "Limpar"
+        }
+      }
+    }
+  },
+  "products": {
+    "informations": {
+      "table": {
+        "title": "Lista de produtos",
+        "headers": {
+          "name": "Nome",
+          "ballast": "Lastro",
+          "created_date": "Data de criação",
+          "update": "Atualizar",
+          "delete": "Excluir"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "name": "Nome",
+            "ballast": "Lastro"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpar"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Editar produto",
+          "form": {
+            "inputs": {
+              "name": "Nome",
+              "description": "Descrição",
+              "price": "Preço"
+            },
+            "buttons": {
+              "save": "Salvar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "Tem certeza?",
+          "buttons": {
+            "confirm": "Sim",
+            "deny": "Não"
+          }
+        }
+      }
+    },
+    "newProduct": {
+      "title": "Novo produto",
+      "form": {
+        "inputs": {
+          "name": "Nome",
+          "ballast": "Lastro"
+        },
+        "buttons": {
+          "submit": "Criar",
+          "reset": "Limpar"
+        }
+      }
+    }
+  },
+  "loads": {
+    "informations": {
+      "table": {
+        "title": "Lista de cargas",
+        "headers": {
+          "code": "Código",
+          "delivery_date": "Data de entrega",
+          "update": "Atualizar",
+          "delete": "Excluir"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "code": "Código",
+            "delivery_date": "Data de entrega"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpar"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Editar carga",
+          "form": {
+            "inputs": {
+              "code": "Código",
+              "delivery_date": "Data de entrega"
+            },
+            "buttons": {
+              "save": "Salvar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "Tem certeza?",
+          "buttons": {
+            "confirm": "Sim",
+            "deny": "Não"
+          }
+        }
+      }
+    },
+    "newLoad": {
+      "title": "Nova carga",
+      "form": {
+        "inputs": {
+          "code": "Código",
+          "delivery_date": "Data de entrega"
+        },
+        "buttons": {
+          "submit": "Criar",
+          "reset": "Limpar"
         }
       }
     }

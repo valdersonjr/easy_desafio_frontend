@@ -10,6 +10,13 @@
     "recover_password": "Recover password",
     "profile": "Profile"
   },
+  "dashboard": {
+    "info": {
+      "products": "Products",
+      "users": "Users",
+      "loads": "Loads"
+    }
+  },
   "menu": {
     "dashboard": "Dashboard",
     "user": "User",
