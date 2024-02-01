@@ -18,6 +18,25 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
+        name: 'product',
+        path: 'product',
+
+        children: [
+          {
+            name: 'product-info',
+            path: 'product-info',
+
+            component: () => import('../pages/admin/product/product-informations/ProductInformations.vue'),
+          },
+          {
+            name: 'new-product',
+            path: 'new-product',
+
+            component: () => import('../pages/admin/product/new-product/NewProduct.vue'),
+          },
+        ],
+      },
+      {
         name: 'user',
         path: 'user',
 

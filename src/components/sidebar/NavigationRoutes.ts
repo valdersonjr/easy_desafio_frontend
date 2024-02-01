@@ -35,5 +35,22 @@ export default {
         },
       ],
     },
+    {
+      name: 'product',
+      displayName: 'menu.product',
+      meta: {
+        icon: 'vuestic-iconset-components',
+      },
+      children: [
+        {
+          name: 'product-info',
+          displayName: 'menu.productInfo',
+        },
+        {
+          name: 'new-product',
+          displayName: 'menu.newProduct',
+        },
+      ],
+    },
   ] as INavigationRoute[],
 }
