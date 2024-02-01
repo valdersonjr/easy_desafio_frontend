@@ -18,6 +18,25 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
+        name: 'load',
+        path: 'load',
+
+        children: [
+          {
+            name: 'load-info',
+            path: 'load-info',
+
+            component: () => import('../pages/admin/load/load-informations/LoadInformations.vue'),
+          },
+          {
+            name: 'new-load',
+            path: 'new-load',
+
+            component: () => import('../pages/admin/load/new-load/NewLoad.vue'),
+          },
+        ],
+      },
+      {
         name: 'product',
         path: 'product',
 

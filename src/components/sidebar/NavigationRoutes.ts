@@ -52,5 +52,22 @@ export default {
         },
       ],
     },
+    {
+      name: 'load',
+      displayName: 'menu.load',
+      meta: {
+        icon: 'vuestic-iconset-load',
+      },
+      children: [
+        {
+          name: 'load-info',
+          displayName: 'menu.loadInfo',
+        },
+        {
+          name: 'new-load',
+          displayName: 'menu.newLoad',
+        },
+      ],
+    },
   ] as INavigationRoute[],
 }

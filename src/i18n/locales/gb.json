@@ -17,7 +17,10 @@
     "newUser": "New user",
     "product": "Product",
     "productInfo": "Informations",
-    "newProduct": "New product"
+    "newProduct": "New product",
+    "load": "Load",
+    "loadInfo": "Informations",
+    "newLoad": "New load"
   },
   "users": {
     "informations": {
@@ -147,6 +150,69 @@
         "inputs": {
           "name": "Name",
           "ballast": "Ballast"
+        },
+        "buttons": {
+          "submit": "Create",
+          "reset": "Clear"
+        }
+      }
+    }
+  },
+  "loads": {
+    "informations": {
+      "table": {
+        "title": "Load list",
+        "headers": {
+          "code": "Code",
+          "delivery_date": "Delivery date",
+          "update": "Update",
+          "delete": "Delete"
+        }
+      },
+      "filter": {
+        "title": "Filters",
+        "form": {
+          "inputs": {
+            "code": "code",
+            "delivery_date": "Delivery date"
+          },
+          "buttons": {
+            "search": "Search",
+            "clear": "Clear"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Edit load",
+          "form": {
+            "inputs": {
+              "code": "Code",
+              "delivery_date": "Delivery date"
+            },
+            "buttons": {
+              "save": "Save",
+              "cancel": "Cancel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "Are you sure?",
+          "buttons": {
+            "confirm": "Yes",
+            "deny": "No"
+          }
+        }
+      }
+    },
+    "newLoad": {
+      "title": "New load",
+      "form": {
+        "inputs": {
+          "code": "Code",
+          "delivery_date": "Delivery date"
         },
         "buttons": {
           "submit": "Create",
