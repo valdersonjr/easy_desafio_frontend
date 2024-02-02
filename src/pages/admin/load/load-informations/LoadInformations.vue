@@ -47,8 +47,18 @@
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th>{{ t('loads.informations.table.headers.code') }}</th>
-              <th>{{ t('loads.informations.table.headers.delivery_date') }}</th>
+              <th class="cursor-pointer" @click="handleSorting('code')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('loads.informations.table.headers.code') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
+              <th class="cursor-pointer" @click="handleSorting('delivery_date')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('loads.informations.table.headers.delivery_date') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
               <th>{{ t('loads.informations.table.headers.update') }}</th>
               <th>{{ t('loads.informations.table.headers.delete') }}</th>
             </tr>
@@ -101,6 +111,8 @@
   const loadIdToDelete = ref(-1)
   const currentPage = ref(1)
   const totalPages = ref(1)
+  const sortColumn = ref('code')
+  const sortDirection = ref('asc')
 
   const onFormSubmit = () => {
     fetchLoads()
@@ -120,6 +132,8 @@
         code: codeFilter.value,
         lesserDate: new Date(filterDates.value[0]),
         greaterDate: new Date(filterDates.value[1]),
+        sortColumn: sortColumn.value,
+        sortDirection: sortDirection.value,
       })
       console.log(response)
       loads.value = response.data.data
@@ -189,6 +203,16 @@
 
   const handleIsLoadingConfirmationModalValueChange = (newValue: boolean) => {
     isConfirmationModalLoading.value = newValue
+  }
+
+  const handleSorting = (column: string) => {
+    if (sortColumn.value === column) {
+      sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
+    } else {
+      sortColumn.value = column
+      sortDirection.value = 'asc'
+    }
+    fetchLoads()
   }
 
   fetchLoads()

@@ -45,8 +45,18 @@
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th>{{ t('products.informations.table.headers.name') }}</th>
-              <th>{{ t('products.informations.table.headers.ballast') }}</th>
+              <th class="cursor-pointer" @click="handleSorting('name')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('products.informations.table.headers.name') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
+              <th class="cursor-pointer" @click="handleSorting('ballast')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('products.informations.table.headers.ballast') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
               <th>{{ t('products.informations.table.headers.created_date') }}</th>
               <th>{{ t('products.informations.table.headers.update') }}</th>
               <th>{{ t('products.informations.table.headers.delete') }}</th>
@@ -100,6 +110,8 @@
   const productIdToDelete = ref(-1)
   const currentPage = ref(1)
   const totalPages = ref(1)
+  const sortColumn = ref('name')
+  const sortDirection = ref('asc')
 
   const onFormSubmit = () => {
     fetchProducts()
@@ -118,6 +130,8 @@
         perPage: 10,
         name: nameFilter.value,
         ballast: ballastFilter.value,
+        sortColumn: sortColumn.value,
+        sortDirection: sortDirection.value,
       })
       products.value = response.data.data
       currentPage.value = response.data.meta?.current_page || 1
@@ -185,6 +199,16 @@
 
   const handleIsLoadingConfirmationModalValueChange = (newValue: boolean) => {
     isConfirmationModalLoading.value = newValue
+  }
+
+  const handleSorting = (column: string) => {
+    if (sortColumn.value === column) {
+      sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
+    } else {
+      sortColumn.value = column
+      sortDirection.value = 'asc'
+    }
+    fetchProducts()
   }
 
   fetchProducts()

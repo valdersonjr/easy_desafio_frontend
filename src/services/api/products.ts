@@ -6,6 +6,8 @@ export interface ProductListProps {
   perPage?: number
   name?: string
   ballast?: string
+  sortColumn?: string
+  sortDirection?: string
 }
 
 const productsService = {
@@ -22,10 +24,22 @@ const productsService = {
     )
   },
 
-  list: ({ page = 1, perPage = 10, name = '', ballast = '' }: ProductListProps): Promise<ApiResponseDto> => {
-    return api.get(`products?page=${page}&per_page=${perPage}&q[name_cont]=${name}&q[ballast_cont]=${ballast}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    })
+  list: ({
+    page = 1,
+    perPage = 10,
+    name = '',
+    ballast = '',
+    sortColumn = 'name',
+    sortDirection = 'asc',
+  }: ProductListProps): Promise<ApiResponseDto> => {
+    const sortQuery = sortColumn && sortDirection ? `&sort=${sortColumn}%20${sortDirection}` : ''
+
+    return api.get(
+      `products?page=${page}&per_page=${perPage}&q[name_cont]=${name}&q[ballast_cont]=${ballast}${sortQuery}`,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      },
+    )
   },
 
   update: (id: number, name: string, ballast: string): Promise<ApiResponseDto> => {

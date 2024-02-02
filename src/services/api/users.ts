@@ -6,6 +6,8 @@ interface UserListProps {
   perPage?: number
   name?: string
   email?: string
+  sortColumn?: string
+  sortDirection?: string
 }
 
 const usersService = {
@@ -30,8 +32,17 @@ const usersService = {
     })
   },
 
-  list: ({ page = 1, perPage = 1, name = '', email = '' }: UserListProps): Promise<ApiResponseDto> => {
-    return api.get(`users?page=${page}&per_page=${perPage}&q[name_cont]=${name}&q[email_cont]=${email}`, {
+  list: ({
+    page = 1,
+    perPage = 10,
+    name = '',
+    email = '',
+    sortColumn = 'name',
+    sortDirection = 'asc',
+  }: UserListProps): Promise<ApiResponseDto> => {
+    const sortQuery = sortColumn && sortDirection ? `&sort=${sortColumn}%20${sortDirection}` : ''
+
+    return api.get(`users?page=${page}&per_page=${perPage}&q[name_cont]=${name}&q[email_cont]=${email}${sortQuery}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     })
   },

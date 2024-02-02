@@ -45,8 +45,18 @@
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th>{{ t('users.informations.table.headers.name') }}</th>
-              <th>{{ t('users.informations.table.headers.email') }}</th>
+              <th class="cursor-pointer" @click="handleSorting('name')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('users.informations.table.headers.name') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
+              <th class="cursor-pointer" @click="handleSorting('email')">
+                <div class="flex flex-row gap-1 items-center">
+                  {{ t('users.informations.table.headers.email') }}
+                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
+                </div>
+              </th>
               <th>{{ t('users.informations.table.headers.profile') }}</th>
               <th>{{ t('users.informations.table.headers.created_date') }}</th>
               <th>{{ t('users.informations.table.headers.update') }}</th>
@@ -92,6 +102,8 @@
   const nameFilter = ref('')
   const emailFilter = ref('')
 
+  const sortColumn = ref('name')
+  const sortDirection = ref('asc')
   const isConfirmationModalOpen = ref(false)
   const isUserEditModalOpen = ref(false)
   const isConfirmationModalLoading = ref(false)
@@ -111,6 +123,8 @@
         perPage: 10,
         name: nameFilter.value,
         email: emailFilter.value,
+        sortColumn: sortColumn.value,
+        sortDirection: sortDirection.value,
       })
       users.value = response.data.data
       currentPage.value = response.data.meta?.current_page || 1
@@ -179,6 +193,17 @@
   const handleFilterClear = () => {
     nameFilter.value = ''
     emailFilter.value = ''
+    fetchUsers()
+  }
+
+  const handleSorting = (column: string) => {
+    console.log('Sorting:', column)
+    if (sortColumn.value === column) {
+      sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc'
+    } else {
+      sortColumn.value = column
+      sortDirection.value = 'asc'
+    }
     fetchUsers()
   }
 
