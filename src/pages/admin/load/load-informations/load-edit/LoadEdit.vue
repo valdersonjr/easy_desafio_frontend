@@ -10,7 +10,14 @@
           :error-messages="codeErrors"
           type="text"
         />
-        <VueDatePicker v-model="deliveryDate" :enable-time-picker="false" format="dd/MM/yy" locale="pt-BR" required />
+        <VueDatePicker
+          v-model="deliveryDate"
+          :teleport="true"
+          :enable-time-picker="false"
+          format="dd/MM/yy"
+          locale="pt-BR"
+          required
+        />
         <div class="flex flex-row justify-around">
           <va-button preset="secondary" class="min-w-[6rem]" type="Cancel" @click="handleModalClose">{{
             t('loads.informations.edit.modal.form.buttons.cancel')
