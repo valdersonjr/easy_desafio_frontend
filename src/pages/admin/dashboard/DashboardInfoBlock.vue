@@ -23,11 +23,14 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useI18n } from 'vue-i18n'
   import { VaCard, VaCardContent } from 'vuestic-ui'
   import countsService from '../../../services/api/counts'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const { t } = useI18n()
+
   const counts = ref({
     products: 0,
     users: 0,
@@ -38,7 +41,10 @@
     const response = await countsService.list()
     if (response.data) {
       counts.value = response.data.data
-      console.log(counts.value)
+    }
+
+    if (response.status !== 200) {
+      init({ message: t('messages.toast.dashboard.error'), color: 'danger' })
     }
   }
 

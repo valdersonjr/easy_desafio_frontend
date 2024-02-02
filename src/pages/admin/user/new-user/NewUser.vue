@@ -64,7 +64,9 @@
   import router from '../../../../router'
   import { FulfillingSquareSpinner } from 'epic-spinners'
   import { useGlobalStore } from '../../../../stores/global-store'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
   const profileOptions = ['Admin', 'Client']
@@ -115,11 +117,15 @@
           profile: profile.value.toLocaleLowerCase(),
         })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) router.push({ name: 'user-info' })
+          if (response.status === 200) {
+            router.push({ name: 'user-info' })
+            init({ message: t('messages.toast.user.new.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log('Error:', error)
           if (error.response.status === 422) emailErrors.value = ['Email already exists']
+          init({ message: t('messages.toast.user.new.error'), color: 'success' })
         })
         .finally(() => {
           loadingStatus.value = false

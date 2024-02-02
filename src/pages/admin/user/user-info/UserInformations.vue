@@ -27,7 +27,7 @@
         />
         <va-input
           v-model="emailFilter"
-          type="email"
+          type="text"
           :label="t('users.informations.filter.form.inputs.email')"
           placeholder="easy@pallet.com"
         />
@@ -84,7 +84,9 @@
   import formatDate from '../../../../services/utils/dateConverter'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import { useGlobalStore } from '../../../../stores/global-store'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const { t } = useI18n()
 
   const nameFilter = ref('')
@@ -115,6 +117,10 @@
       totalPages.value = response.data.meta?.total_pages || 1
     } catch (error: any) {
       if (error.response.status === 404) users.value = []
+      else {
+        console.log('Error fetching users:', error)
+        init({ message: t('messages.toast.user.list.error'), color: 'danger' })
+      }
       currentPage.value = 1
       totalPages.value = 1
     }
@@ -122,7 +128,11 @@
 
   const handleUserUpdate = (id: number) => {
     if (GlobalStore.user.profile === 'admin') fetchUser(id)
-    else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
+    else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const fetchUser = async (id: number) => {
@@ -139,7 +149,11 @@
     if (GlobalStore.user.profile === 'admin') {
       isConfirmationModalOpen.value = true
       userIdToDelete.value = id
-    } else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
+    } else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const deleteUser = async (id: number) => {
@@ -150,9 +164,11 @@
         isConfirmationModalOpen.value = false
         isConfirmationModalLoading.value = false
         fetchUsers()
+        init({ message: t('messages.toast.user.delete.success'), color: 'success' })
       }
     } catch (error) {
       console.log('Error deleting user:', error)
+      init({ message: t('messages.toast.user.delete.error'), color: 'danger' })
     }
   }
 

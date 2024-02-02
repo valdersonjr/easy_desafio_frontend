@@ -35,8 +35,10 @@
   import productsService from '../../../../../services/api/products'
   import { ApiResponseDto } from '../../../../../dtos'
   import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
+  const { init } = useToast()
 
   const props = defineProps(['isOpen', 'product'])
 
@@ -67,10 +69,14 @@
       productsService
         .update(props.product.id, name.value, ballast.value)
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) handleModalClose()
+          if (response.status === 200) {
+            handleModalClose()
+            init({ message: t('messages.toast.product.edit.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log(error)
+          init({ message: t('messages.toast.product.edit.error'), color: 'danger' })
         })
     }
   }

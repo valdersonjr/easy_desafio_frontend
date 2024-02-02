@@ -82,7 +82,9 @@
   import { useGlobalStore } from '../../../../stores/global-store'
   import UserEdit from './product-edit/ProductEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const { t } = useI18n()
   const GlobalStore = useGlobalStore()
 
@@ -139,14 +141,22 @@
 
   const handleProductUpdate = (id: number) => {
     if (GlobalStore.user.profile === 'admin') fetchProduct(id)
-    else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
+    else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const handleProductDeletion = (id: number) => {
     if (GlobalStore.user.profile === 'admin') {
       isConfirmationModalOpen.value = true
       productIdToDelete.value = id
-    } else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
+    } else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const deleteProduct = async (id: number) => {
@@ -156,9 +166,11 @@
         isConfirmationModalOpen.value = false
         isConfirmationModalLoading.value = false
         fetchProducts()
+        init({ message: t('messages.toast.product.delete.success'), color: 'success' })
       }
     } catch (error) {
       console.log('Error deleting user:', error)
+      init({ message: t('messages.toast.product.delete.error'), color: 'danger' })
     }
   }
 

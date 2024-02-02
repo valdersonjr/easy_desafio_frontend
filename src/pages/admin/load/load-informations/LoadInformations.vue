@@ -83,7 +83,9 @@
   import LoadEdit from './load-edit/LoadEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import VueDatePicker from '@vuepic/vue-datepicker'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const { t } = useI18n()
   const GlobalStore = useGlobalStore()
 
@@ -142,14 +144,22 @@
 
   const handleLoadUpdate = (id: number) => {
     if (GlobalStore.user.profile === 'admin') fetchLoad(id)
-    else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other loads`)
+    else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const handleLoadDeletion = (id: number) => {
     if (GlobalStore.user.profile === 'admin') {
       isConfirmationModalOpen.value = true
       loadIdToDelete.value = id
-    } else alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other loads`)
+    } else
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
   }
 
   const deleteLoad = async (id: number) => {
@@ -160,9 +170,11 @@
         isConfirmationModalOpen.value = false
         isConfirmationModalLoading.value = false
         fetchLoads()
+        init({ message: t('messages.toast.load.delete.success'), color: 'success' })
       }
     } catch (error) {
       console.log('Error deleting user:', error)
+      init({ message: t('messages.toast.load.delete.error'), color: 'danger' })
     }
   }
 

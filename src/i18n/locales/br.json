@@ -3,6 +3,105 @@
     "profile": "Perfil",
     "logout": "Sair"
   },
+  "messages": {
+    "validation": {
+      "input": {
+        "name": {
+          "required": "Nome é obrigatório"
+        },
+        "email": {
+          "required": "E-mail é obrigatório",
+          "email": "E-mail inválido"
+        },
+        "password": {
+          "required": "Senha é obrigatória"
+        },
+        "password_confirmation": {
+          "required": "Confirmação de senha é obrigatória",
+          "same": "Confirmação de senha deve ser igual a senha"
+        },
+        "profile": {
+          "required": "Perfil é obrigatório"
+        }
+      }
+    },
+    "toast": {
+      "profile": {
+        "edit": {
+          "success": "Perfil atualizado com sucesso!",
+          "error": "Erro ao atualizar perfil"
+        }
+      },
+      "login": {
+        "success": "Bem vindo!",
+        "error": "Erro ao efetuar login"
+      },
+      "logout": {
+        "success": "Até logo!",
+        "error": "Erro ao efetuar logout"
+      },
+      "dashboard": {
+        "error": "Erro ao carregar informações"
+      },
+      "user": {
+        "list": {
+          "error": "Erro ao carregar usuários"
+        },
+        "new": {
+          "success": "Usuário criado com sucesso!",
+          "error": "Erro ao criar usuário"
+        },
+        "edit": {
+          "success": "Usuário atualizado com sucesso!",
+          "error": "Erro ao atualizar usuário",
+          "error_email": "E-mail já existe"
+        },
+        "delete": {
+          "success": "Usuário excluído com sucesso!",
+          "error": "Erro ao excluir usuário"
+        }
+      },
+      "product": {
+        "list": {
+          "error": "Erro ao carregar produtos"
+        },
+        "new": {
+          "success": "Produto criado com sucesso!",
+          "error": "Erro ao criar produto"
+        },
+        "edit": {
+          "success": "Produto atualizado com sucesso!",
+          "error": "Erro ao atualizar produto"
+        },
+        "delete": {
+          "success": "Produto excluído com sucesso!",
+          "error": "Erro ao excluir produto"
+        }
+      },
+      "load": {
+        "list": {
+          "error": "Erro ao carregar cargas"
+        },
+        "new": {
+          "success": "Carga criada com sucesso!",
+          "error": "Erro ao criar carga",
+          "error_code": "Código já existe"
+        },
+        "edit": {
+          "success": "Carga atualizada com sucesso!",
+          "error": "Erro ao atualizar carga",
+          "error_code": "Código já existe"
+        },
+        "delete": {
+          "success": "Carga excluída com sucesso!",
+          "error": "Erro ao excluir carga"
+        }
+      },
+      "profile_permission": {
+        "error": "Perfil sem permissão"
+      }
+    }
+  },
   "profile": {
     "form": {
       "title": "Perfil",

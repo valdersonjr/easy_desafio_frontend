@@ -35,13 +35,15 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useI18n } from 'vue-i18n'
   import usersService from '../../../services/api/users'
   import { validateEmailFormat } from '../../../services/utils/validations'
   import { useGlobalStore } from '../../../stores/global-store'
   import { ApiResponseDto } from '../../../dtos'
+  import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
+  const { init } = useToast()
   const GlobalStore = useGlobalStore()
 
   const email = ref('')
@@ -70,6 +72,7 @@
           if (response.status === 200) {
             GlobalStore.setToken(response.headers.authorization.split(' ')[1])
             GlobalStore.setUser(response.data.data)
+            init({ message: `${t('messages.toast.login.success')} ${GlobalStore.user.name}!`, color: 'success' })
             router.push({ name: 'dashboard' })
           }
         })
@@ -77,6 +80,7 @@
           if (error.response.status === 401) {
             passwordErrors.value = ['Invalid credentials']
           }
+          init({ message: t('messages.toast.login.error'), color: 'danger' })
         })
         .finally(() => {
           loadingStatus.value = false

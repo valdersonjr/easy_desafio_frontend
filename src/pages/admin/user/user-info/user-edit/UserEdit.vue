@@ -51,8 +51,10 @@
   import { ApiResponseDto } from '../../../../../dtos'
   import { validateEmailFormat } from '../../../../../services/utils/validations'
   import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
+  const { init } = useToast()
 
   const props = defineProps(['isOpen', 'user'])
 
@@ -108,10 +110,15 @@
           profile: profile.value.toLowerCase(),
         })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) handleModalClose()
+          if (response.status === 200) {
+            handleModalClose()
+            init({ message: t('messages.toast.user.edit.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
-          console.log(error)
+          if (error.response.status === 422 && error.response.data.message[1]) {
+            init({ message: t('messages.toast.user.edit.error_email'), color: 'danger' })
+          }
         })
     }
   }

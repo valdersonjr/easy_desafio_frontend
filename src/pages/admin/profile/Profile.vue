@@ -66,7 +66,9 @@
   import { useGlobalStore } from '../../../stores/global-store'
   import usersService from '../../../services/api/users'
   import { useI18n } from 'vue-i18n'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
   const user = ref(GlobalStore.user)
@@ -108,8 +110,8 @@
 
     if (localStorage.getItem('user')) {
       const profile = JSON.parse(localStorage.getItem('user') as string).profile
-      if (profile && profile.toLowerCase() !== 'admin') {
-        alert(`${profile.toUpperCase()} are not allowed to update profile field`)
+      if (profile && profile.toLowerCase() !== 'admin' && user.value.profile.toLowerCase() === 'admin') {
+        init({ message: `${t('messages.toast.profile_permission.error')}: ${profile.toUpperCase()}`, color: 'danger' })
         disableEditMode()
         return
       }
@@ -135,9 +137,11 @@
               profile: user.value.profile.toLowerCase(),
               created_at: user.value.created_at,
             })
+            init({ message: t('messages.toast.profile.edit.success'), color: 'success' })
           }
         })
         .catch((error) => {
+          init({ message: t('messages.toast.profile.edit.error'), color: 'danger' })
           console.log(error)
         })
         .finally(() => {

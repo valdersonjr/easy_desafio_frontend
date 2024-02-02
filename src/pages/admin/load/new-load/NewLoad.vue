@@ -40,9 +40,11 @@
   import { useGlobalStore } from '../../../../stores/global-store'
   import VueDatePicker from '@vuepic/vue-datepicker'
   import { addDays } from 'date-fns'
+  import { useToast } from 'vuestic-ui'
 
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
+  const { init } = useToast()
 
   const code = ref('')
   const currentDate = new Date()
@@ -57,8 +59,10 @@
 
   const onsubmit = () => {
     if (GlobalStore.user.profile !== 'admin') {
-      alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
-      router.push({ name: 'load-info' })
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
       return
     }
 
@@ -66,18 +70,19 @@
 
     if (formReady.value) {
       loadingStatus.value = true
-      const deliveryDateLessOneDay = addDays(deliveryDate.value, -1)
 
       loadsService
-        .create(code.value, deliveryDateLessOneDay)
+        .create(code.value, deliveryDate.value)
         .then((response: ApiResponseDto) => {
-          if (response.status === 201) router.push({ name: 'load-info' })
+          if (response.status === 201) {
+            router.push({ name: 'load-info' })
+            init({ message: t('messages.toast.load.new.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log('Error:', error)
-          if (error.response.status === 422) {
-            alert('Code has already been taken')
-          }
+          if (error.response.status === 422) init({ message: t('messages.toast.load.new.error_code'), color: 'danger' })
+          else init({ message: t('messages.toast.load.new.error'), color: 'danger' })
         })
         .finally(() => {
           loadingStatus.value = false

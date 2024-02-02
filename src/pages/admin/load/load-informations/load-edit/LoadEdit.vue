@@ -31,8 +31,10 @@
   import { useI18n } from 'vue-i18n'
   import VueDatePicker from '@vuepic/vue-datepicker'
   import { addDays } from 'date-fns'
+  import { useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
+  const { init } = useToast()
 
   const props = defineProps(['isOpen', 'load'])
 
@@ -69,10 +71,16 @@
         .update({ id: props.load.id, code: code.value, delivery_date: deliveryDateLessOneDay })
         .then((response: ApiResponseDto) => {
           console.log(response)
-          if (response.status === 200) handleModalClose()
+          if (response.status === 200) {
+            handleModalClose()
+            init({ message: t('messages.toast.load.edit.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log(error)
+          if (error.response.status === 422)
+            init({ message: t('messages.toast.load.edit.error_code'), color: 'danger' })
+          else init({ message: t('messages.toast.load.edit.error'), color: 'danger' })
         })
     }
   }

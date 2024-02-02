@@ -45,9 +45,11 @@
   import router from '../../../../router'
   import { FulfillingSquareSpinner } from 'epic-spinners'
   import { useGlobalStore } from '../../../../stores/global-store'
+  import { useToast } from 'vuestic-ui'
 
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
+  const { init } = useToast()
 
   const name = ref('')
   const ballast = ref('')
@@ -62,8 +64,10 @@
 
   const onsubmit = () => {
     if (GlobalStore.user.profile !== 'admin') {
-      alert(`${GlobalStore.user.profile.toUpperCase()} profile are not allowed to alter other users`)
-      router.push({ name: 'product-info' })
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
       return
     }
 
@@ -76,10 +80,14 @@
       productsService
         .create(name.value, ballast.value)
         .then((response: ApiResponseDto) => {
-          if (response.status === 201) router.push({ name: 'product-info' })
+          if (response.status === 201) {
+            router.push({ name: 'product-info' })
+            init({ message: t('messages.toast.product.new.success'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log('Error:', error)
+          init({ message: t('messages.toast.product.new.error'), color: 'danger' })
         })
         .finally(() => {
           loadingStatus.value = false

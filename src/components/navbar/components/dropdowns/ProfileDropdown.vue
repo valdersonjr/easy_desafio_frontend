@@ -24,9 +24,10 @@
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
   import router from '../../../../router'
-  import { useColors } from 'vuestic-ui'
+  import { useColors, useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
+  const { init } = useToast()
   const { colors } = useColors()
 
   withDefaults(
@@ -53,7 +54,8 @@
     if (option === 'logout') {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
-      window.location.reload()
+      init({ message: t('messages.toast.logout.success'), color: 'success' })
+      router.push({ name: 'login' })
     } else if (option === 'profile') {
       router.push({ name: 'profile' })
     }
