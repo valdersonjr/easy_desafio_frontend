@@ -39,6 +39,7 @@
   import { FulfillingSquareSpinner } from 'epic-spinners'
   import { useGlobalStore } from '../../../../stores/global-store'
   import VueDatePicker from '@vuepic/vue-datepicker'
+  import { addDays } from 'date-fns'
 
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
@@ -65,9 +66,10 @@
 
     if (formReady.value) {
       loadingStatus.value = true
+      const deliveryDateLessOneDay = addDays(deliveryDate.value, -1)
 
       loadsService
-        .create(code.value, deliveryDate.value)
+        .create(code.value, deliveryDateLessOneDay)
         .then((response: ApiResponseDto) => {
           if (response.status === 201) router.push({ name: 'load-info' })
         })

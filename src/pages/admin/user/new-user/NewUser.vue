@@ -96,8 +96,12 @@
     passwordConfirmationErrors.value = password_confirmation.value ? [] : ['Password confirmation is required']
     passwordConfirmationErrors.value =
       password_confirmation.value === password.value ? [] : ['Password confirmation must be equal to password']
-    profileErrors.value =
-      profile.value === 'Admin' && GlobalStore.user.profile === 'admin' ? [] : ['Only admin can create admin profile']
+    profileErrors.value = profile.value ? [] : ['Profile is required']
+
+    if (profile.value !== '') {
+      profileErrors.value =
+        profile.value === 'Admin' && GlobalStore.user.profile === 'admin' ? [] : ['Only admin can create admin profile']
+    }
 
     if (formReady.value) {
       loadingStatus.value = true
