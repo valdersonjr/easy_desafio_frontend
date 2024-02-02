@@ -9,13 +9,13 @@
     <va-card color="info">
       <va-card-content>
         <h2 class="va-h2 m-0">{{ counts.products }}</h2>
-        <p class="w-32">{{ t('dashboard.info.loads') }}</p>
+        <p class="w-32">{{ t('dashboard.info.products') }}</p>
       </va-card-content>
     </va-card>
     <va-card color="secondary">
       <va-card-content>
         <h2 class="va-h2 m-0">{{ counts.loads }}</h2>
-        <p class="w-32">{{ t('dashboard.info.products') }}</p>
+        <p class="w-32">{{ t('dashboard.info.loads') }}</p>
       </va-card-content>
     </va-card>
   </div>

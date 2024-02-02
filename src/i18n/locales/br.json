@@ -3,6 +3,22 @@
     "profile": "Perfil",
     "logout": "Sair"
   },
+  "profile": {
+    "form": {
+      "title": "Perfil",
+      "input": {
+        "name": "Nome",
+        "email": "E-mail",
+        "password": "Senha",
+        "password_confirmation": "Confirmação de senha",
+        "profile": "Perfil"
+      },
+      "button": {
+        "save": "Salvar",
+        "edit": "Atualizar"
+      }
+    }
+  },
   "auth": {
     "login": "Entrar",
     "sign_up": "Cadastrar",

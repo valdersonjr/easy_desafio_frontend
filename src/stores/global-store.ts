@@ -20,6 +20,7 @@ export const useGlobalStore = defineStore('global', () => {
   }
 
   function setUser(userValue: UserDto) {
+    userValue.profile = userValue.profile.toLocaleLowerCase()
     localStorage.setItem('user', JSON.stringify(userValue))
     user.value = userValue
   }

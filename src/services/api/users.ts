@@ -59,6 +59,22 @@ const usersService = {
     )
   },
 
+  update: ({ name, email, password, password_confirmation, profile }: SignUpDataDto): Promise<ApiResponseDto> => {
+    return api.put(
+      'users',
+      {
+        user: {
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: password_confirmation,
+          profile: profile,
+        },
+      },
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+    )
+  },
+
   show: (id: number): Promise<ApiResponseDto> => {
     return api.get(`users/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
   },

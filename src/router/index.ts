@@ -18,6 +18,12 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
+        name: 'profile',
+        path: 'profile',
+
+        component: () => import('../pages/admin/profile/Profile.vue'),
+      },
+      {
         name: 'load',
         path: 'load',
 

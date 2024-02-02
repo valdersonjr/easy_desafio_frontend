@@ -10,7 +10,9 @@
       <va-dropdown-content class="profile-dropdown__content">
         <va-list-item v-for="option in options" :key="option.name" class="p-2">
           <router-link :to="{ name: option.redirectTo }" class="profile-dropdown__item">
-            {{ t(`user.${option.name}`) }}
+            <div @click="handleOptionClick(option.name)">
+              {{ t(`user.${option.name}`) }}
+            </div>
           </router-link>
         </va-list-item>
       </va-dropdown-content>
@@ -21,6 +23,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import router from '../../../../router'
   import { useColors } from 'vuestic-ui'
 
   const { t } = useI18n()
@@ -34,7 +37,7 @@
       options: () => [
         {
           name: 'profile',
-          redirectTo: '',
+          redirectTo: 'profile',
         },
         {
           name: 'logout',
@@ -45,6 +48,16 @@
   )
 
   const isShown = ref(false)
+
+  const handleOptionClick = (option: string) => {
+    if (option === 'logout') {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      window.location.reload()
+    } else if (option === 'profile') {
+      router.push({ name: 'profile' })
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
