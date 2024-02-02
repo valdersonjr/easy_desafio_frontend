@@ -119,6 +119,7 @@
     }
   },
   "auth": {
+    "reset_password": "Redefinir senha",
     "login": "Entrar",
     "sign_up": "Cadastrar",
     "createNewAccount": "Criar nova conta",

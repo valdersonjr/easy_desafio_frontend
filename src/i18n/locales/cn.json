@@ -1,5 +1,125 @@
 {
+  "user": {
+    "profile": "个人资料",
+    "logout": "退出"
+  },
+  "messages": {
+    "validation": {
+      "input": {
+        "name": {
+          "required": "姓名是必填项"
+        },
+        "email": {
+          "required": "电子邮件是必填项",
+          "email": "无效的电子邮件"
+        },
+        "password": {
+          "required": "密码是必填项"
+        },
+        "password_confirmation": {
+          "required": "确认密码是必填项",
+          "same": "确认密码必须与密码相同"
+        },
+        "profile": {
+          "required": "个人资料是必填项"
+        }
+      }
+    },
+    "toast": {
+      "profile": {
+        "edit": {
+          "success": "成功更新个人资料！",
+          "error": "更新个人资料时出错"
+        }
+      },
+      "login": {
+        "success": "欢迎！",
+        "error": "登录时出错"
+      },
+      "logout": {
+        "success": "再见！",
+        "error": "退出时出错"
+      },
+      "dashboard": {
+        "error": "加载信息时出错"
+      },
+      "user": {
+        "list": {
+          "error": "加载用户时出错"
+        },
+        "new": {
+          "success": "成功创建用户！",
+          "error": "创建用户时出错"
+        },
+        "edit": {
+          "success": "成功更新用户！",
+          "error": "更新用户时出错",
+          "error_email": "电子邮件已存在"
+        },
+        "delete": {
+          "success": "成功删除用户！",
+          "error": "删除用户时出错"
+        }
+      },
+      "product": {
+        "list": {
+          "error": "加载产品时出错"
+        },
+        "new": {
+          "success": "成功创建产品！",
+          "error": "创建产品时出错"
+        },
+        "edit": {
+          "success": "成功更新产品！",
+          "error": "更新产品时出错"
+        },
+        "delete": {
+          "success": "成功删除产品！",
+          "error": "删除产品时出错"
+        }
+      },
+      "load": {
+        "list": {
+          "error": "加载货物时出错"
+        },
+        "new": {
+          "success": "成功创建货物！",
+          "error": "创建货物时出错",
+          "error_code": "代码已存在"
+        },
+        "edit": {
+          "success": "成功更新货物！",
+          "error": "更新货物时出错",
+          "error_code": "代码已存在"
+        },
+        "delete": {
+          "success": "成功删除货物！",
+          "error": "删除货物时出错"
+        }
+      },
+      "profile_permission": {
+        "error": "无权限访问个人资料"
+      }
+    }
+  },
+  "profile": {
+    "form": {
+      "title": "个人资料",
+      "input": {
+        "name": "姓名",
+        "email": "电子邮件",
+        "password": "密码",
+        "password_confirmation": "确认密码",
+        "profile": "个人资料"
+      },
+      "button": {
+        "save": "保存",
+        "edit": "更新"
+      }
+    }
+  },
   "auth": {
+    "reset_password": "重设密码",
     "login": "登录",
     "sign_up": "注册",
     "createNewAccount": "创建新帐户",

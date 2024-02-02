@@ -1,5 +1,125 @@
 {
+  "user": {
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "messages": {
+    "validation": {
+      "input": {
+        "name": {
+          "required": "Name is required"
+        },
+        "email": {
+          "required": "Email is required",
+          "email": "Invalid email"
+        },
+        "password": {
+          "required": "Password is required"
+        },
+        "password_confirmation": {
+          "required": "Password confirmation is required",
+          "same": "Password confirmation must be the same as the password"
+        },
+        "profile": {
+          "required": "Profile is required"
+        }
+      }
+    },
+    "toast": {
+      "profile": {
+        "edit": {
+          "success": "Profile updated successfully!",
+          "error": "Error updating profile"
+        }
+      },
+      "login": {
+        "success": "Welcome!",
+        "error": "Error logging in"
+      },
+      "logout": {
+        "success": "Goodbye!",
+        "error": "Error logging out"
+      },
+      "dashboard": {
+        "error": "Error loading information"
+      },
+      "user": {
+        "list": {
+          "error": "Error loading users"
+        },
+        "new": {
+          "success": "User created successfully!",
+          "error": "Error creating user"
+        },
+        "edit": {
+          "success": "User updated successfully!",
+          "error": "Error updating user",
+          "error_email": "Email already exists"
+        },
+        "delete": {
+          "success": "User deleted successfully!",
+          "error": "Error deleting user"
+        }
+      },
+      "product": {
+        "list": {
+          "error": "Error loading products"
+        },
+        "new": {
+          "success": "Product created successfully!",
+          "error": "Error creating product"
+        },
+        "edit": {
+          "success": "Product updated successfully!",
+          "error": "Error updating product"
+        },
+        "delete": {
+          "success": "Product deleted successfully!",
+          "error": "Error deleting product"
+        }
+      },
+      "load": {
+        "list": {
+          "error": "Error loading loads"
+        },
+        "new": {
+          "success": "Load created successfully!",
+          "error": "Error creating load",
+          "error_code": "Code already exists"
+        },
+        "edit": {
+          "success": "Load updated successfully!",
+          "error": "Error updating load",
+          "error_code": "Code already exists"
+        },
+        "delete": {
+          "success": "Load deleted successfully!",
+          "error": "Error deleting load"
+        }
+      },
+      "profile_permission": {
+        "error": "Profile without permission"
+      }
+    }
+  },
+  "profile": {
+    "form": {
+      "title": "Profile",
+      "input": {
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "password_confirmation": "Password Confirmation",
+        "profile": "Profile"
+      },
+      "button": {
+        "save": "Save",
+        "edit": "Update"
+      }
+    }
+  },
   "auth": {
+    "reset_password": "Reset password",
     "login": "Login",
     "sign_up": "Sign up",
     "createNewAccount": "Create new account",

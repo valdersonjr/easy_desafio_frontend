@@ -1,5 +1,125 @@
 {
+  "user": {
+    "profile": "Perfil",
+    "logout": "Salir"
+  },
+  "messages": {
+    "validation": {
+      "input": {
+        "name": {
+          "required": "El nombre es obligatorio"
+        },
+        "email": {
+          "required": "El correo electrónico es obligatorio",
+          "email": "Correo electrónico no válido"
+        },
+        "password": {
+          "required": "La contraseña es obligatoria"
+        },
+        "password_confirmation": {
+          "required": "La confirmación de la contraseña es obligatoria",
+          "same": "La confirmación de la contraseña debe ser igual a la contraseña"
+        },
+        "profile": {
+          "required": "El perfil es obligatorio"
+        }
+      }
+    },
+    "toast": {
+      "profile": {
+        "edit": {
+          "success": "¡Perfil actualizado con éxito!",
+          "error": "Error al actualizar el perfil"
+        }
+      },
+      "login": {
+        "success": "¡Bienvenido!",
+        "error": "Error al iniciar sesión"
+      },
+      "logout": {
+        "success": "¡Hasta luego!",
+        "error": "Error al cerrar sesión"
+      },
+      "dashboard": {
+        "error": "Error al cargar información"
+      },
+      "user": {
+        "list": {
+          "error": "Error al cargar usuarios"
+        },
+        "new": {
+          "success": "¡Usuario creado con éxito!",
+          "error": "Error al crear usuario"
+        },
+        "edit": {
+          "success": "¡Usuario actualizado con éxito!",
+          "error": "Error al actualizar usuario",
+          "error_email": "El correo electrónico ya existe"
+        },
+        "delete": {
+          "success": "¡Usuario eliminado con éxito!",
+          "error": "Error al eliminar usuario"
+        }
+      },
+      "product": {
+        "list": {
+          "error": "Error al cargar productos"
+        },
+        "new": {
+          "success": "¡Producto creado con éxito!",
+          "error": "Error al crear producto"
+        },
+        "edit": {
+          "success": "¡Producto actualizado con éxito!",
+          "error": "Error al actualizar producto"
+        },
+        "delete": {
+          "success": "¡Producto eliminado con éxito!",
+          "error": "Error al eliminar producto"
+        }
+      },
+      "load": {
+        "list": {
+          "error": "Error al cargar cargas"
+        },
+        "new": {
+          "success": "¡Carga creada con éxito!",
+          "error": "Error al crear carga",
+          "error_code": "El código ya existe"
+        },
+        "edit": {
+          "success": "¡Carga actualizada con éxito!",
+          "error": "Error al actualizar carga",
+          "error_code": "El código ya existe"
+        },
+        "delete": {
+          "success": "¡Carga eliminada con éxito!",
+          "error": "Error al eliminar carga"
+        }
+      },
+      "profile_permission": {
+        "error": "Perfil sin permiso"
+      }
+    }
+  },
+  "profile": {
+    "form": {
+      "title": "Perfil",
+      "input": {
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "password_confirmation": "Confirmación de contraseña",
+        "profile": "Perfil"
+      },
+      "button": {
+        "save": "Guardar",
+        "edit": "Actualizar"
+      }
+    }
+  },
   "auth": {
+    "reset_password": "Restablecer la contraseña",
     "login": "Iniciar sesión",
     "sign_up": "Registrarse",
     "createNewAccount": "Crear nueva cuenta",
