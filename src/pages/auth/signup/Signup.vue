@@ -65,7 +65,9 @@
   import router from '../../../router'
   import { FulfillingSquareSpinner } from 'epic-spinners'
   import { ApiResponseDto } from '../../../dtos'
+  import { useToast } from 'vuestic-ui'
 
+  const { init } = useToast()
   const { t } = useI18n()
 
   const name = ref('')
@@ -102,11 +104,15 @@
         profile: profile.value,
       })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) router.push({ name: 'login' })
+          if (response.status === 200) {
+            router.push({ name: 'login' })
+            init({ message: t('Cadastro realizado com sucesso'), color: 'success' })
+          }
         })
         .catch((error: any) => {
           console.log('Error:', error)
           if (error.response.status === 422) emailErrors.value = ['Email already exists']
+          else init({ message: t('Erro ao realizar cadastro'), color: 'error' })
         })
         .finally(() => {
           loadingStatus.value = false

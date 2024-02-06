@@ -71,16 +71,13 @@
   const { init } = useToast()
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
-  const user = ref(GlobalStore.user)
-
-  //capitalize
-  if (user.value.profile) user.value.profile = user.value.profile.charAt(0).toUpperCase() + user.value.profile.slice(1)
+  const user = ref({ ...GlobalStore.user })
 
   const password = ref('')
   const passwordConfirmation = ref('')
   const disabledField = ref(true)
   const isEditMode = ref(false)
-  const profileOptions = ['Admin', 'Client']
+  const profileOptions = ['admin', 'client']
 
   const passwordConfirmationErrors = ref<string[]>([])
 
@@ -124,7 +121,7 @@
           email: user.value.email,
           password: password.value,
           password_confirmation: passwordConfirmation.value,
-          profile: user.value.profile.toLowerCase(),
+          profile: user.value.profile,
         })
         .then((response: any) => {
           if (response.status === 200) {
@@ -134,7 +131,7 @@
               id: user.value.id,
               name: user.value.name,
               email: user.value.email,
-              profile: user.value.profile.toLowerCase(),
+              profile: user.value.profile,
               created_at: user.value.created_at,
             })
             init({ message: t('messages.toast.profile.edit.success'), color: 'success' })
