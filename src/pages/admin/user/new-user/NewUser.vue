@@ -117,7 +117,7 @@
           profile: profile.value.toLocaleLowerCase(),
         })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) {
+          if (response.status === 201) {
             router.push({ name: 'user-info' })
             init({ message: t('messages.toast.user.new.success'), color: 'success' })
           }

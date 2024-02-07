@@ -126,7 +126,7 @@
         sortColumn: sortColumn.value,
         sortDirection: sortDirection.value,
       })
-      users.value = response.data.data
+      users.value = response.data.users
       currentPage.value = response.data.meta?.current_page || 1
       totalPages.value = response.data.meta?.total_pages || 1
     } catch (error: any) {
@@ -152,7 +152,7 @@
   const fetchUser = async (id: number) => {
     try {
       const response = await usersService.show(id)
-      userShow.value = response.data.data
+      userShow.value = response.data.user
       isUserEditModalOpen.value = true
     } catch (error) {
       console.log('Error fetching user:', error)

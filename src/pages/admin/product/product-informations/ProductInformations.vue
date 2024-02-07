@@ -133,7 +133,7 @@
         sortColumn: sortColumn.value,
         sortDirection: sortDirection.value,
       })
-      products.value = response.data.data
+      products.value = response.data.products
       currentPage.value = response.data.meta?.current_page || 1
       totalPages.value = response.data.meta?.total_pages || 1
     } catch (error: any) {
@@ -146,7 +146,7 @@
   const fetchProduct = async (id: number) => {
     try {
       const response = await productsService.show(id)
-      productShow.value = response.data.data
+      productShow.value = response.data.product
       isProductEditModalOpen.value = true
     } catch (error) {
       console.log('Error fetching user:', error)

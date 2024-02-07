@@ -69,15 +69,15 @@
           password: password.value,
         })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) {
+          if (response.status === 201) {
             GlobalStore.setToken(response.headers.authorization.split(' ')[1])
-            GlobalStore.setUser(response.data.data)
+            GlobalStore.setUser(response.data.user)
             init({ message: `${t('messages.toast.login.success')} ${GlobalStore.user.name}!`, color: 'success' })
             router.push({ name: 'dashboard' })
           }
         })
-        .catch((error) => {
-          if (error.response.status === 401) {
+        .catch((error: any) => {
+          if (!!error && error.response.status === 401) {
             passwordErrors.value = ['Invalid credentials']
           }
           init({ message: t('messages.toast.login.error'), color: 'danger' })

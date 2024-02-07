@@ -40,7 +40,7 @@
   const fetchCounts = async () => {
     const response = await countsService.list()
     if (response.data) {
-      counts.value = response.data.data
+      counts.value = response.data.counts
     }
 
     if (response.status !== 200) {

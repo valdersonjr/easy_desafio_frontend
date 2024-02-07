@@ -136,7 +136,7 @@
         sortDirection: sortDirection.value,
       })
       console.log(response)
-      loads.value = response.data.data
+      loads.value = response.data.loads
       currentPage.value = response.data.meta?.current_page || 1
       totalPages.value = response.data.meta?.total_pages || 1
     } catch (error: any) {
@@ -149,7 +149,7 @@
   const fetchLoad = async (id: number) => {
     try {
       const response = await loadsService.show(id)
-      loadShow.value = response.data.data
+      loadShow.value = response.data.load
       isLoadEditModalOpen.value = true
     } catch (error) {
       console.log('Error fetching user:', error)

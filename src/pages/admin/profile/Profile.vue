@@ -110,6 +110,7 @@
       if (profile && profile.toLowerCase() !== 'admin' && user.value.profile.toLowerCase() === 'admin') {
         init({ message: `${t('messages.toast.profile_permission.error')}: ${profile.toUpperCase()}`, color: 'danger' })
         disableEditMode()
+        user.value.profile = profile
         return
       }
     }
@@ -126,7 +127,7 @@
         .then((response: any) => {
           if (response.status === 200) {
             isEditMode.value = false
-            user.value = response.data.data
+            user.value = response.data.user
             GlobalStore.setUser({
               id: user.value.id,
               name: user.value.name,

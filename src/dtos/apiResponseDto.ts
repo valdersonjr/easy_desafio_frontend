@@ -8,7 +8,7 @@ interface meta {
 interface jsonResponseStructure {
   code: number
   message?: string[] | string
-  data?: any
+  [key: string]: any
   meta?: meta
 }
 
