@@ -4,7 +4,7 @@
       <div class="left">
         <va-icon-menu-collapsed
           :class="{ 'x-flip': isSidebarMinimized }"
-          class="va-navbar__item"
+          class="va-navbar__item cursor-pointer"
           :color="colors.primary"
           @click="isSidebarMinimized = !isSidebarMinimized"
         />
@@ -26,6 +26,7 @@
   import { useI18n } from 'vue-i18n'
   import { useColors } from 'vuestic-ui'
   import AppNavbarActions from './components/AppNavbarActions.vue'
+  import VaIconMenuCollapsed from '../icons/VaIconMenuCollapsed.vue'
 
   const GlobalStore = useGlobalStore()
   const { t } = useI18n()
