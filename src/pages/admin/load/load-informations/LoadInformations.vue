@@ -137,8 +137,8 @@
       })
       console.log(response)
       loads.value = response.data.loads
-      currentPage.value = response.data.meta?.current_page || 1
-      totalPages.value = response.data.meta?.total_pages || 1
+      currentPage.value = response.data.pagination_meta?.current_page || 1
+      totalPages.value = response.data.pagination_meta?.total_pages || 1
     } catch (error: any) {
       if (error.response.status === 404) loads.value = []
       currentPage.value = 1

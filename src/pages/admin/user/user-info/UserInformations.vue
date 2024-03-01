@@ -127,8 +127,8 @@
         sortDirection: sortDirection.value,
       })
       users.value = response.data.users
-      currentPage.value = response.data.meta?.current_page || 1
-      totalPages.value = response.data.meta?.total_pages || 1
+      currentPage.value = response.data.pagination_meta?.current_page || 1
+      totalPages.value = response.data.pagination_meta?.total_pages || 1
     } catch (error: any) {
       if (error.response.status === 404) users.value = []
       else {
