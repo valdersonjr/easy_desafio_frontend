@@ -45,19 +45,15 @@
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th class="cursor-pointer" @click="handleSorting('name')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('products.informations.table.headers.name') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+              <th @click="handleSorting('name')">
+                <sorting-icon-div :text="t('products.informations.table.headers.name')" />
               </th>
-              <th class="cursor-pointer" @click="handleSorting('ballast')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('products.informations.table.headers.ballast') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+              <th @click="handleSorting('ballast')">
+                <sorting-icon-div :text="t('products.informations.table.headers.ballast')" />
               </th>
-              <th>{{ t('products.informations.table.headers.created_date') }}</th>
+              <th>
+                <sorting-icon-div :text="t('products.informations.table.headers.created_date')" />
+              </th>
               <th>{{ t('products.informations.table.headers.update') }}</th>
               <th>{{ t('products.informations.table.headers.delete') }}</th>
             </tr>
@@ -93,6 +89,7 @@
   import UserEdit from './product-edit/ProductEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import { useToast } from 'vuestic-ui'
+  import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
 
   const { init } = useToast()
   const { t } = useI18n()

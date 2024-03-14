@@ -45,20 +45,18 @@
         <table class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
-              <th class="cursor-pointer" @click="handleSorting('name')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('users.informations.table.headers.name') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+              <th @click="handleSorting('name')">
+                <sorting-icon-div :text="t('users.informations.table.headers.name')" />
               </th>
-              <th class="cursor-pointer" @click="handleSorting('email')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('users.informations.table.headers.email') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+              <th @click="handleSorting('email')">
+                <sorting-icon-div :text="t('users.informations.table.headers.email')" />
               </th>
-              <th>{{ t('users.informations.table.headers.profile') }}</th>
-              <th>{{ t('users.informations.table.headers.created_date') }}</th>
+              <th>
+                <sorting-icon-div :text="t('users.informations.table.headers.profile')" />
+              </th>
+              <th>
+                <sorting-icon-div :text="t('users.informations.table.headers.created_date')" />
+              </th>
               <th>{{ t('users.informations.table.headers.update') }}</th>
               <th>{{ t('users.informations.table.headers.delete') }}</th>
             </tr>
@@ -95,6 +93,7 @@
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import { useGlobalStore } from '../../../../stores/global-store'
   import { useToast } from 'vuestic-ui'
+  import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
 
   const { init } = useToast()
   const { t } = useI18n()

@@ -48,16 +48,10 @@
           <thead>
             <tr>
               <th class="cursor-pointer" @click="handleSorting('code')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('loads.informations.table.headers.code') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+                <sorting-icon-div :text="t('loads.informations.table.headers.code')" />
               </th>
               <th class="cursor-pointer" @click="handleSorting('delivery_date')">
-                <div class="flex flex-row gap-1 items-center">
-                  {{ t('loads.informations.table.headers.delivery_date') }}
-                  <va-icon size="3" name="vuestic-iconset-sort-arrow" />
-                </div>
+                <sorting-icon-div :text="t('loads.informations.table.headers.delivery_date')" />
               </th>
               <th>{{ t('loads.informations.table.headers.update') }}</th>
               <th>{{ t('loads.informations.table.headers.delete') }}</th>
@@ -94,6 +88,7 @@
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import VueDatePicker from '@vuepic/vue-datepicker'
   import { useToast } from 'vuestic-ui'
+  import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
 
   const { init } = useToast()
   const { t } = useI18n()

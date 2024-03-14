@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row gap-1 items-center">
+  <div class="flex flex-row gap-1 items-center cursor-pointer">
     <span class="select-none">{{ props.text }}</span>
     <va-icon size="3" name="vuestic-iconset-sort-arrow" />
   </div>
