@@ -16,6 +16,13 @@
       @isOpenValueChange="handleIsOpenConfirmationModalValueChange"
       @isLoadingValueChange="handleIsLoadingConfirmationModalValueChange"
     />
+    <LoadOrders
+      v-if="isLoadOrdersModalOpen"
+      :is-open="isLoadOrdersModalOpen"
+      :load-id="loadOrdersLoadId"
+      :load-code="loadOrdersLoadCode"
+      @isOpenValueChange="handleIsLoadOrdersModalOpenValueChange"
+    />
     <va-card class="w-full pb-4">
       <va-card-title>{{ t('loads.informations.filter.title') }}</va-card-title>
       <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFormSubmit">
@@ -53,6 +60,7 @@
               <th class="cursor-pointer" @click="handleSorting('delivery_date')">
                 <sorting-icon-div :text="t('loads.informations.table.headers.delivery_date')" />
               </th>
+              <th>lsita</th>
               <th>{{ t('loads.informations.table.headers.update') }}</th>
               <th>{{ t('loads.informations.table.headers.delete') }}</th>
             </tr>
@@ -62,6 +70,11 @@
             <tr v-for="load in loads" :key="load.id">
               <td class="w-[30%]">{{ load.code }}</td>
               <td class="">{{ formatDate(load.delivery_date.toString()) }}</td>
+              <td>
+                <button class="px-2" @click="handleListLoadOrders(load.id, load.code)">
+                  <va-icon name="vuestic-iconset-notepad" />
+                </button>
+              </td>
               <td>
                 <va-button class="px-2" color="info" icon="edit" plain @click="handleLoadUpdate(load.id)" />
               </td>
@@ -89,6 +102,8 @@
   import VueDatePicker from '@vuepic/vue-datepicker'
   import { useToast } from 'vuestic-ui'
   import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
+  import { OrderDto } from '../../../../dtos/orderDto'
+  import LoadOrders from './load-orders/LoadOrders.vue'
 
   const { init } = useToast()
   const { t } = useI18n()
@@ -97,6 +112,7 @@
   const isConfirmationModalOpen = ref(false)
   const isLoadEditModalOpen = ref(false)
   const isConfirmationModalLoading = ref(false)
+  const isLoadOrdersModalOpen = ref(false)
 
   const codeFilter = ref('')
   const filterDates = ref('')
@@ -108,6 +124,8 @@
   const totalPages = ref(1)
   const sortColumn = ref('code')
   const sortDirection = ref('asc')
+  const loadOrdersLoadId = ref(-1)
+  const loadOrdersLoadCode = ref('')
 
   const onFormSubmit = () => {
     fetchLoads()
@@ -130,7 +148,6 @@
         sortColumn: sortColumn.value,
         sortDirection: sortDirection.value,
       })
-      console.log(response)
       loads.value = response.data.loads
       currentPage.value = response.data.pagination_meta?.current_page || 1
       totalPages.value = response.data.pagination_meta?.total_pages || 1
@@ -149,6 +166,12 @@
     } catch (error) {
       console.log('Error fetching user:', error)
     }
+  }
+
+  const handleListLoadOrders = (id: number, code: string) => {
+    loadOrdersLoadId.value = id
+    loadOrdersLoadCode.value = code
+    isLoadOrdersModalOpen.value = true
   }
 
   const handleLoadUpdate = (id: number) => {
@@ -198,6 +221,10 @@
 
   const handleIsLoadingConfirmationModalValueChange = (newValue: boolean) => {
     isConfirmationModalLoading.value = newValue
+  }
+
+  const handleIsLoadOrdersModalOpenValueChange = (newValue: boolean) => {
+    isLoadOrdersModalOpen.value = newValue
   }
 
   const handleSorting = (column: string) => {

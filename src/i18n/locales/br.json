@@ -309,6 +309,18 @@
           }
         }
       },
+      "loadOrders": {
+        "modal": {
+          "title": "Listas da carga: ",
+          "table": {
+            "headers": {
+              "code": "Código",
+              "bay": "Baia",
+              "created_date": "Data de criação"
+            }
+          }
+        }
+      },
       "edit": {
         "modal": {
           "title": "Editar carga",
