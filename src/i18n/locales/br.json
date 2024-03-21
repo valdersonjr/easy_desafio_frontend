@@ -147,7 +147,10 @@
     "newProduct": "Novo produto",
     "load": "Carga",
     "loadInfo": "Informações",
-    "newLoad": "Nova carga"
+    "newLoad": "Nova carga",
+    "order": "Lista",
+    "orderInfo": "Informações",
+    "newOrder": "Nova Lista"
   },
   "users": {
     "informations": {
@@ -287,11 +290,26 @@
   },
   "loads": {
     "informations": {
+      "load_orders": {
+        "order_products": {
+          "title": "Produtos da Lista",
+          "table": {
+            "headers": {
+              "name": "Nome",
+              "ballast": "Lastro",
+              "quantity": "Quantidade",
+              "box": "Caixa"
+            }
+          },
+          "not_found": "Nenhum produto encontrado"
+        }
+      },
       "table": {
         "title": "Lista de cargas",
         "headers": {
           "code": "Código",
           "delivery_date": "Data de entrega",
+          "order": "Lista",
           "update": "Atualizar",
           "delete": "Excluir"
         }
@@ -318,7 +336,8 @@
               "bay": "Baia",
               "created_date": "Data de criação"
             }
-          }
+          },
+          "not_found": "Nenhuma lista encontrada"
         }
       },
       "edit": {
@@ -352,6 +371,84 @@
         "inputs": {
           "code": "Código",
           "delivery_date": "Data de entrega"
+        },
+        "buttons": {
+          "submit": "Criar",
+          "reset": "Limpar"
+        }
+      }
+    }
+  },
+  "orders": {
+    "informations": {
+      "table": {
+        "title": "Lista de pedidos",
+        "headers": {
+          "code": "Código",
+          "bay": "Baia",
+          "load_code": "Código da carga",
+          "products": "Produtos",
+          "created_date": "Data de criação",
+          "update": "Atualizar",
+          "delete": "Excluir"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "code": "Código",
+            "bay": "Baia"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpar"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Editar pedido",
+          "form": {
+            "inputs": {
+              "code": "Código",
+              "bay": "Baia"
+            },
+            "buttons": {
+              "save": "Salvar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "Tem certeza?",
+          "buttons": {
+            "confirm": "Sim",
+            "deny": "Não"
+          }
+        }
+      },
+      "order_products": {
+        "title": "Produtos da Lista",
+        "table": {
+          "headers": {
+            "name": "Nome",
+            "ballast": "Lastro",
+            "quantity": "Quantidade",
+            "box": "Caixa"
+          }
+        },
+        "not_found": "Nenhum produto encontrado"
+      }
+    },
+    "newOrder": {
+      "title": "Novo pedido",
+      "form": {
+        "inputs": {
+          "code": "Código",
+          "bay": "Baia"
         },
         "buttons": {
           "submit": "Criar",
