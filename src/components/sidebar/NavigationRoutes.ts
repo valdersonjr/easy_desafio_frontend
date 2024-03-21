@@ -19,19 +19,36 @@ export default {
       },
     },
     {
-      name: 'user',
-      displayName: 'menu.user',
+      name: 'load',
+      displayName: 'menu.load',
       meta: {
-        icon: 'vuestic-iconset-user',
+        icon: 'vuestic-iconset-load',
       },
       children: [
         {
-          name: 'user-info',
-          displayName: 'menu.userInfo',
+          name: 'load-info',
+          displayName: 'menu.loadInfo',
         },
         {
-          name: 'new-user',
-          displayName: 'menu.newUser',
+          name: 'new-load',
+          displayName: 'menu.newLoad',
+        },
+      ],
+    },
+    {
+      name: 'order',
+      displayName: 'menu.order',
+      meta: {
+        icon: 'vuestic-iconset-notepad',
+      },
+      children: [
+        {
+          name: 'order-info',
+          displayName: 'menu.orderInfo',
+        },
+        {
+          name: 'new-order',
+          displayName: 'menu.newOrder',
         },
       ],
     },
@@ -53,19 +70,19 @@ export default {
       ],
     },
     {
-      name: 'load',
-      displayName: 'menu.load',
+      name: 'user',
+      displayName: 'menu.user',
       meta: {
-        icon: 'vuestic-iconset-load',
+        icon: 'vuestic-iconset-user',
       },
       children: [
         {
-          name: 'load-info',
-          displayName: 'menu.loadInfo',
+          name: 'user-info',
+          displayName: 'menu.userInfo',
         },
         {
-          name: 'new-load',
-          displayName: 'menu.newLoad',
+          name: 'new-user',
+          displayName: 'menu.newUser',
         },
       ],
     },

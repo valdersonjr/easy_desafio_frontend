@@ -60,7 +60,7 @@
               <th class="cursor-pointer" @click="handleSorting('delivery_date')">
                 <sorting-icon-div :text="t('loads.informations.table.headers.delivery_date')" />
               </th>
-              <th>lsita</th>
+              <th>{{ t('loads.informations.table.headers.order') }}</th>
               <th>{{ t('loads.informations.table.headers.update') }}</th>
               <th>{{ t('loads.informations.table.headers.delete') }}</th>
             </tr>

@@ -5,14 +5,16 @@
       name="vuestic-iconset-left-arrow"
       @click="handleBackIconClick"
     />
-    <h6 class="va-h6 text-center">Produtos da Lista: {{ props.orderCode }}</h6>
+    <h6 class="va-h6 text-center">
+      {{ t('loads.informations.load_orders.order_products.title') }} {{ props.orderCode }}
+    </h6>
     <table v-if="dataExists" class="mt-4 va-table va-table--striped va-table--hoverable w-full">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Lastro</th>
-          <th>Quantidade</th>
-          <th>Caixa</th>
+          <th>{{ t('loads.informations.load_orders.order_products.table.headers.name') }}</th>
+          <th>{{ t('loads.informations.load_orders.order_products.table.headers.ballast') }}</th>
+          <th>{{ t('loads.informations.load_orders.order_products.table.headers.quantity') }}</th>
+          <th>{{ t('loads.informations.load_orders.order_products.table.headers.box') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -20,11 +22,13 @@
           <td>{{ orderProduct.product.name }}</td>
           <td>{{ orderProduct.product.ballast }}</td>
           <td>{{ orderProduct.quantity }}</td>
-          <td>{{ orderProduct.box ? 'Sim' : 'Não' }}</td>
+          <td>{{ String(orderProduct.box).toUpperCase() }}</td>
         </tr>
       </tbody>
     </table>
-    <span v-if="!dataExists" class="text-center">Nenhum produto encontrado</span>
+    <span v-if="!dataExists" class="text-center">{{
+      t('loads.informations.load_orders.order_products.not_found')
+    }}</span>
   </div>
 </template>
 
@@ -32,7 +36,9 @@
   import { ref, defineProps, defineEmits } from 'vue'
   import orderProductsService from '../../../../../services/api/orderProducts'
   import { OrderProductDto } from '../../../../../dtos'
+  import { useI18n } from 'vue-i18n'
 
+  const { t } = useI18n()
   const orderProducts = ref<OrderProductDto[]>([])
   const props = defineProps(['orderId', 'orderCode'])
   const dataExists = ref(true)

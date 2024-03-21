@@ -2,9 +2,7 @@
   <div class="absolute">
     <VaModal v-model="isOpenChild" ok-text="Submit" hide-default-actions close-button @close="handleModalClose">
       <div v-if="!isOrderProductsTableShowing">
-        <h6 class="va-h6 mt-4 text-center">
-          {{ t('loads.informations.loadOrders.modal.title') }} {{ props.loadCode }}
-        </h6>
+        <h6 class="va-h6 mt-4 flex">{{ t('loads.informations.loadOrders.modal.title') }} {{ props.loadCode }}</h6>
         <table v-if="dataExists" class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
@@ -17,11 +15,13 @@
             <tr v-for="loadOrder in loadOrders" :key="loadOrder.id">
               <td class="code-row" @click="handleCodeClick(loadOrder.id, loadOrder.code)">{{ loadOrder.code }}</td>
               <td>{{ loadOrder.bay }}</td>
-              <td>{{ formatDate(loadOrder.created_date.toString()) }}</td>
+              <td v-if="loadOrder.created_date">{{ formatDate(loadOrder.created_date.toString()) }}</td>
             </tr>
           </tbody>
         </table>
-        <span v-if="!dataExists">Nenhuma lista encontrada</span>
+        <span v-if="!dataExists" class="block text-center">{{
+          t('loads.informations.loadOrders.modal.not_found')
+        }}</span>
       </div>
       <OrderProducts
         v-if="isOrderProductsTableShowing"
@@ -75,10 +75,14 @@
         sortColumn: 'created_at',
         sortDirection: sortDirection.value,
       })
-      loadOrders.value = response.data.orders
+
+      if (response.status === 204) {
+        dataExists.value = false
+        loadOrders.value = []
+        return
+      } else loadOrders.value = response.data.orders
     } catch (error: any) {
-      if (error.response.status === 404) loadOrders.value = []
-      dataExists.value = false
+      console.log(error)
     }
   }
 

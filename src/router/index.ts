@@ -24,6 +24,26 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../pages/admin/profile/Profile.vue'),
       },
       {
+        name: 'order',
+        path: 'order',
+
+        children: [
+          {
+            name: 'order-info',
+            path: 'order-info',
+
+            component: () => import('../pages/admin/order/order-informations/OrderInformations.vue'),
+          },
+
+          {
+            name: 'new-order',
+            path: 'new-order',
+
+            component: () => import('../pages/admin/order/new-order/NewOrder.vue'),
+          },
+        ],
+      },
+      {
         name: 'load',
         path: 'load',
 
