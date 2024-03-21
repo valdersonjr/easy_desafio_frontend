@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex justify-center mt-4">
-      <va-button class="my-0" @click="onsubmit">{{ t('auth.login') }}</va-button>
+      <va-button type="submit" class="my-0">{{ t('auth.login') }}</va-button>
     </div>
   </form>
 </template>
@@ -53,7 +53,7 @@
   const router = useRouter()
   const loadingStatus = ref(false)
 
-  const formReady = computed(() => !emailErrors.value.length && !passwordErrors.value.length)
+  const formReady = computed(() => !emailErrors.value.length || !passwordErrors.value.length)
 
   function onsubmit() {
     emailErrors.value = email.value ? [] : ['Email is required']
