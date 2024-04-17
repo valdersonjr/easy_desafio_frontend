@@ -42,6 +42,23 @@ const productsService = {
     )
   },
 
+  productsNotAddedToGivenOrder: (
+    orderId: number,
+    page = 1,
+    perPage = 10,
+    name: string,
+    ballast: string,
+    sortColumn = 'name',
+    sortDirection = 'asc',
+  ): Promise<ApiResponseDto> => {
+    return api.get(
+      `products/not_added_to_order/${orderId}?page=${page}&per_page=${perPage}&q[name_cont]=${name}&q[ballast_cont]=${ballast}&sort=${sortColumn}%20${sortDirection}`,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      },
+    )
+  },
+
   update: (id: number, name: string, ballast: string): Promise<ApiResponseDto> => {
     return api.put(
       `products/${id}`,

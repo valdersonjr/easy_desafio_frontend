@@ -4,29 +4,37 @@ import api from './api'
 export interface OrderListProps {
   code?: string
   bay?: string
-  load_id?: number
+  load_code?: string
   page?: number
   perPage?: number
   sortColumn?: string
   sortDirection?: string
+  hasProduct?: boolean
 }
 
 const ordersService = {
-  // create: (code: string, bay: Date): Promise<ApiResponseDto> => {
-  //     return api.post(
-  //         'orders',
-  //         {
-  //             order: {
-  //                 code: code,
-  //                 bay: bay,
-  //             },
-  //         },
-  //         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
-  //     )
-  // },
+  create: (code: string, bay: string, load_code: string): Promise<ApiResponseDto> => {
+    return api.post(
+      'orders',
+      {
+        order: {
+          code: code,
+          bay: bay,
+          load_code: load_code,
+        },
+      },
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+    )
+  },
 
   show: (id: number): Promise<ApiResponseDto> => {
     return api.get(`orders/${id}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+  },
+
+  showOrderByLoadCode: (load_code: string): Promise<ApiResponseDto> => {
+    return api.get(`orders/load/${load_code}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     })
   },
@@ -38,11 +46,13 @@ const ordersService = {
     perPage = 10,
     sortColumn = 'code',
     sortDirection = 'asc',
-    load_id,
+    load_code,
+    hasProduct,
   }: OrderListProps): Promise<ApiResponseDto> => {
-    const loadIdQuery = load_id ? `&q[load_id_eq]=${load_id}` : ''
+    const loadIdQuery = load_code ? `&q[load_code_cont]=${load_code}` : ''
+    const hasProductQuery = hasProduct !== undefined ? `&q[has_product_eq]=${hasProduct}` : ''
 
-    const url = `orders?page=${page}&per_page=${perPage}&q[code_cont]=${code}&q[bay_cont]=${bay}${loadIdQuery}&sort=${sortColumn}%20${sortDirection}`
+    const url = `orders?page=${page}&per_page=${perPage}&q[code_cont]=${code}&q[bay_cont]=${bay}${loadIdQuery}${hasProductQuery}&sort=${sortColumn}%20${sortDirection}`
 
     return api.get(url, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },

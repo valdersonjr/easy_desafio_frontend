@@ -89,6 +89,8 @@
     emailErrors.value = email.value ? [] : ['Email is required']
     if (!validateEmailFormat(email.value)) emailErrors.value = ['Invalid format']
     passwordErrors.value = password.value ? [] : ['Password is required']
+    passwordErrors.value =
+      password.value && password.value.length >= 6 ? [] : ['Password must have at least 6 characters']
     passwordConfirmationErrors.value = password_confirmation.value ? [] : ['Password confirmation is required']
     passwordConfirmationErrors.value =
       password_confirmation.value === password.value ? [] : ['Password confirmation must be equal to password']

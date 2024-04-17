@@ -29,6 +29,8 @@
               :disabled="disabledField"
               type="password"
               required
+              :error="!!passwordErrors.length"
+              :error-messages="passwordErrors"
             />
             <va-input
               v-model="passwordConfirmation"
@@ -79,10 +81,11 @@
   const isEditMode = ref(false)
   const profileOptions = ['admin', 'client']
 
+  const passwordErrors = ref<string[]>([])
   const passwordConfirmationErrors = ref<string[]>([])
 
   const formReady = computed(() => {
-    return !passwordConfirmationErrors.value.length
+    return !(passwordConfirmationErrors.value.length || passwordErrors.value.length)
   })
 
   const enableEditMode = () => {
@@ -102,6 +105,7 @@
   }
 
   const userEdit = () => {
+    passwordErrors.value = password.value && password.value.length >= 6 ? [] : ['Password too short']
     passwordConfirmationErrors.value =
       passwordConfirmation.value === password.value ? [] : ['Password confirmation must be equal to password']
 

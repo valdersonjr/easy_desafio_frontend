@@ -2,7 +2,9 @@
   <div class="absolute">
     <VaModal v-model="isOpenChild" ok-text="Submit" hide-default-actions close-button @close="handleModalClose">
       <div v-if="!isOrderProductsTableShowing">
-        <h6 class="va-h6 mt-4 flex">{{ t('loads.informations.loadOrders.modal.title') }} {{ props.loadCode }}</h6>
+        <h6 class="va-h6 mt-4 flex flex-col items-center">
+          {{ t('loads.informations.loadOrders.modal.title') }} {{ props.loadCode }}
+        </h6>
         <table v-if="dataExists" class="va-table va-table--striped va-table--hoverable w-full">
           <thead>
             <tr>
@@ -45,7 +47,7 @@
   const { t } = useI18n()
   const { init } = useToast()
 
-  const props = defineProps(['isOpen', 'loadId', 'loadCode'])
+  const props = defineProps(['isOpen', 'loadCode'])
   const emits = defineEmits(['isOpenValueChange'])
 
   const loadOrders = ref<OrderDto[]>([])
@@ -71,7 +73,7 @@
   const fetchLoadOrders = async () => {
     try {
       const response = await ordersService.list({
-        load_id: props.loadId,
+        load_code: props.loadCode,
         sortColumn: 'created_at',
         sortDirection: sortDirection.value,
       })

@@ -18,11 +18,11 @@
           :error-messages="bayErrors"
         />
         <va-input
-          v-model="load_id"
-          :label="t('orders.informations.edit.modal.form.inputs.load_id')"
+          v-model="loadCode"
+          :label="t('orders.informations.edit.modal.form.inputs.load_code')"
           type="text"
-          :error="!!load_idErrors.length"
-          :error-messages="load_idErrors"
+          :error="!!loadCodeErrors.length"
+          :error-messages="loadCodeErrors"
         />
         <div class="flex flex-row justify-around">
           <va-button preset="secondary" class="min-w-[6rem]" type="Cancel" @click="handleModalClose">{{
@@ -43,6 +43,7 @@
   import { ApiResponseDto } from '../../../../../dtos'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vuestic-ui'
+  import { load } from '@amcharts/amcharts5/.internal/core/util/Net'
 
   const { t } = useI18n()
   const { init } = useToast()
@@ -55,11 +56,11 @@
 
   const code = ref(props.order.code)
   const bay = ref(props.order.bay)
-  const load_id = ref(props.order.load_id)
+  const loadCode = ref(props.order.load_code)
 
   const codeErrors = ref<string[]>([])
   const bayErrors = ref<string[]>([])
-  const load_idErrors = ref<string[]>([])
+  const loadCodeErrors = ref<string[]>([])
 
   const handleModalClose = () => {
     isOpenChild.value = false
@@ -67,28 +68,55 @@
   }
 
   const formReady = computed(() => {
-    return !(codeErrors.value.length || bayErrors.value.length || load_idErrors.value.length)
+    return !(codeErrors.value.length || bayErrors.value.length || loadCodeErrors.value.length)
   })
 
   const handleFormSubmit = () => {
     codeErrors.value = code.value ? [] : ['Order code is required']
     bayErrors.value = bay.value ? [] : ['Bay is required']
-    load_idErrors.value = load_id.value ? [] : ['Load ID is required']
+    loadCodeErrors.value = loadCode.value ? [] : ['Load code is required']
 
     if (formReady.value) {
-      ordersService
-        .update({ id: props.order.id, code: code.value, bay: bay.value, load_id: load_id.value })
-        .then((response: ApiResponseDto) => {
-          if (response.status === 200) {
-            handleModalClose()
-            init({ message: t('messages.toast.order.edit.success'), color: 'success' })
+      fetchLoadId(loadCode.value)
+        .then((loadId) => {
+          if (loadId !== -1) {
+            updateOrder(props.order.id, code.value, bay.value, loadId)
+          } else {
+            init({ message: t('messages.toast.order.edit.error_load_code'), color: 'danger' })
           }
         })
         .catch((error: any) => {
-          if (error.response.status === 422)
-            init({ message: t('messages.toast.order.edit.error_code'), color: 'danger' })
-          else init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
+          console.log(error)
+          init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
         })
     }
+  }
+
+  const fetchLoadId = async (loadCode: string): Promise<number> => {
+    try {
+      const response = await ordersService.showOrderByLoadCode(loadCode)
+      if (response.status === 200) {
+        const loadId = response.data.order.load_id
+        return loadId
+      } else return -1
+    } catch (error: any) {
+      init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
+      return -1
+    }
+  }
+
+  const updateOrder = (id: number, code: string, bay: string, loadId: number) => {
+    ordersService
+      .update({ id: id, code: code, bay: bay, load_id: loadId })
+      .then((response: ApiResponseDto) => {
+        if (response.status === 200) {
+          handleModalClose()
+          init({ message: t('messages.toast.order.edit.success'), color: 'success' })
+        }
+      })
+      .catch((error: any) => {
+        if (error.response.status === 422) init({ message: t('messages.toast.order.edit.error_code'), color: 'danger' })
+        else init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
+      })
   }
 </script>

@@ -27,9 +27,9 @@
         />
         <va-input
           v-model="ballastFilter"
-          type="number"
+          type="text"
           :label="t('products.informations.filter.form.inputs.ballast')"
-          placeholder="000"
+          placeholder="LX"
         />
         <va-button class="px-2" color="primary" type="reset" @click="handleFilterClear">{{
           t('products.informations.filter.form.buttons.clear')
@@ -52,10 +52,9 @@
                 <sorting-icon-div :text="t('products.informations.table.headers.ballast')" />
               </th>
               <th>
-                <sorting-icon-div :text="t('products.informations.table.headers.created_date')" />
+                {{ t('products.informations.table.headers.created_date') }}
               </th>
-              <th>{{ t('products.informations.table.headers.update') }}</th>
-              <th>{{ t('products.informations.table.headers.delete') }}</th>
+              <th>{{ t('products.informations.table.headers.actions') }}</th>
             </tr>
           </thead>
 
@@ -65,10 +64,22 @@
               <td class="w-[20%]">{{ product.ballast }}</td>
               <td class="">{{ formatDate(product.created_at) }}</td>
               <td>
-                <va-button class="px-2" color="info" icon="edit" plain @click="handleProductUpdate(product.id)" />
-              </td>
-              <td>
-                <va-button class="px-2" color="danger" icon="delete" plain @click="handleProductDeletion(product.id)" />
+                <div>
+                  <va-button
+                    class="action-btn"
+                    color="info"
+                    icon="edit"
+                    plain
+                    @click="handleProductUpdate(product.id)"
+                  />
+                  <va-button
+                    class="action-btn"
+                    color="danger"
+                    icon="delete"
+                    plain
+                    @click="handleProductDeletion(product.id)"
+                  />
+                </div>
               </td>
             </tr>
           </tbody>

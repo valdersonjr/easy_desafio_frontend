@@ -4,7 +4,7 @@
       v-for="count in countsArray"
       :key="count[0]"
       :color="count[2]"
-      class="cursor-pointer hover:shadow-lg hover:scale-105 transition-transform"
+      :class="{ 'dashboard-card': count[3].length > 0 }"
       @click="onCardClick(count[3])"
     >
       <va-card-content>
@@ -26,15 +26,10 @@
   const { init } = useToast()
   const { t } = useI18n()
 
-  const counts = ref({
-    products: 0,
-    orders: 0,
-    loads: 0,
-    users: 0,
-  })
+  const counts = ref({})
 
-  const colors = ['primary', 'info', 'secondary', 'success']
-  const routes = ['load-info', 'order-info', 'product-info', 'user-info']
+  const colors = ['primary', 'info', 'secondary', 'success', 'danger']
+  const routes = ['load-info', 'order-info', 'product-info', 'user-info', '']
 
   const countsArray = ref<any>([])
 
@@ -64,3 +59,14 @@
 
   fetchCounts()
 </script>
+
+<style lang="scss" scoped>
+  .dashboard-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+</style>

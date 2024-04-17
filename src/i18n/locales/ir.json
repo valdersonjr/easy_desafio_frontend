@@ -1,7 +1,7 @@
 {
   "user": {
-    "profile": "پروفایل",
-    "logout": "خروج"
+    "profile": "مشخصات",
+    "logout": "بیرون رفتن"
   },
   "messages": {
     "validation": {
@@ -10,51 +10,52 @@
           "required": "نام الزامی است"
         },
         "email": {
-          "required": "ایمیل الزامی است",
-          "email": "ایمیل نامعتبر است"
+          "required": "ایمیل اجباری است",
+          "email": "ایمیل نامعتبر"
         },
         "password": {
           "required": "رمز عبور الزامی است"
         },
         "password_confirmation": {
-          "required": "تأیید رمز عبور الزامی است",
-          "same": "تأیید رمز عبور باید با رمز عبور یکسان باشد"
+          "required": "تایید رمز عبور الزامی است",
+          "same": "تایید رمز عبور باید همان رمز عبور باشد"
         },
         "profile": {
-          "required": "پروفایل الزامی است"
+          "required": "پروفایل اجباری است"
         }
       }
     },
     "toast": {
       "profile": {
         "edit": {
-          "success": "پروفایل با موفقیت به‌روزرسانی شد!",
-          "error": "خطا در به‌روزرسانی پروفایل"
+          "success": "نمایه با موفقیت به روز شد!",
+          "error": "خطا در به‌روزرسانی نمایه"
         }
       },
       "login": {
-        "success": "خوش آمدید!",
-        "error": "خطا در ورود"
+        "success": "خوش آمدی!",
+        "error": "خطا هنگام ورود به سیستم"
       },
       "logout": {
-        "success": "خداحافظ!",
-        "error": "خطا در خروج"
+        "success": "بعدا میبینمت!",
+        "error": "خطا هنگام خروج از سیستم"
       },
       "dashboard": {
-        "error": "خطا در بارگذاری اطلاعات"
+        "error": "خطا در بارگیری اطلاعات"
       },
       "user": {
         "list": {
-          "error": "خطا در بارگذاری کاربران"
+          "error": "خطا در بارگیری کاربران"
         },
         "new": {
           "success": "کاربر با موفقیت ایجاد شد!",
           "error": "خطا در ایجاد کاربر"
         },
         "edit": {
-          "success": "کاربر با موفقیت به‌روزرسانی شد!",
+          "success": "کاربر با موفقیت به روز شد!",
           "error": "خطا در به‌روزرسانی کاربر",
-          "error_email": "ایمیل در حال حاضر وجود دارد"
+          "error_email": "ایمیل از قبل وجود دارد",
+          "error_password_short": "رمز عبور کوتاه"
         },
         "delete": {
           "success": "کاربر با موفقیت حذف شد!",
@@ -63,15 +64,15 @@
       },
       "product": {
         "list": {
-          "error": "خطا در بارگذاری محصولات"
+          "error": "خطا در بارگیری محصولات"
         },
         "new": {
           "success": "محصول با موفقیت ایجاد شد!",
           "error": "خطا در ایجاد محصول"
         },
         "edit": {
-          "success": "محصول با موفقیت به‌روزرسانی شد!",
-          "error": "خطا در به‌روزرسانی محصول"
+          "success": "محصول با موفقیت به روز شد!",
+          "error": "خطا هنگام به روز رسانی محصول"
         },
         "delete": {
           "success": "محصول با موفقیت حذف شد!",
@@ -80,85 +81,127 @@
       },
       "load": {
         "list": {
-          "error": "خطا در بارگذاری بارها"
+          "error": "خطا در بارگیری بارها"
         },
         "new": {
-          "success": "بار با موفقیت ایجاد شد!",
+          "success": "بارگیری با موفقیت ایجاد شد!",
           "error": "خطا در ایجاد بار",
           "error_code": "کد از قبل وجود دارد"
         },
         "edit": {
-          "success": "بار با موفقیت به‌روزرسانی شد!",
+          "success": "بارگیری با موفقیت به روز شد!",
           "error": "خطا در به‌روزرسانی بار",
           "error_code": "کد از قبل وجود دارد"
         },
         "delete": {
-          "success": "بار با موفقیت حذف شد!",
+          "success": "بارگیری با موفقیت حذف شد!",
           "error": "خطا در حذف بار"
         }
       },
+      "order": {
+        "add_product": {
+          "success": "محصول با موفقیت به لیست اضافه شد!",
+          "error": "خطا در افزودن محصول به لیست"
+        },
+        "list_products": {
+          "modal": {
+            "delete": {
+              "success": "محصول با موفقیت از لیست حذف شد!",
+              "error": "خطا هنگام حذف محصول از لیست"
+            },
+            "edit": {
+              "success": "لیست محصول با موفقیت به روز شد!",
+              "error": "خطا هنگام به‌روزرسانی محصول از فهرست"
+            }
+          }
+        },
+        "list": {
+          "error": "خطا در بارگیری لیست ها"
+        },
+        "new": {
+          "success": "لیست با موفقیت ایجاد شد!",
+          "error": "خطا در ایجاد لیست",
+          "error_code": "کد از قبل وجود دارد",
+          "error_load_code": "کد بارگذاری وجود ندارد"
+        },
+        "edit": {
+          "success": "لیست با موفقیت به روز شد!",
+          "error": "خطا در به روز رسانی لیست",
+          "error_code": "کد از قبل وجود دارد"
+        },
+        "delete": {
+          "success": "لیست با موفقیت حذف شد!",
+          "error": "خطا در حذف لیست"
+        }
+      },
       "profile_permission": {
-        "error": "پروفایل بدون مجوز است"
+        "error": "نمایه بدون اجازه"
       }
     }
   },
   "profile": {
     "form": {
-      "title": "پروفایل",
+      "title": "مشخصات",
       "input": {
         "name": "نام",
-        "email": "ایمیل",
-        "password": "رمز عبور",
-        "password_confirmation": "تأیید رمز عبور",
-        "profile": "پروفایل"
+        "email": "پست الکترونیک",
+        "password": "کلمه عبور",
+        "password_confirmation": "تایید رمز عبور",
+        "profile": "مشخصات"
       },
       "button": {
-        "save": "ذخیره",
-        "edit": "به‌روزرسانی"
+        "save": "نجات دادن",
+        "edit": "برای به روز رسانی"
       }
     }
   },
   "auth": {
-    "reset_password": "بازیابی رمز عبور",
-    "login": "ورود",
+    "reset_password": "رمز عبور را دوباره تعریف کنید",
+    "login": "برای ورود",
     "sign_up": "ثبت نام",
-    "createNewAccount": "ساخت حساب جدید",
+    "createNewAccount": "ایجاد حساب کاربری جدید",
     "name": "نام",
-    "email": "ایمیل",
-    "password": "رمز عبور",
+    "email": "پست الکترونیک",
+    "password": "کلمه عبور",
     "password_confirmation": "تایید رمز عبور",
     "recover_password": "بازیابی رمز عبور",
-    "profile": "پروفایل"
+    "profile": "مشخصات"
   },
   "dashboard": {
     "info": {
       "products": "محصولات",
       "users": "کاربران",
-      "loads": "بارها"
+      "loads": "بارها",
+      "orders": "لیست ها",
+      "pallets": "پالت های مونتاژ شده"
     }
   },
   "menu": {
-    "dashboard": "داشبورد",
+    "dashboard": "پانل",
     "user": "کاربر",
     "userInfo": "اطلاعات",
     "newUser": "کاربر جدید",
-    "product": "محصول",
+    "product": "تولید - محصول",
     "productInfo": "اطلاعات",
     "newProduct": "محصول جدید",
-    "load": "بار",
+    "load": "شارژ",
     "loadInfo": "اطلاعات",
-    "newLoad": "بار جدید"
+    "newLoad": "بار جدید",
+    "order": "فهرست کنید",
+    "orderInfo": "اطلاعات",
+    "newOrder": "لیست جدید",
+    "listProducts": "لیست محصولات"
   },
   "users": {
     "informations": {
       "table": {
-        "title": "لیست کاربران",
+        "title": "فهرست کاربران",
         "headers": {
           "name": "نام",
-          "email": "ایمیل",
-          "profile": "پروفایل",
+          "email": "پست الکترونیک",
+          "profile": "مشخصات",
           "created_date": "تاریخ ایجاد",
-          "update": "بروزرسانی",
+          "update": "برای به روز رسانی",
           "delete": "حذف"
         }
       },
@@ -167,37 +210,37 @@
         "form": {
           "inputs": {
             "name": "نام",
-            "email": "ایمیل"
+            "email": "پست الکترونیک"
           },
           "buttons": {
-            "search": "جستجو",
-            "clear": "پاک کردن"
+            "search": "جستجو کردن",
+            "clear": "تمیزکردن"
           }
         }
       },
       "edit": {
         "modal": {
-          "title": "ویرایش کاربر",
+          "title": "کاربر را ویرایش کنید",
           "form": {
             "inputs": {
               "name": "نام",
-              "email": "ایمیل",
-              "password": "رمز عبور",
+              "email": "پست الکترونیک",
+              "password": "کلمه عبور",
               "password_confirmation": "تایید رمز عبور",
-              "profile": "پروفایل"
+              "profile": "مشخصات"
             },
             "buttons": {
-              "save": "ذخیره",
-              "cancel": "لغو"
+              "save": "نجات دادن",
+              "cancel": "لغو کنید"
             }
           }
         }
       },
       "delete": {
         "confirmation_modal": {
-          "title": "آیا اطمینان دارید؟",
+          "title": "او مطمئن است؟",
           "buttons": {
-            "confirm": "بله",
+            "confirm": "آره",
             "deny": "خیر"
           }
         }
@@ -208,14 +251,14 @@
       "form": {
         "inputs": {
           "name": "نام",
-          "email": "ایمیل",
-          "password": "رمز عبور",
+          "email": "پست الکترونیک",
+          "password": "کلمه عبور",
           "password_confirmation": "تایید رمز عبور",
-          "profile": "پروفایل"
+          "profile": "مشخصات"
         },
         "buttons": {
-          "submit": "ایجاد",
-          "reset": "پاک کردن"
+          "submit": "خلق كردن",
+          "reset": "تمیزکردن"
         }
       }
     }
@@ -228,7 +271,7 @@
           "name": "نام",
           "ballast": "بالاست",
           "created_date": "تاریخ ایجاد",
-          "update": "بروزرسانی",
+          "update": "برای به روز رسانی",
           "delete": "حذف"
         }
       },
@@ -240,32 +283,31 @@
             "ballast": "بالاست"
           },
           "buttons": {
-            "search": "جستجو",
-            "clear": "پاک کردن"
+            "search": "جستجو کردن",
+            "clear": "تمیزکردن"
           }
         }
       },
       "edit": {
         "modal": {
-          "title": "ویرایش محصول",
+          "title": "محصول را ویرایش کنید",
           "form": {
             "inputs": {
               "name": "نام",
-              "description": "توضیحات",
-              "price": "قیمت"
+              "ballast": "بالاست"
             },
             "buttons": {
-              "save": "ذخیره",
-              "cancel": "لغو"
+              "save": "نجات دادن",
+              "cancel": "لغو کنید"
             }
           }
         }
       },
       "delete": {
         "confirmation_modal": {
-          "title": "آیا اطمینان دارید؟",
+          "title": "او مطمئن است؟",
           "buttons": {
-            "confirm": "بله",
+            "confirm": "آره",
             "deny": "خیر"
           }
         }
@@ -279,20 +321,36 @@
           "ballast": "بالاست"
         },
         "buttons": {
-          "submit": "ایجاد",
-          "reset": "پاک کردن"
+          "submit": "خلق كردن",
+          "reset": "تمیزکردن"
         }
       }
     }
   },
   "loads": {
     "informations": {
+      "load_orders": {
+        "order_products": {
+          "title": "لیست محصولات",
+          "table": {
+            "headers": {
+              "name": "نام",
+              "ballast": "بالاست",
+              "quantity": "میزان",
+              "box": "جعبه"
+            }
+          },
+          "not_found": "هیچ محصولی یافت نشد"
+        }
+      },
       "table": {
-        "title": "لیست بارها",
+        "title": "بارگذاری لیست",
         "headers": {
           "code": "کد",
           "delivery_date": "تاریخ تحویل",
-          "update": "بروزرسانی",
+          "order_modal": "معین",
+          "order": "فهرست کنید",
+          "update": "برای به روز رسانی",
           "delete": "حذف"
         }
       },
@@ -304,9 +362,22 @@
             "delivery_date": "تاریخ تحویل"
           },
           "buttons": {
-            "search": "جستجو",
-            "clear": "پاک کردن"
+            "search": "جستجو کردن",
+            "clear": "تمیزکردن"
           }
+        }
+      },
+      "loadOrders": {
+        "modal": {
+          "title": "بارگذاری لیست ها",
+          "table": {
+            "headers": {
+              "code": "کد",
+              "bay": "خلیج",
+              "created_date": "تاریخ ایجاد"
+            }
+          },
+          "not_found": "لیستی پیدا نشد"
         }
       },
       "edit": {
@@ -318,17 +389,17 @@
               "delivery_date": "تاریخ تحویل"
             },
             "buttons": {
-              "save": "ذخیره",
-              "cancel": "لغو"
+              "save": "نجات دادن",
+              "cancel": "لغو کنید"
             }
           }
         }
       },
       "delete": {
         "confirmation_modal": {
-          "title": "آیا اطمینان دارید؟",
+          "title": "او مطمئن است؟",
           "buttons": {
-            "confirm": "بله",
+            "confirm": "آره",
             "deny": "خیر"
           }
         }
@@ -342,17 +413,189 @@
           "delivery_date": "تاریخ تحویل"
         },
         "buttons": {
-          "submit": "ایجاد",
-          "reset": "پاک کردن"
+          "submit": "خلق كردن",
+          "reset": "تمیزکردن"
         }
+      }
+    }
+  },
+  "orders": {
+    "informations": {
+      "table": {
+        "title": "لیست ها",
+        "headers": {
+          "code": "کد",
+          "bay": "خلیج",
+          "load_code": "بارگذاری کد",
+          "products": "محصولات",
+          "modal": "معین",
+          "created_date": "تاریخ ایجاد",
+          "update": "برای به روز رسانی",
+          "delete": "حذف"
+        }
+      },
+      "filter": {
+        "title": "فیلترها",
+        "form": {
+          "inputs": {
+            "code": "کد",
+            "bay": "خلیج",
+            "load_code": "بارگذاری کد",
+            "has_product": "محصولات دارد"
+          },
+          "buttons": {
+            "search": "جستجو کردن",
+            "clear": "تمیزکردن"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "ویرایش لیست",
+          "form": {
+            "inputs": {
+              "code": "کد",
+              "bay": "خلیج",
+              "load_code": "بارگذاری کد"
+            },
+            "buttons": {
+              "save": "نجات دادن",
+              "cancel": "لغو کنید"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "او مطمئن است؟",
+          "buttons": {
+            "confirm": "آره",
+            "deny": "خیر"
+          }
+        }
+      },
+      "order_products": {
+        "title": "لیست محصولات",
+        "table": {
+          "headers": {
+            "code": "نام",
+            "ballast": "بالاست",
+            "quantity": "میزان",
+            "box": "جعبه"
+          }
+        },
+        "not_found": "هیچ محصولی یافت نشد"
+      }
+    },
+    "newOrder": {
+      "title": "لیست جدید",
+      "form": {
+        "inputs": {
+          "code": "کد",
+          "bay": "خلیج",
+          "load_code": "بارگذاری کد"
+        },
+        "buttons": {
+          "submit": "خلق كردن",
+          "reset": "تمیزکردن"
+        }
+      }
+    },
+    "listProducts": {
+      "modal": {
+        "edit": {
+          "title": "ویرایش محصول از لیست",
+          "form": {
+            "inputs": {
+              "quantity": "میزان",
+              "box": "جعبه"
+            },
+            "buttons": {
+              "save": "نجات دادن",
+              "cancel": "لغو کنید"
+            }
+          }
+        }
+      },
+      "add_product": {
+        "filter": {
+          "title": "فیلترها",
+          "form": {
+            "inputs": {
+              "name": "نام",
+              "ballast": "بالاست"
+            },
+            "buttons": {
+              "search": "جستجو کردن",
+              "clear": "تمیزکردن"
+            }
+          }
+        },
+        "table": {
+          "title": "جدول محصولات برای افزودن به لیست",
+          "headers": {
+            "name": "نام",
+            "ballast": "بالاست",
+            "add": "برای اضافه کردن"
+          }
+        },
+        "modal": {
+          "title": "محصول را به لیست اضافه کنید",
+          "form": {
+            "inputs": {
+              "quantity": "میزان",
+              "box": "جعبه"
+            },
+            "buttons": {
+              "add": "برای اضافه کردن",
+              "cancel": "لغو کنید"
+            },
+            "errors": {
+              "quantity": "مقدار باید بیشتر از 0 باشد"
+            }
+          }
+        },
+        "buttons": {
+          "back": "برگشتن"
+        }
+      },
+      "filter": {
+        "title": "فیلترها",
+        "form": {
+          "inputs": {
+            "name": "نام",
+            "quantity": "میزان",
+            "box": "جعبه"
+          },
+          "buttons": {
+            "search": "جستجو کردن",
+            "clear": "تمیزکردن"
+          }
+        }
+      },
+      "table": {
+        "title": "لیست محصولات",
+        "headers": {
+          "name": "نام",
+          "quantity": "میزان",
+          "box": "جعبه",
+          "update": "برای به روز رسانی",
+          "delete": "حذف"
+        }
+      },
+      "new_product": {
+        "button": "محصول را اضافه کنید"
+      },
+      "buttons": {
+        "back": "برگشتن"
       }
     }
   },
   "language": {
     "english": "انگلیسی",
-    "brazilian_portuguese": "پرتغالی برزیل",
+    "brazilian_portuguese": "پرتغالی برزیلی",
     "spanish": "اسپانیایی",
     "persian": "فارسی",
-    "simplified_chinese": "چینی ساده"
+    "simplified_chinese": "چینی ساده شده"
   }
 }

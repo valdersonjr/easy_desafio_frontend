@@ -25,25 +25,36 @@
     />
     <va-card class="w-full pb-4">
       <va-card-title>{{ t('orders.informations.filter.title') }}</va-card-title>
-      <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFormSubmit">
-        <va-input
-          v-model="codeFilter"
-          type="text"
-          :label="t('orders.informations.filter.form.inputs.code')"
-          placeholder="OR1234"
-        />
-        <va-input
-          v-model="bayFilter"
-          type="text"
-          :label="t('orders.informations.filter.form.inputs.bay')"
-          placeholder="2"
-        />
-        <va-button class="px-2" color="primary" type="reset" @click="handleFilterClear">{{
-          t('orders.informations.filter.form.buttons.clear')
-        }}</va-button>
-        <va-button type="submit" class="px-2" color="info">{{
-          t('orders.informations.filter.form.buttons.search')
-        }}</va-button>
+      <form class="flex flex-col gap-3" @submit.prevent="onFormSubmit">
+        <div class="flex flex-row gap-3 px-3 justify-center items-center">
+          <va-input
+            v-model="codeFilter"
+            type="text"
+            :label="t('orders.informations.filter.form.inputs.code')"
+            placeholder="OR1234"
+          />
+          <va-input
+            v-model="bayFilter"
+            type="text"
+            :label="t('orders.informations.filter.form.inputs.bay')"
+            placeholder="2"
+          />
+          <va-input
+            v-model="loadCodeFilter"
+            type="text"
+            :label="t('orders.informations.filter.form.inputs.load_code')"
+            placeholder="LD1234"
+          />
+          <va-button class="px-2" color="primary" type="reset" @click="handleFilterClear">{{
+            t('orders.informations.filter.form.buttons.clear')
+          }}</va-button>
+          <va-button type="submit" class="px-2" color="info">{{
+            t('orders.informations.filter.form.buttons.search')
+          }}</va-button>
+        </div>
+        <div class="px-3 justify-center items-center">
+          <VaCheckbox v-model="checkboxState" :label="t('orders.informations.filter.form.inputs.has_product')" />
+        </div>
       </form>
     </va-card>
     <va-card class="w-full">
@@ -64,8 +75,10 @@
               <th>
                 {{ t('orders.informations.table.headers.products') }}
               </th>
-              <th>{{ t('orders.informations.table.headers.update') }}</th>
-              <th>{{ t('orders.informations.table.headers.delete') }}</th>
+              <th>
+                {{ t('orders.informations.table.headers.modal') }}
+              </th>
+              <th>{{ t('orders.informations.table.headers.actions') }}</th>
             </tr>
           </thead>
 
@@ -75,15 +88,24 @@
               <td class="w-[20%]">{{ order.bay }}</td>
               <td>{{ order.load_code }}</td>
               <td>
+                <button class="px-2" @click="handleListProductsRedirect(order.id, order.code)">
+                  <va-icon name="vuestic-iconset-eye" />
+                </button>
+              </td>
+              <td>
                 <button class="px-2" @click="handleListOrderProducts(order.id, order.code)">
                   <va-icon name="vuestic-iconset-notepad" />
                 </button>
               </td>
               <td>
-                <va-button class="px-2" color="info" icon="edit" plain @click="handleOrderUpdate(order.id)" />
-              </td>
-              <td>
-                <va-button class="px-2" color="danger" icon="delete" plain @click="handleOrderDeletion(order.id)" />
+                <va-button class="action-btn" color="info" icon="edit" plain @click="handleOrderUpdate(order.id)" />
+                <va-button
+                  class="action-btn"
+                  color="danger"
+                  icon="delete"
+                  plain
+                  @click="handleOrderDeletion(order.id)"
+                />
               </td>
             </tr>
           </tbody>
@@ -105,6 +127,7 @@
   import { useToast } from 'vuestic-ui'
   import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
   import OrderProducts from './order-products/OrderProducts.vue'
+  import router from '../../../../router'
 
   const { init } = useToast()
   const { t } = useI18n()
@@ -117,6 +140,9 @@
 
   const codeFilter = ref('')
   const bayFilter = ref('')
+  const loadCodeFilter = ref('')
+  const checkboxState = ref(false)
+  if (router.currentRoute.value.params.id) loadCodeFilter.value = String(router.currentRoute.value.params.id)
 
   const orderShow = ref({} as OrderDto)
   const orders = ref([] as OrderDto[])
@@ -135,6 +161,8 @@
   const handleFilterClear = () => {
     codeFilter.value = ''
     bayFilter.value = ''
+    loadCodeFilter.value = ''
+    checkboxState.value = false
     fetchOrders()
   }
 
@@ -145,8 +173,10 @@
         perPage: 10,
         code: codeFilter.value,
         bay: bayFilter.value,
+        load_code: loadCodeFilter.value,
         sortColumn: sortColumn.value,
         sortDirection: sortDirection.value,
+        hasProduct: checkboxState.value,
       })
 
       if (response.status === 204) {
@@ -155,6 +185,7 @@
       }
 
       orders.value = response.data.orders
+      console.log(orders.value)
       currentPage.value = response.data.pagination_meta?.current_page || 1
       totalPages.value = response.data.pagination_meta?.total_pages || 1
     } catch (error: any) {
@@ -170,6 +201,10 @@
     } catch (error) {
       console.log('Error fetching user:', error)
     }
+  }
+
+  const handleListProductsRedirect = (id: number, code: string) => {
+    router.push({ name: 'list-products', params: { id, code } })
   }
 
   const handleListOrderProducts = (id: number, code: string) => {

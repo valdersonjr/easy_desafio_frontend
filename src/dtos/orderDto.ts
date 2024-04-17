@@ -5,4 +5,5 @@ export interface OrderDto {
   created_date?: Date
   load_id: number
   load_code?: string
+  has_product?: boolean
 }

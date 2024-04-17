@@ -31,7 +31,6 @@
   import { ref, defineEmits, defineProps } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vuestic-ui'
-  import formatDate from '../../../../../services/utils/dateConverter'
   import orderProductsService from '../../../../../services/api/orderProducts'
   import { OrderProductDto } from '../../../../../dtos'
 

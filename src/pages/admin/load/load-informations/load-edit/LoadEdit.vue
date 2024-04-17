@@ -10,7 +10,7 @@
           :error-messages="codeErrors"
           type="text"
         />
-        <VueDatePicker v-model="deliveryDate" :enable-time-picker="false" format="dd/MM/yy" locale="pt-BR" required />
+        <VueDatePicker v-model="deliveryDate" :enable-time-picker="false" format="dd/MM/yy" required />
         <div class="flex flex-row justify-around">
           <va-button preset="secondary" class="min-w-[6rem]" type="Cancel" @click="handleModalClose">{{
             t('loads.informations.edit.modal.form.buttons.cancel')
@@ -30,7 +30,6 @@
   import { ApiResponseDto } from '../../../../../dtos'
   import { useI18n } from 'vue-i18n'
   import VueDatePicker from '@vuepic/vue-datepicker'
-  import { addDays } from 'date-fns'
   import { useToast } from 'vuestic-ui'
 
   const { t } = useI18n()
@@ -43,10 +42,12 @@
   const isOpenChild = ref(props.isOpen)
 
   const code = ref(props.load.code)
-  // Bug fix: the datepicker component is outputing the date with one day less than the actual date
-  // -- This is not the correct way to fix this bug, but since idk where it is coming from, I'll just add one day to the date --
-  const deliveryDatePlusOneDay = addDays(new Date(props.load.delivery_date), 1)
-  const deliveryDate = ref(deliveryDatePlusOneDay)
+
+  const dateParts = props.load.delivery_date.split('-')
+  const year = parseInt(dateParts[0])
+  const month = parseInt(dateParts[1]) - 1
+  const day = parseInt(dateParts[2])
+  const deliveryDate = ref(new Date(year, month, day))
 
   const codeErrors = ref<string[]>([])
   const deliveryDateErrors = ref<string[]>([])
@@ -65,10 +66,8 @@
     deliveryDateErrors.value = deliveryDate.value ? [] : ['Ballast is required']
 
     if (formReady.value) {
-      const deliveryDateLessOneDay = addDays(deliveryDate.value, -1)
-
       loadsService
-        .update({ id: props.load.id, code: code.value, delivery_date: deliveryDateLessOneDay })
+        .update({ id: props.load.id, code: code.value, delivery_date: deliveryDate.value })
         .then((response: ApiResponseDto) => {
           console.log(response)
           if (response.status === 200) {

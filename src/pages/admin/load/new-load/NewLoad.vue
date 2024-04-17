@@ -39,7 +39,6 @@
   import { FulfillingSquareSpinner } from 'epic-spinners'
   import { useGlobalStore } from '../../../../stores/global-store'
   import VueDatePicker from '@vuepic/vue-datepicker'
-  import { addDays } from 'date-fns'
   import { useToast } from 'vuestic-ui'
 
   const GlobalStore = useGlobalStore()
@@ -48,6 +47,7 @@
 
   const code = ref('')
   const currentDate = new Date()
+
   const deliveryDate = ref(currentDate)
 
   const codeErrors = ref<string[]>([])

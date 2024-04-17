@@ -19,7 +19,6 @@
     <LoadOrders
       v-if="isLoadOrdersModalOpen"
       :is-open="isLoadOrdersModalOpen"
-      :load-id="loadOrdersLoadId"
       :load-code="loadOrdersLoadCode"
       @isOpenValueChange="handleIsLoadOrdersModalOpenValueChange"
     />
@@ -61,8 +60,8 @@
                 <sorting-icon-div :text="t('loads.informations.table.headers.delivery_date')" />
               </th>
               <th>{{ t('loads.informations.table.headers.order') }}</th>
-              <th>{{ t('loads.informations.table.headers.update') }}</th>
-              <th>{{ t('loads.informations.table.headers.delete') }}</th>
+              <th>{{ t('loads.informations.table.headers.order_modal') }}</th>
+              <th>{{ t('loads.informations.table.headers.actions') }}</th>
             </tr>
           </thead>
 
@@ -71,15 +70,18 @@
               <td class="w-[30%]">{{ load.code }}</td>
               <td class="">{{ formatDate(load.delivery_date.toString()) }}</td>
               <td>
-                <button class="px-2" @click="handleListLoadOrders(load.id, load.code)">
+                <button class="px-2" @click="handleOrderRedirect(load.code)">
+                  <va-icon name="vuestic-iconset-eye" />
+                </button>
+              </td>
+              <td>
+                <button @click="handleOrderModal(load.code)">
                   <va-icon name="vuestic-iconset-notepad" />
                 </button>
               </td>
               <td>
-                <va-button class="px-2" color="info" icon="edit" plain @click="handleLoadUpdate(load.id)" />
-              </td>
-              <td>
-                <va-button class="px-2" color="danger" icon="delete" plain @click="handleLoadDeletion(load.id)" />
+                <va-button class="action-btn" color="info" icon="edit" plain @click="handleLoadUpdate(load.id)" />
+                <va-button class="action-btn" color="danger" icon="delete" plain @click="handleLoadDeletion(load.id)" />
               </td>
             </tr>
           </tbody>
@@ -104,6 +106,7 @@
   import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
   import { OrderDto } from '../../../../dtos/orderDto'
   import LoadOrders from './load-orders/LoadOrders.vue'
+  import router from '../../../../router'
 
   const { init } = useToast()
   const { t } = useI18n()
@@ -124,7 +127,6 @@
   const totalPages = ref(1)
   const sortColumn = ref('code')
   const sortDirection = ref('asc')
-  const loadOrdersLoadId = ref(-1)
   const loadOrdersLoadCode = ref('')
 
   const onFormSubmit = () => {
@@ -168,10 +170,13 @@
     }
   }
 
-  const handleListLoadOrders = (id: number, code: string) => {
-    loadOrdersLoadId.value = id
+  const handleOrderModal = (code: string) => {
     loadOrdersLoadCode.value = code
     isLoadOrdersModalOpen.value = true
+  }
+
+  const handleOrderRedirect = (loadCode: string) => {
+    router.push({ name: 'order-info', params: { id: String(loadCode) } })
   }
 
   const handleLoadUpdate = (id: number) => {
@@ -197,7 +202,6 @@
   const deleteLoad = async (id: number) => {
     try {
       const response = await loadsService.delete(id)
-      console.log(response)
       if (response.status === 200) {
         isConfirmationModalOpen.value = false
         isConfirmationModalLoading.value = false

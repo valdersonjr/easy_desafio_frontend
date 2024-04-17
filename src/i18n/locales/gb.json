@@ -1,27 +1,27 @@
 {
   "user": {
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "To go out"
   },
   "messages": {
     "validation": {
       "input": {
         "name": {
-          "required": "Name is required"
+          "required": "Name is mandatory"
         },
         "email": {
-          "required": "Email is required",
+          "required": "Email is mandatory",
           "email": "Invalid email"
         },
         "password": {
-          "required": "Password is required"
+          "required": "Password is mandatory"
         },
         "password_confirmation": {
-          "required": "Password confirmation is required",
-          "same": "Password confirmation must be the same as the password"
+          "required": "Password confirmation is mandatory",
+          "same": "Password confirmation must be the same as password"
         },
         "profile": {
-          "required": "Profile is required"
+          "required": "Profile is mandatory"
         }
       }
     },
@@ -34,11 +34,11 @@
       },
       "login": {
         "success": "Welcome!",
-        "error": "Error logging in"
+        "error": "Error when logging in"
       },
       "logout": {
-        "success": "Goodbye!",
-        "error": "Error logging out"
+        "success": "See you later!",
+        "error": "Error when logging out"
       },
       "dashboard": {
         "error": "Error loading information"
@@ -54,7 +54,8 @@
         "edit": {
           "success": "User updated successfully!",
           "error": "Error updating user",
-          "error_email": "Email already exists"
+          "error_email": "Email already exists",
+          "error_password_short": "Short password"
         },
         "delete": {
           "success": "User deleted successfully!",
@@ -71,7 +72,7 @@
         },
         "edit": {
           "success": "Product updated successfully!",
-          "error": "Error updating product"
+          "error": "Error when updating product"
         },
         "delete": {
           "success": "Product deleted successfully!",
@@ -89,12 +90,48 @@
         },
         "edit": {
           "success": "Load updated successfully!",
-          "error": "Error updating load",
+          "error": "Error updating payload",
           "error_code": "Code already exists"
         },
         "delete": {
           "success": "Load deleted successfully!",
           "error": "Error deleting load"
+        }
+      },
+      "order": {
+        "add_product": {
+          "success": "Product added to the list successfully!",
+          "error": "Error adding product to list"
+        },
+        "list_products": {
+          "modal": {
+            "delete": {
+              "success": "Product successfully deleted from the list!",
+              "error": "Error when deleting product from list"
+            },
+            "edit": {
+              "success": "List product updated successfully!",
+              "error": "Error when updating product from list"
+            }
+          }
+        },
+        "list": {
+          "error": "Error loading lists"
+        },
+        "new": {
+          "success": "List created successfully!",
+          "error": "Error creating list",
+          "error_code": "Code already exists",
+          "error_load_code": "Load code does not exist"
+        },
+        "edit": {
+          "success": "List updated successfully!",
+          "error": "Error updating list",
+          "error_code": "Code already exists"
+        },
+        "delete": {
+          "success": "List deleted successfully!",
+          "error": "Error deleting list"
         }
       },
       "profile_permission": {
@@ -113,41 +150,47 @@
         "profile": "Profile"
       },
       "button": {
-        "save": "Save",
-        "edit": "Update"
+        "save": "To save",
+        "edit": "To update"
       }
     }
   },
   "auth": {
-    "reset_password": "Reset password",
-    "login": "Login",
-    "sign_up": "Sign up",
+    "reset_password": "Redefine password",
+    "login": "To enter",
+    "sign_up": "Register",
     "createNewAccount": "Create new account",
     "name": "Name",
     "email": "Email",
     "password": "Password",
-    "password_confirmation": "Password confirmation",
-    "recover_password": "Recover password",
+    "password_confirmation": "Password Confirmation",
+    "recover_password": "Recover Password",
     "profile": "Profile"
   },
   "dashboard": {
     "info": {
       "products": "Products",
       "users": "Users",
-      "loads": "Loads"
+      "loads": "Loads",
+      "orders": "Lists",
+      "pallets": "Assembled pallets"
     }
   },
   "menu": {
-    "dashboard": "Dashboard",
+    "dashboard": "Panel",
     "user": "User",
-    "userInfo": "Informations",
-    "newUser": "New user",
+    "userInfo": "Information",
+    "newUser": "new user",
     "product": "Product",
-    "productInfo": "Informations",
+    "productInfo": "Information",
     "newProduct": "New product",
     "load": "Load",
-    "loadInfo": "Informations",
-    "newLoad": "New load"
+    "loadInfo": "Information",
+    "newLoad": "New load",
+    "order": "List",
+    "orderInfo": "Information",
+    "newOrder": "New List",
+    "listProducts": "List Products"
   },
   "users": {
     "informations": {
@@ -157,8 +200,8 @@
           "name": "Name",
           "email": "Email",
           "profile": "Profile",
-          "created_date": "Created date",
-          "update": "Update",
+          "created_date": "Creation date",
+          "update": "To update",
           "delete": "Delete"
         }
       },
@@ -171,7 +214,7 @@
           },
           "buttons": {
             "search": "Search",
-            "clear": "Clear"
+            "clear": "To clean"
           }
         }
       },
@@ -183,11 +226,11 @@
               "name": "Name",
               "email": "Email",
               "password": "Password",
-              "password_confirmation": "Password confirmation",
+              "password_confirmation": "Password Confirmation",
               "profile": "Profile"
             },
             "buttons": {
-              "save": "Save",
+              "save": "To save",
               "cancel": "Cancel"
             }
           }
@@ -195,7 +238,7 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "Are you sure?",
+          "title": "He is sure?",
           "buttons": {
             "confirm": "Yes",
             "deny": "No"
@@ -204,18 +247,18 @@
       }
     },
     "newUser": {
-      "title": "New user",
+      "title": "new user",
       "form": {
         "inputs": {
           "name": "Name",
           "email": "Email",
           "password": "Password",
-          "password_confirmation": "Password confirmation",
+          "password_confirmation": "Password Confirmation",
           "profile": "Profile"
         },
         "buttons": {
-          "submit": "Create",
-          "reset": "Clear"
+          "submit": "To create",
+          "reset": "To clean"
         }
       }
     }
@@ -227,8 +270,8 @@
         "headers": {
           "name": "Name",
           "ballast": "Ballast",
-          "created_date": "Created date",
-          "update": "Update",
+          "created_date": "Creation date",
+          "update": "To update",
           "delete": "Delete"
         }
       },
@@ -241,7 +284,7 @@
           },
           "buttons": {
             "search": "Search",
-            "clear": "Clear"
+            "clear": "To clean"
           }
         }
       },
@@ -251,11 +294,10 @@
           "form": {
             "inputs": {
               "name": "Name",
-              "description": "Description",
-              "price": "Price"
+              "ballast": "Ballast"
             },
             "buttons": {
-              "save": "Save",
+              "save": "To save",
               "cancel": "Cancel"
             }
           }
@@ -263,7 +305,7 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "Are you sure?",
+          "title": "He is sure?",
           "buttons": {
             "confirm": "Yes",
             "deny": "No"
@@ -279,20 +321,36 @@
           "ballast": "Ballast"
         },
         "buttons": {
-          "submit": "Create",
-          "reset": "Clear"
+          "submit": "To create",
+          "reset": "To clean"
         }
       }
     }
   },
   "loads": {
     "informations": {
+      "load_orders": {
+        "order_products": {
+          "title": "List Products",
+          "table": {
+            "headers": {
+              "name": "Name",
+              "ballast": "Ballast",
+              "quantity": "Amount",
+              "box": "Box"
+            }
+          },
+          "not_found": "No products found"
+        }
+      },
       "table": {
         "title": "Load list",
         "headers": {
           "code": "Code",
           "delivery_date": "Delivery date",
-          "update": "Update",
+          "order_modal": "Modal",
+          "order": "List",
+          "update": "To update",
           "delete": "Delete"
         }
       },
@@ -300,13 +358,26 @@
         "title": "Filters",
         "form": {
           "inputs": {
-            "code": "code",
+            "code": "Code",
             "delivery_date": "Delivery date"
           },
           "buttons": {
             "search": "Search",
-            "clear": "Clear"
+            "clear": "To clean"
           }
+        }
+      },
+      "loadOrders": {
+        "modal": {
+          "title": "Load Lists",
+          "table": {
+            "headers": {
+              "code": "Code",
+              "bay": "Bay",
+              "created_date": "Creation date"
+            }
+          },
+          "not_found": "No list found"
         }
       },
       "edit": {
@@ -318,7 +389,7 @@
               "delivery_date": "Delivery date"
             },
             "buttons": {
-              "save": "Save",
+              "save": "To save",
               "cancel": "Cancel"
             }
           }
@@ -326,7 +397,7 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "Are you sure?",
+          "title": "He is sure?",
           "buttons": {
             "confirm": "Yes",
             "deny": "No"
@@ -342,15 +413,187 @@
           "delivery_date": "Delivery date"
         },
         "buttons": {
-          "submit": "Create",
-          "reset": "Clear"
+          "submit": "To create",
+          "reset": "To clean"
         }
+      }
+    }
+  },
+  "orders": {
+    "informations": {
+      "table": {
+        "title": "Lists",
+        "headers": {
+          "code": "Code",
+          "bay": "Bay",
+          "load_code": "Load code",
+          "products": "Products",
+          "modal": "Modal",
+          "created_date": "Creation date",
+          "update": "To update",
+          "delete": "Delete"
+        }
+      },
+      "filter": {
+        "title": "Filters",
+        "form": {
+          "inputs": {
+            "code": "Code",
+            "bay": "Bay",
+            "load_code": "Load code",
+            "has_product": "Has products"
+          },
+          "buttons": {
+            "search": "Search",
+            "clear": "To clean"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "Edit list",
+          "form": {
+            "inputs": {
+              "code": "Code",
+              "bay": "Bay",
+              "load_code": "Load code"
+            },
+            "buttons": {
+              "save": "To save",
+              "cancel": "Cancel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "He is sure?",
+          "buttons": {
+            "confirm": "Yes",
+            "deny": "No"
+          }
+        }
+      },
+      "order_products": {
+        "title": "List Products",
+        "table": {
+          "headers": {
+            "code": "Name",
+            "ballast": "Ballast",
+            "quantity": "Amount",
+            "box": "Box"
+          }
+        },
+        "not_found": "No products found"
+      }
+    },
+    "newOrder": {
+      "title": "New list",
+      "form": {
+        "inputs": {
+          "code": "Code",
+          "bay": "Bay",
+          "load_code": "Load code"
+        },
+        "buttons": {
+          "submit": "To create",
+          "reset": "To clean"
+        }
+      }
+    },
+    "listProducts": {
+      "modal": {
+        "edit": {
+          "title": "Edit product from list",
+          "form": {
+            "inputs": {
+              "quantity": "Amount",
+              "box": "Box"
+            },
+            "buttons": {
+              "save": "To save",
+              "cancel": "Cancel"
+            }
+          }
+        }
+      },
+      "add_product": {
+        "filter": {
+          "title": "Filters",
+          "form": {
+            "inputs": {
+              "name": "Name",
+              "ballast": "Ballast"
+            },
+            "buttons": {
+              "search": "Search",
+              "clear": "To clean"
+            }
+          }
+        },
+        "table": {
+          "title": "Table of products to add to the list",
+          "headers": {
+            "name": "Name",
+            "ballast": "Ballast",
+            "add": "To add"
+          }
+        },
+        "modal": {
+          "title": "Add product to list",
+          "form": {
+            "inputs": {
+              "quantity": "Amount",
+              "box": "Box"
+            },
+            "buttons": {
+              "add": "To add",
+              "cancel": "Cancel"
+            },
+            "errors": {
+              "quantity": "Quantity must be greater than 0"
+            }
+          }
+        },
+        "buttons": {
+          "back": "To go back"
+        }
+      },
+      "filter": {
+        "title": "Filters",
+        "form": {
+          "inputs": {
+            "name": "Name",
+            "quantity": "Amount",
+            "box": "Box"
+          },
+          "buttons": {
+            "search": "Search",
+            "clear": "To clean"
+          }
+        }
+      },
+      "table": {
+        "title": "Product list",
+        "headers": {
+          "name": "Name",
+          "quantity": "Amount",
+          "box": "Box",
+          "update": "To update",
+          "delete": "Delete"
+        }
+      },
+      "new_product": {
+        "button": "Add product"
+      },
+      "buttons": {
+        "back": "To go back"
       }
     }
   },
   "language": {
     "english": "English",
-    "brazilian_portuguese": "Brazilian Portuguese",
+    "brazilian_portuguese": "Brazilian portuguese",
     "spanish": "Spanish",
     "persian": "Persian",
     "simplified_chinese": "Simplified Chinese"

@@ -30,9 +30,16 @@ const routes: Array<RouteRecordRaw> = [
         children: [
           {
             name: 'order-info',
-            path: 'order-info',
+            path: 'order-info/:id?',
 
             component: () => import('../pages/admin/order/order-informations/OrderInformations.vue'),
+            props: (route) => ({
+              id: route.params.id
+                ? Array.isArray(route.params.id)
+                  ? parseInt(route.params.id[0])
+                  : parseInt(route.params.id)
+                : null,
+            }),
           },
 
           {
@@ -40,6 +47,20 @@ const routes: Array<RouteRecordRaw> = [
             path: 'new-order',
 
             component: () => import('../pages/admin/order/new-order/NewOrder.vue'),
+          },
+          {
+            name: 'list-products',
+            path: 'list-products/:id?/:code?',
+
+            component: () => import('../pages/admin/order/list-products/ListProducts.vue'),
+            props: true,
+          },
+          {
+            name: 'add-product-to-order',
+            path: 'add-product-to-order/:id/:code?',
+
+            component: () => import('../pages/admin/order/list-products/add-products/AddProducts.vue'),
+            props: true,
           },
         ],
       },

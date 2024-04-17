@@ -95,6 +95,7 @@
     emailErrors.value = email.value ? [] : ['Email is required']
     if (!validateEmailFormat(email.value)) emailErrors.value = ['Invalid format']
     passwordErrors.value = password.value ? [] : ['Password is required']
+    passwordErrors.value = password.value && password.value.length >= 6 ? [] : ['Password too short']
     passwordConfirmationErrors.value = passwordConfirmation.value ? [] : ['Password confirmation is required']
     passwordConfirmationErrors.value =
       passwordConfirmation.value === password.value ? [] : ['Password confirmation must be equal to password']
@@ -118,6 +119,10 @@
         .catch((error: any) => {
           if (error.response.status === 422 && error.response.data.message[1]) {
             init({ message: t('messages.toast.user.edit.error_email'), color: 'danger' })
+          }
+
+          if (error.response.status === 422 && error.response.data.message[0].includes('Password is too short')) {
+            init({ message: t('messages.toast.user.edit.error_password_short'), color: 'danger' })
           }
         })
     }

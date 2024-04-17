@@ -54,7 +54,8 @@
         "edit": {
           "success": "Usuário atualizado com sucesso!",
           "error": "Erro ao atualizar usuário",
-          "error_email": "E-mail já existe"
+          "error_email": "E-mail já existe",
+          "error_password_short": "Senha curta"
         },
         "delete": {
           "success": "Usuário excluído com sucesso!",
@@ -97,6 +98,42 @@
           "error": "Erro ao excluir carga"
         }
       },
+      "order": {
+        "add_product": {
+          "success": "Produto adicionado à lista com sucesso!",
+          "error": "Erro ao adicionar produto à lista"
+        },
+        "list_products": {
+          "modal": {
+            "delete": {
+              "success": "Produto excluído da lista da com sucesso!",
+              "error": "Erro ao excluir produto da lista"
+            },
+            "edit": {
+              "success": "Produto da lista atualizado com sucesso!",
+              "error": "Erro ao atualizar produto da lista"
+            }
+          }
+        },
+        "list": {
+          "error": "Erro ao carregar listas"
+        },
+        "new": {
+          "success": "Lista criada com sucesso!",
+          "error": "Erro ao criar lista",
+          "error_code": "Código já existe",
+          "error_load_code": "Código da carga não existe"
+        },
+        "edit": {
+          "success": "Lista atualizada com sucesso!",
+          "error": "Erro ao atualizar lista",
+          "error_code": "Código já existe"
+        },
+        "delete": {
+          "success": "Lista excluída com sucesso!",
+          "error": "Erro ao excluir lista"
+        }
+      },
       "profile_permission": {
         "error": "Perfil sem permissão"
       }
@@ -135,23 +172,25 @@
       "products": "Produtos",
       "users": "Usuários",
       "loads": "Cargas",
-      "orders": "Listas"
+      "orders": "Listas",
+      "pallets": "Pallets montados"
     }
   },
   "menu": {
     "dashboard": "Painel",
     "user": "Usuário",
-    "userInfo": "Informações",
+    "userInfo": "Usuários",
     "newUser": "Novo usuário",
     "product": "Produto",
-    "productInfo": "Informações",
+    "productInfo": "Produtos",
     "newProduct": "Novo produto",
     "load": "Carga",
-    "loadInfo": "Informações",
+    "loadInfo": "Cargas",
     "newLoad": "Nova carga",
     "order": "Lista",
-    "orderInfo": "Informações",
-    "newOrder": "Nova Lista"
+    "orderInfo": "Listas",
+    "newOrder": "Nova Lista",
+    "listProducts": "Produtos da Lista"
   },
   "users": {
     "informations": {
@@ -162,8 +201,7 @@
           "email": "E-mail",
           "profile": "Perfil",
           "created_date": "Data de criação",
-          "update": "Atualizar",
-          "delete": "Excluir"
+          "actions": "Ações"
         }
       },
       "filter": {
@@ -232,8 +270,7 @@
           "name": "Nome",
           "ballast": "Lastro",
           "created_date": "Data de criação",
-          "update": "Atualizar",
-          "delete": "Excluir"
+          "actions": "Ações"
         }
       },
       "filter": {
@@ -255,8 +292,7 @@
           "form": {
             "inputs": {
               "name": "Nome",
-              "description": "Descrição",
-              "price": "Preço"
+              "ballast": "Lastro"
             },
             "buttons": {
               "save": "Salvar",
@@ -310,9 +346,9 @@
         "headers": {
           "code": "Código",
           "delivery_date": "Data de entrega",
+          "order_modal": "Modal",
           "order": "Lista",
-          "update": "Atualizar",
-          "delete": "Excluir"
+          "actions": "Ações"
         }
       },
       "filter": {
@@ -330,7 +366,7 @@
       },
       "loadOrders": {
         "modal": {
-          "title": "Listas da carga: ",
+          "title": "Listas da carga",
           "table": {
             "headers": {
               "code": "Código",
@@ -383,15 +419,15 @@
   "orders": {
     "informations": {
       "table": {
-        "title": "Lista de pedidos",
+        "title": "Listas",
         "headers": {
           "code": "Código",
           "bay": "Baia",
           "load_code": "Código da carga",
           "products": "Produtos",
+          "modal": "Modal",
           "created_date": "Data de criação",
-          "update": "Atualizar",
-          "delete": "Excluir"
+          "actions": "Ações"
         }
       },
       "filter": {
@@ -399,7 +435,9 @@
         "form": {
           "inputs": {
             "code": "Código",
-            "bay": "Baia"
+            "bay": "Baia",
+            "load_code":"Código da carga",
+            "has_product": "Possui produtos"
           },
           "buttons": {
             "search": "Buscar",
@@ -409,11 +447,12 @@
       },
       "edit": {
         "modal": {
-          "title": "Editar pedido",
+          "title": "Editar lista",
           "form": {
             "inputs": {
               "code": "Código",
-              "bay": "Baia"
+              "bay": "Baia",
+              "load_code": "Código da carga"
             },
             "buttons": {
               "save": "Salvar",
@@ -445,16 +484,105 @@
       }
     },
     "newOrder": {
-      "title": "Novo pedido",
+      "title": "Novo lista",
       "form": {
         "inputs": {
           "code": "Código",
-          "bay": "Baia"
+          "bay": "Baia",
+          "load_code": "Código da carga"
         },
         "buttons": {
           "submit": "Criar",
           "reset": "Limpar"
         }
+      }
+    },
+    "listProducts": {
+      "modal": {
+        "edit": {
+          "title": "Editar produto da lista",
+          "form": {
+            "inputs": {
+              "quantity": "Quantidade",
+              "box": "Caixa"
+            },
+            "buttons": {
+              "save": "Salvar",
+              "cancel": "Cancelar"
+            }
+          }
+        }
+      },
+      "add_product": {
+        "filter": {
+          "title": "Filtros",
+          "form": {
+            "inputs": {
+              "name": "Nome",
+              "ballast": "Lastro"
+            },
+            "buttons": {
+              "search": "Buscar",
+              "clear": "Limpar"
+            }
+          }
+        },
+        "table": {
+          "title": "Tabela de produtos para adicionar a lista",
+          "headers": {
+            "name": "Nome",
+            "ballast": "Lastro",
+            "add": "Adicionar"
+          }
+        },
+        "modal": {
+          "title": "Adicionar produto à lista",
+          "form": {
+            "inputs": {
+              "quantity": "Quantidade",
+              "box": "Caixa"
+            },
+            "buttons": {
+              "add": "Adicionar",
+              "cancel": "Cancelar"
+            },
+            "errors": {
+              "quantity": "Quantidade deve ser maior que 0"
+            }
+          }
+        },
+        "buttons": {
+          "back": "Voltar"
+        }
+      },
+      "filter": {
+        "title": "Filtros",
+        "form": {
+          "inputs": {
+            "name": "Nome",
+            "quantity": "Quantidade",
+            "box": "Caixa"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Limpar"
+          }
+        }
+      },
+      "table": {
+        "title": "Lista de produtos",
+        "headers": {
+          "name": "Nome",
+          "quantity": "Quantidade",
+          "box": "Caixa",
+          "actions": "Ações"
+        }
+      },
+      "new_product": {
+        "button": "Adicionar produto"
+      },
+      "buttons": {
+        "back": "Voltar"
       }
     }
   },

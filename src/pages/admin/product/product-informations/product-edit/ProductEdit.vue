@@ -15,7 +15,7 @@
           :label="t('products.informations.edit.modal.form.inputs.ballast')"
           :error="!!ballastErrors.length"
           :error-messages="ballastErrors"
-          type="number"
+          type="text"
         />
         <div class="flex flex-row justify-around">
           <va-button preset="secondary" class="min-w-[6rem]" type="Cancel" @click="handleModalClose">{{

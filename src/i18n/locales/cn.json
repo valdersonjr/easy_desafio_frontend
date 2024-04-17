@@ -1,34 +1,34 @@
 {
   "user": {
-    "profile": "个人资料",
-    "logout": "退出"
+    "profile": "轮廓",
+    "logout": "出去"
   },
   "messages": {
     "validation": {
       "input": {
         "name": {
-          "required": "姓名是必填项"
+          "required": "姓名为必填项"
         },
         "email": {
-          "required": "电子邮件是必填项",
-          "email": "无效的电子邮件"
+          "required": "电子邮件为必填项",
+          "email": "不合规电邮"
         },
         "password": {
-          "required": "密码是必填项"
+          "required": "密码为必填项"
         },
         "password_confirmation": {
-          "required": "确认密码是必填项",
+          "required": "密码确认为必填项",
           "same": "确认密码必须与密码相同"
         },
         "profile": {
-          "required": "个人资料是必填项"
+          "required": "个人资料为必填项"
         }
       }
     },
     "toast": {
       "profile": {
         "edit": {
-          "success": "成功更新个人资料！",
+          "success": "个人资料更新成功！",
           "error": "更新个人资料时出错"
         }
       },
@@ -37,7 +37,7 @@
         "error": "登录时出错"
       },
       "logout": {
-        "success": "再见！",
+        "success": "回头见！",
         "error": "退出时出错"
       },
       "dashboard": {
@@ -48,16 +48,17 @@
           "error": "加载用户时出错"
         },
         "new": {
-          "success": "成功创建用户！",
+          "success": "用户创建成功！",
           "error": "创建用户时出错"
         },
         "edit": {
-          "success": "成功更新用户！",
+          "success": "用户更新成功！",
           "error": "更新用户时出错",
-          "error_email": "电子邮件已存在"
+          "error_email": "电子邮件已经存在",
+          "error_password_short": "短密码"
         },
         "delete": {
-          "success": "成功删除用户！",
+          "success": "用户删除成功！",
           "error": "删除用户时出错"
         }
       },
@@ -66,51 +67,87 @@
           "error": "加载产品时出错"
         },
         "new": {
-          "success": "成功创建产品！",
+          "success": "产品创建成功！",
           "error": "创建产品时出错"
         },
         "edit": {
-          "success": "成功更新产品！",
+          "success": "产品更新成功！",
           "error": "更新产品时出错"
         },
         "delete": {
-          "success": "成功删除产品！",
+          "success": "产品删除成功！",
           "error": "删除产品时出错"
         }
       },
       "load": {
         "list": {
-          "error": "加载货物时出错"
+          "error": "加载负载时出错"
         },
         "new": {
-          "success": "成功创建货物！",
-          "error": "创建货物时出错",
+          "success": "加载创建成功！",
+          "error": "创建负载时出错",
           "error_code": "代码已存在"
         },
         "edit": {
-          "success": "成功更新货物！",
-          "error": "更新货物时出错",
+          "success": "加载更新成功！",
+          "error": "更新负载时出错",
           "error_code": "代码已存在"
         },
         "delete": {
-          "success": "成功删除货物！",
-          "error": "删除货物时出错"
+          "success": "加载删除成功！",
+          "error": "删除负载时出错"
+        }
+      },
+      "order": {
+        "add_product": {
+          "success": "产品已成功添加到列表！",
+          "error": "将产品添加到列表时出错"
+        },
+        "list_products": {
+          "modal": {
+            "delete": {
+              "success": "产品已成功从列表中删除！",
+              "error": "从列表中删除产品时出错"
+            },
+            "edit": {
+              "success": "列表产品更新成功！",
+              "error": "从列表更新产品时出错"
+            }
+          }
+        },
+        "list": {
+          "error": "加载列表时出错"
+        },
+        "new": {
+          "success": "列表创建成功！",
+          "error": "创建列表时出错",
+          "error_code": "代码已存在",
+          "error_load_code": "加载代码不存在"
+        },
+        "edit": {
+          "success": "列表更新成功！",
+          "error": "更新列表时出错",
+          "error_code": "代码已存在"
+        },
+        "delete": {
+          "success": "列表删除成功！",
+          "error": "删除列表时出错"
         }
       },
       "profile_permission": {
-        "error": "无权限访问个人资料"
+        "error": "未经许可的个人资料"
       }
     }
   },
   "profile": {
     "form": {
-      "title": "个人资料",
+      "title": "轮廓",
       "input": {
         "name": "姓名",
         "email": "电子邮件",
         "password": "密码",
         "password_confirmation": "确认密码",
-        "profile": "个人资料"
+        "profile": "轮廓"
       },
       "button": {
         "save": "保存",
@@ -119,59 +156,65 @@
     }
   },
   "auth": {
-    "reset_password": "重设密码",
-    "login": "登录",
-    "sign_up": "注册",
-    "createNewAccount": "创建新帐户",
-    "name": "名称",
+    "reset_password": "重新定义密码",
+    "login": "进入",
+    "sign_up": "登记",
+    "createNewAccount": "建立新帐户",
+    "name": "姓名",
     "email": "电子邮件",
     "password": "密码",
     "password_confirmation": "确认密码",
-    "recover_password": "找回密码",
-    "profile": "个人资料"
+    "recover_password": "恢复密码",
+    "profile": "轮廓"
   },
   "dashboard": {
     "info": {
       "products": "产品",
       "users": "用户",
-      "loads": "货物"
+      "loads": "负载",
+      "orders": "列表",
+      "pallets": "组装托盘"
     }
   },
   "menu": {
-    "dashboard": "仪表板",
+    "dashboard": "控制板",
     "user": "用户",
     "userInfo": "信息",
     "newUser": "新用户",
     "product": "产品",
     "productInfo": "信息",
     "newProduct": "新产品",
-    "load": "货物",
+    "load": "收费",
     "loadInfo": "信息",
-    "newLoad": "新货物"
+    "newLoad": "新负载",
+    "order": "列表",
+    "orderInfo": "信息",
+    "newOrder": "新名单",
+    "listProducts": "列出产品"
   },
   "users": {
     "informations": {
       "table": {
         "title": "用户列表",
         "headers": {
-          "name": "名称",
+          "name": "姓名",
           "email": "电子邮件",
-          "profile": "个人资料",
+          "profile": "轮廓",
           "created_date": "创建日期",
           "update": "更新",
           "delete": "删除"
         }
       },
       "filter": {
-        "title": "筛选器",
+        "title": "过滤器",
         "form": {
           "inputs": {
-            "name": "名称",
+            "name": "姓名",
             "email": "电子邮件"
           },
           "buttons": {
             "search": "搜索",
-            "clear": "清除"
+            "clear": "清洁"
           }
         }
       },
@@ -180,11 +223,11 @@
           "title": "编辑用户",
           "form": {
             "inputs": {
-              "name": "名称",
+              "name": "姓名",
               "email": "电子邮件",
               "password": "密码",
               "password_confirmation": "确认密码",
-              "profile": "个人资料"
+              "profile": "轮廓"
             },
             "buttons": {
               "save": "保存",
@@ -195,10 +238,10 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "您确定吗？",
+          "title": "他确定吗？",
           "buttons": {
-            "confirm": "是",
-            "deny": "否"
+            "confirm": "是的",
+            "deny": "不"
           }
         }
       }
@@ -207,15 +250,15 @@
       "title": "新用户",
       "form": {
         "inputs": {
-          "name": "名称",
+          "name": "姓名",
           "email": "电子邮件",
           "password": "密码",
           "password_confirmation": "确认密码",
-          "profile": "个人资料"
+          "profile": "轮廓"
         },
         "buttons": {
-          "submit": "创建",
-          "reset": "清除"
+          "submit": "创造",
+          "reset": "清洁"
         }
       }
     }
@@ -225,23 +268,23 @@
       "table": {
         "title": "产品列表",
         "headers": {
-          "name": "名称",
-          "ballast": "配重",
+          "name": "姓名",
+          "ballast": "镇流器",
           "created_date": "创建日期",
           "update": "更新",
           "delete": "删除"
         }
       },
       "filter": {
-        "title": "筛选器",
+        "title": "过滤器",
         "form": {
           "inputs": {
-            "name": "名称",
-            "ballast": "配重"
+            "name": "姓名",
+            "ballast": "镇流器"
           },
           "buttons": {
             "search": "搜索",
-            "clear": "清除"
+            "clear": "清洁"
           }
         }
       },
@@ -250,9 +293,8 @@
           "title": "编辑产品",
           "form": {
             "inputs": {
-              "name": "名称",
-              "description": "描述",
-              "price": "价格"
+              "name": "姓名",
+              "ballast": "镇流器"
             },
             "buttons": {
               "save": "保存",
@@ -263,10 +305,10 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "您确定吗？",
+          "title": "他确定吗？",
           "buttons": {
-            "confirm": "是",
-            "deny": "否"
+            "confirm": "是的",
+            "deny": "不"
           }
         }
       }
@@ -275,46 +317,75 @@
       "title": "新产品",
       "form": {
         "inputs": {
-          "name": "名称",
-          "ballast": "配重"
+          "name": "姓名",
+          "ballast": "镇流器"
         },
         "buttons": {
-          "submit": "创建",
-          "reset": "清除"
+          "submit": "创造",
+          "reset": "清洁"
         }
       }
     }
   },
   "loads": {
     "informations": {
+      "load_orders": {
+        "order_products": {
+          "title": "列出产品",
+          "table": {
+            "headers": {
+              "name": "姓名",
+              "ballast": "镇流器",
+              "quantity": "数量",
+              "box": "盒子"
+            }
+          },
+          "not_found": "没有找到产品"
+        }
+      },
       "table": {
-        "title": "货物列表",
+        "title": "加载列表",
         "headers": {
-          "code": "编码",
+          "code": "代码",
           "delivery_date": "交货日期",
+          "order_modal": "莫代尔",
+          "order": "列表",
           "update": "更新",
           "delete": "删除"
         }
       },
       "filter": {
-        "title": "筛选器",
+        "title": "过滤器",
         "form": {
           "inputs": {
-            "code": "编码",
+            "code": "代码",
             "delivery_date": "交货日期"
           },
           "buttons": {
             "search": "搜索",
-            "clear": "清除"
+            "clear": "清洁"
           }
+        }
+      },
+      "loadOrders": {
+        "modal": {
+          "title": "加载列表",
+          "table": {
+            "headers": {
+              "code": "代码",
+              "bay": "湾",
+              "created_date": "创建日期"
+            }
+          },
+          "not_found": "没有找到列表"
         }
       },
       "edit": {
         "modal": {
-          "title": "编辑货物",
+          "title": "编辑负载",
           "form": {
             "inputs": {
-              "code": "编码",
+              "code": "代码",
               "delivery_date": "交货日期"
             },
             "buttons": {
@@ -326,25 +397,197 @@
       },
       "delete": {
         "confirmation_modal": {
-          "title": "您确定吗？",
+          "title": "他确定吗？",
           "buttons": {
-            "confirm": "是",
-            "deny": "否"
+            "confirm": "是的",
+            "deny": "不"
           }
         }
       }
     },
     "newLoad": {
-      "title": "新货物",
+      "title": "新负载",
       "form": {
         "inputs": {
-          "code": "编码",
+          "code": "代码",
           "delivery_date": "交货日期"
         },
         "buttons": {
-          "submit": "创建",
-          "reset": "清除"
+          "submit": "创造",
+          "reset": "清洁"
         }
+      }
+    }
+  },
+  "orders": {
+    "informations": {
+      "table": {
+        "title": "列表",
+        "headers": {
+          "code": "代码",
+          "bay": "湾",
+          "load_code": "加载代码",
+          "products": "产品",
+          "modal": "莫代尔",
+          "created_date": "创建日期",
+          "update": "更新",
+          "delete": "删除"
+        }
+      },
+      "filter": {
+        "title": "过滤器",
+        "form": {
+          "inputs": {
+            "code": "代码",
+            "bay": "湾",
+            "load_code": "加载代码",
+            "has_product": "有产品"
+          },
+          "buttons": {
+            "search": "搜索",
+            "clear": "清洁"
+          }
+        }
+      },
+      "edit": {
+        "modal": {
+          "title": "编辑列表",
+          "form": {
+            "inputs": {
+              "code": "代码",
+              "bay": "湾",
+              "load_code": "加载代码"
+            },
+            "buttons": {
+              "save": "保存",
+              "cancel": "取消"
+            }
+          }
+        }
+      },
+      "delete": {
+        "confirmation_modal": {
+          "title": "他确定吗？",
+          "buttons": {
+            "confirm": "是的",
+            "deny": "不"
+          }
+        }
+      },
+      "order_products": {
+        "title": "列出产品",
+        "table": {
+          "headers": {
+            "code": "姓名",
+            "ballast": "镇流器",
+            "quantity": "数量",
+            "box": "盒子"
+          }
+        },
+        "not_found": "没有找到产品"
+      }
+    },
+    "newOrder": {
+      "title": "新名单",
+      "form": {
+        "inputs": {
+          "code": "代码",
+          "bay": "湾",
+          "load_code": "加载代码"
+        },
+        "buttons": {
+          "submit": "创造",
+          "reset": "清洁"
+        }
+      }
+    },
+    "listProducts": {
+      "modal": {
+        "edit": {
+          "title": "从列表中编辑产品",
+          "form": {
+            "inputs": {
+              "quantity": "数量",
+              "box": "盒子"
+            },
+            "buttons": {
+              "save": "保存",
+              "cancel": "取消"
+            }
+          }
+        }
+      },
+      "add_product": {
+        "filter": {
+          "title": "过滤器",
+          "form": {
+            "inputs": {
+              "name": "姓名",
+              "ballast": "镇流器"
+            },
+            "buttons": {
+              "search": "搜索",
+              "clear": "清洁"
+            }
+          }
+        },
+        "table": {
+          "title": "要添加到列表中的产品表",
+          "headers": {
+            "name": "姓名",
+            "ballast": "镇流器",
+            "add": "加上"
+          }
+        },
+        "modal": {
+          "title": "将产品添加到列表",
+          "form": {
+            "inputs": {
+              "quantity": "数量",
+              "box": "盒子"
+            },
+            "buttons": {
+              "add": "加上",
+              "cancel": "取消"
+            },
+            "errors": {
+              "quantity": "数量必须大于0"
+            }
+          }
+        },
+        "buttons": {
+          "back": "回去"
+        }
+      },
+      "filter": {
+        "title": "过滤器",
+        "form": {
+          "inputs": {
+            "name": "姓名",
+            "quantity": "数量",
+            "box": "盒子"
+          },
+          "buttons": {
+            "search": "搜索",
+            "clear": "清洁"
+          }
+        }
+      },
+      "table": {
+        "title": "产品列表",
+        "headers": {
+          "name": "姓名",
+          "quantity": "数量",
+          "box": "盒子",
+          "update": "更新",
+          "delete": "删除"
+        }
+      },
+      "new_product": {
+        "button": "添加产品"
+      },
+      "buttons": {
+        "back": "回去"
       }
     }
   },

@@ -14,8 +14,8 @@
           />
           <va-input
             v-model="ballast"
-            type="number"
-            placeholder="000"
+            type="text"
+            placeholder="LX"
             :label="t('products.newProduct.form.inputs.ballast')"
             :error="!!ballastErrors.length"
             :error-messages="ballastErrors"

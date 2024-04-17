@@ -10,69 +10,63 @@ export interface OrderProductListProps {
   perPage?: number
   sortColumn?: string
   sortDirection?: string
+  productName?: string
 }
 
 const orderProductsService = {
-  // create: (quantity: string, box: boolean, product: ProductDto, order: OrderDto): Promise<ApiResponseDto> => {
-  //     return api.post(
-  //         'order_products',
-  //         {
-  //             order_product: {
-  //                 quantity: quantity,
-  //                 box: box,
-  //                 product: product,
-  //                 order: order,
-  //             },
-  //         },
-  //         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
-  //     )
-  // },
-
-  // show: (id: number): Promise<ApiResponseDto> => {
-  //     return api.get(`order_products/${id}`, {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-  //     })
-  // },
+  create: (quantity: number, box: boolean, productId: number, orderId: number): Promise<ApiResponseDto> => {
+    return api.post(
+      'order_products',
+      {
+        order_product: {
+          quantity: quantity,
+          box: box,
+          product_id: productId,
+          order_id: orderId,
+        },
+      },
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+    )
+  },
 
   list: ({
     quantity = '',
-    box = false,
+    box,
     order_id,
-    product_id,
+    productName = '',
     page = 1,
     perPage = 10,
     sortColumn = 'quantity',
-    sortDirection = 'asc',
+    sortDirection = 'desc',
   }: OrderProductListProps): Promise<ApiResponseDto> => {
     const sortQuery = `&sort=${sortColumn}%20${sortDirection}`
+    const boxQuery = box === true ? `&q[box_eq]=${box}` : ''
 
-    const url = `order_products?page=${page}&per_page=${perPage}&q[quantity_eq]=${quantity}&q[box_eq]=${box}&q[order_id_eq]=${order_id}`
+    const url = `order_products?page=${page}&per_page=${perPage}&q[quantity_eq]=${quantity}${boxQuery}&q[order_id_eq]=${order_id}&q[product_name_cont]=${productName}${sortQuery}`
 
     return api.get(url, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     })
   },
 
-  // update: ({ id, quantity, box, product, order }: OrderProductDto): Promise<ApiResponseDto> => {
-  //     return api.put(
-  //         `order_products/${id}`,
-  //         {
-  //             order_product: {
-  //                 quantity: quantity,
-  //                 box: box,
-  //                 product: product,
-  //                 order: order,
-  //             },
-  //         },
-  //         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
-  //     )
-  // },
+  update: (id: number, quantity: number, box: boolean): Promise<ApiResponseDto> => {
+    return api.put(
+      `order_products/${id}`,
+      {
+        order_product: {
+          quantity: quantity,
+          box: box,
+        },
+      },
+      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
+    )
+  },
 
-  // delete: (id: number): Promise<ApiResponseDto> => {
-  //     return api.delete(`order_products/${id}`, {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-  //     })
-  // },
+  delete: (id: number): Promise<ApiResponseDto> => {
+    return api.delete(`order_products/${id}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+  },
 }
 
 export default orderProductsService

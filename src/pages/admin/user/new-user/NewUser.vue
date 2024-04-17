@@ -95,14 +95,14 @@
     emailErrors.value = email.value ? [] : ['Email is required']
     if (!validateEmailFormat(email.value)) emailErrors.value = ['Invalid format']
     passwordErrors.value = password.value ? [] : ['Password is required']
+    passwordErrors.value = password.value && password.value.length >= 6 ? [] : ['Password too short']
     passwordConfirmationErrors.value = password_confirmation.value ? [] : ['Password confirmation is required']
     passwordConfirmationErrors.value =
       password_confirmation.value === password.value ? [] : ['Password confirmation must be equal to password']
     profileErrors.value = profile.value ? [] : ['Profile is required']
 
-    if (profile.value !== '') {
-      profileErrors.value =
-        profile.value === 'Admin' && GlobalStore.user.profile === 'admin' ? [] : ['Only admin can create admin profile']
+    if (profile.value !== '' && GlobalStore.user.profile !== 'admin') {
+      profileErrors.value = profile.value === 'Admin' ? [] : ['Only admin can create admin profile']
     }
 
     if (formReady.value) {

@@ -1,5 +1,6 @@
 import { ApiResponseDto, LoadDto } from '../../dtos'
 import api from './api'
+import { format } from 'date-fns'
 
 export interface LoadListProps {
   page?: number
@@ -53,12 +54,16 @@ const loadsService = {
   },
 
   update: ({ id, code, delivery_date }: LoadDto): Promise<ApiResponseDto> => {
+    const formattedDate = format(new Date(delivery_date), 'yyyy-MM-dd')
+    console.log(formattedDate)
+    console.log(delivery_date)
+
     return api.put(
       `loads/${id}`,
       {
         load: {
           code: code,
-          delivery_date: delivery_date,
+          delivery_date: formattedDate,
         },
       },
       { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },

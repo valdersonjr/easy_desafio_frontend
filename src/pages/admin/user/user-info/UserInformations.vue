@@ -57,8 +57,7 @@
               <th>
                 <sorting-icon-div :text="t('users.informations.table.headers.created_date')" />
               </th>
-              <th>{{ t('users.informations.table.headers.update') }}</th>
-              <th>{{ t('users.informations.table.headers.delete') }}</th>
+              <th>{{ t('users.informations.table.headers.actions') }}</th>
             </tr>
           </thead>
 
@@ -69,10 +68,16 @@
               <td class="">{{ user.profile.toUpperCase() }}</td>
               <td class="">{{ formatDate(user.created_at) }}</td>
               <td>
-                <va-button class="px-2" color="info" icon="edit" plain @click="handleUserUpdate(user.id)" />
-              </td>
-              <td>
-                <va-button class="px-2" color="danger" icon="delete" plain @click="handleUserDeletion(user.id)" />
+                <div>
+                  <va-button class="action-btn" color="info" icon="edit" plain @click="handleUserUpdate(user.id)" />
+                  <va-button
+                    class="action-btn"
+                    color="danger"
+                    icon="delete"
+                    plain
+                    @click="handleUserDeletion(user.id)"
+                  />
+                </div>
               </td>
             </tr>
           </tbody>
