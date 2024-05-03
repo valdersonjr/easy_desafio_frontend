@@ -18,7 +18,7 @@
     />
     <va-card class="w-full pb-4">
       <va-card-title>{{ t('products.informations.filter.title') }}</va-card-title>
-      <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFormSubmit">
+      <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFilterSubmit">
         <va-input
           v-model="nameFilter"
           type="text"
@@ -39,6 +39,34 @@
         }}</va-button>
       </form>
     </va-card>
+
+    <va-card class="w-full">
+      <va-card-title>Novo Produto</va-card-title>
+      <va-card-content>
+        <form class="flex flex-row gap-3" @submit.prevent="onSubmit">
+          <va-input
+            v-model="name"
+            type="text"
+            placeholder="Product 1"
+            :label="t('products.newProduct.form.inputs.name')"
+            :error="!!nameErrors.length"
+            :error-messages="nameErrors"
+          />
+          <va-input
+            v-model="ballast"
+            type="text"
+            placeholder="LX"
+            :label="t('products.newProduct.form.inputs.ballast')"
+            :error="!!ballastErrors.length"
+            :error-messages="ballastErrors"
+          />
+          <va-button color="success" class="w-[6rem]" type="submit">
+            {{ t('loads.newLoad.form.buttons.submit') }}
+          </va-button>
+        </form>
+      </va-card-content>
+    </va-card>
+
     <va-card class="w-full">
       <va-card-title>{{ t('products.informations.table.title') }}</va-card-title>
       <va-card-content class="overflow-auto">
@@ -91,11 +119,11 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import formatDate from '../../../../services/utils/dateConverter'
   import productsService from '../../../../services/api/products'
-  import { ProductDto } from '../../../../dtos'
+  import { ApiResponseDto, ProductDto } from '../../../../dtos'
   import { useGlobalStore } from '../../../../stores/global-store'
   import UserEdit from './product-edit/ProductEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
@@ -121,8 +149,51 @@
   const sortColumn = ref('name')
   const sortDirection = ref('asc')
 
-  const onFormSubmit = () => {
+  const name = ref('')
+  const ballast = ref('')
+
+  const nameErrors = ref([] as string[])
+  const ballastErrors = ref([] as string[])
+
+  const onFilterSubmit = () => {
     fetchProducts()
+  }
+
+  const formReady = computed(() => {
+    return !(ballastErrors.value.length || nameErrors.value.length)
+  })
+
+  const onSubmit = () => {
+    if (GlobalStore.user.profile !== 'admin') {
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
+      return
+    }
+
+    nameErrors.value = name.value ? [] : ['Name is required']
+    ballastErrors.value = ballast.value ? [] : ['Email is required']
+
+    if (formReady.value) {
+      productsService
+        .create(name.value, ballast.value)
+        .then((response: ApiResponseDto) => {
+          if (response.status === 201) {
+            init({ message: t('messages.toast.product.new.success'), color: 'success' })
+            handleNewProductFormClear()
+          }
+        })
+        .catch((error: any) => {
+          console.log('Error:', error)
+          init({ message: t('messages.toast.product.new.error'), color: 'danger' })
+        })
+    }
+  }
+
+  const handleNewProductFormClear = () => {
+    name.value = ''
+    ballast.value = ''
   }
 
   const handleFilterClear = () => {
@@ -135,7 +206,7 @@
     try {
       const response = await productsService.list({
         page: currentPage.value,
-        perPage: 10,
+        perPage: 8,
         name: nameFilter.value,
         ballast: ballastFilter.value,
         sortColumn: sortColumn.value,

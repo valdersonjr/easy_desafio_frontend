@@ -27,7 +27,7 @@
   import { ref, defineProps, defineEmits } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vuestic-ui'
-  import orderProductsService from '../../../../../services/api/orderProducts'
+  import orderProductsService from '../../../../../../../services/api/orderProducts'
 
   const { t } = useI18n()
   const { init } = useToast()

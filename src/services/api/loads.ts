@@ -32,6 +32,12 @@ const loadsService = {
     })
   },
 
+  showByCode: (code: string): Promise<ApiResponseDto> => {
+    return api.get(`loads/load/${code}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+  },
+
   list: ({
     page = 1,
     perPage = 10,

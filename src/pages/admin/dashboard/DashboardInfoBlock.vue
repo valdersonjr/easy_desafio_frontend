@@ -28,8 +28,8 @@
 
   const counts = ref({})
 
-  const colors = ['primary', 'info', 'secondary', 'success', 'danger']
-  const routes = ['load-info', 'order-info', 'product-info', 'user-info', '']
+  const colors = ['success', 'info', 'secondary', 'primary', 'danger']
+  const routes = ['load-info', 'product-info', 'user-info', '', '']
 
   const countsArray = ref<any>([])
 

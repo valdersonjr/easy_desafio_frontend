@@ -436,7 +436,7 @@
           "inputs": {
             "code": "Código",
             "bay": "Baia",
-            "load_code":"Código da carga",
+            "load_code": "Código da carga",
             "has_product": "Possui produtos"
           },
           "buttons": {

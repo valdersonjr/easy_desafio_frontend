@@ -39,11 +39,11 @@
 
 <script setup lang="ts">
   import { ref, defineEmits, defineProps, computed } from 'vue'
-  import ordersService from '../../../../../services/api/orders'
-  import { ApiResponseDto } from '../../../../../dtos'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vuestic-ui'
-  import { load } from '@amcharts/amcharts5/.internal/core/util/Net'
+  import ordersService from '../../../../../../services/api/orders'
+  import { ApiResponseDto } from '../../../../../../dtos'
+  import loadsService from '../../../../../../services/api/loads'
 
   const { t } = useI18n()
   const { init } = useToast()
@@ -77,30 +77,21 @@
     loadCodeErrors.value = loadCode.value ? [] : ['Load code is required']
 
     if (formReady.value) {
-      fetchLoadId(loadCode.value)
-        .then((loadId) => {
-          if (loadId !== -1) {
-            updateOrder(props.order.id, code.value, bay.value, loadId)
-          } else {
-            init({ message: t('messages.toast.order.edit.error_load_code'), color: 'danger' })
-          }
-        })
-        .catch((error: any) => {
-          console.log(error)
-          init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
-        })
+      findLoadIdByLoadCode(loadCode.value).then((loadId: number) => {
+        if (loadId !== -1) {
+          updateOrder(props.order.id, code.value, bay.value, loadId)
+        } else {
+          init({ message: 'Carga não encontrada', color: 'danger' })
+        }
+      })
     }
   }
 
-  const fetchLoadId = async (loadCode: string): Promise<number> => {
+  const findLoadIdByLoadCode = async (loadCode: string): Promise<number> => {
     try {
-      const response = await ordersService.showOrderByLoadCode(loadCode)
-      if (response.status === 200) {
-        const loadId = response.data.order.load_id
-        return loadId
-      } else return -1
-    } catch (error: any) {
-      init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
+      const response = await loadsService.showByCode(loadCode)
+      return response.data.load.id
+    } catch (error) {
       return -1
     }
   }
@@ -116,7 +107,7 @@
       })
       .catch((error: any) => {
         if (error.response.status === 422) init({ message: t('messages.toast.order.edit.error_code'), color: 'danger' })
-        else init({ message: t('messages.toast.order.edit.error'), color: 'danger' })
+        else init({ message: "t('messages.toast.order.edit.error')", color: 'danger' })
       })
   }
 </script>

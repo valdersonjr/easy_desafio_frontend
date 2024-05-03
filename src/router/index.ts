@@ -49,19 +49,28 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('../pages/admin/order/new-order/NewOrder.vue'),
           },
           {
-            name: 'list-products',
-            path: 'list-products/:id?/:code?',
+            name: 'order-products',
+            path: 'order-products/:id?/:code?',
 
-            component: () => import('../pages/admin/order/list-products/ListProducts.vue'),
+            component: () =>
+              import('../pages/admin/load/load-informations/load-order/order-products/OrderProducts.vue'),
             props: true,
           },
           {
-            name: 'add-product-to-order',
-            path: 'add-product-to-order/:id/:code?',
+            name: 'sorted-order-products',
+            path: 'sorted-order-products/:id?/:code?',
 
-            component: () => import('../pages/admin/order/list-products/add-products/AddProducts.vue'),
+            component: () =>
+              import('../pages/admin/load/load-informations/load-order/sorted-order-products/SortedOrderProducts.vue'),
             props: true,
           },
+          // {
+          //   name: 'add-product-to-order',
+          //   path: 'add-product-to-order/:id/:code?',
+
+          //   component: () => import('../pages/admin/order/order-products/add-products/AddProducts.vue'),
+          //   props: true,
+          // },
         ],
       },
       {
@@ -74,6 +83,13 @@ const routes: Array<RouteRecordRaw> = [
             path: 'load-info',
 
             component: () => import('../pages/admin/load/load-informations/LoadInformations.vue'),
+          },
+          {
+            name: 'load-orders',
+            path: 'load-orders/:id?',
+
+            component: () => import('../pages/admin/load/load-informations/load-order/LoadOrder.vue'),
+            props: true,
           },
           {
             name: 'new-load',

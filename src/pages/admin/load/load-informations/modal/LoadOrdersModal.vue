@@ -15,7 +15,7 @@
           </thead>
           <tbody>
             <tr v-for="loadOrder in loadOrders" :key="loadOrder.id">
-              <td class="code-row" @click="handleCodeClick(loadOrder.id, loadOrder.code)">{{ loadOrder.code }}</td>
+              <td>{{ loadOrder.code }}</td>
               <td>{{ loadOrder.bay }}</td>
               <td v-if="loadOrder.created_date">{{ formatDate(loadOrder.created_date.toString()) }}</td>
             </tr>
@@ -25,24 +25,17 @@
           t('loads.informations.loadOrders.modal.not_found')
         }}</span>
       </div>
-      <OrderProducts
-        v-if="isOrderProductsTableShowing"
-        :order-id="orderId"
-        :order-code="orderCode"
-        @handleBackIconClick="handleIsOrderProductsTableShowingValueChange"
-      />
     </VaModal>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, defineEmits, defineProps, computed } from 'vue'
+  import { ref, defineEmits, defineProps } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useToast } from 'vuestic-ui'
   import ordersService from '../../../../../services/api/orders'
   import { OrderDto } from '../../../../../dtos'
   import formatDate from '../../../../../services/utils/dateConverter'
-  import OrderProducts from './OrderProducts.vue'
 
   const { t } = useI18n()
   const { init } = useToast()
@@ -95,13 +88,3 @@
 
   fetchLoadOrders()
 </script>
-
-<style lang="scss" scoped>
-  .code-row {
-    &:hover {
-      color: #ff0000;
-    }
-
-    cursor: pointer;
-  }
-</style>

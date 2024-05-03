@@ -53,25 +53,25 @@
   }
 
   const handleProductAdd = async () => {
-    try {
-      const response = await orderProductsService.create(
-        Number(quantity.value),
-        box.value,
-        props.productId,
-        props.orderId,
-      )
-      if (response.status === 201) {
-        handleModalClose()
-        init({ message: t('messages.toast.order.add_product.success'), color: 'success' })
-      }
-    } catch (error: any) {
-      if (error.response.status === 422) {
-        if (error.response.data.message.includes('Quantity must be greater than 0'))
-          quantityErrors.value.push(t('orders.listProducts.add_product.modal.form.errors.quantity'))
-      } else {
-        init({ message: t('messages.toast.order.add_product.error'), color: 'danger' })
-      }
-    }
+    // try {
+    //   const response = await orderProductsService.create(
+    //     Number(quantity.value),
+    //     box.value,
+    //     props.productId,
+    //     props.orderId,
+    //   )
+    //   if (response.status === 201) {
+    //     handleModalClose()
+    //     init({ message: t('messages.toast.order.add_product.success'), color: 'success' })
+    //   }
+    // } catch (error: any) {
+    //   if (error.response.status === 422) {
+    //     if (error.response.data.message.includes('Quantity must be greater than 0'))
+    //       quantityErrors.value.push(t('orders.listProducts.add_product.modal.form.errors.quantity'))
+    //   } else {
+    //     init({ message: t('messages.toast.order.add_product.error'), color: 'danger' })
+    //   }
+    // }
   }
 </script>
 

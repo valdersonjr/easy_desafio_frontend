@@ -24,7 +24,7 @@
     />
     <va-card class="w-full pb-4">
       <va-card-title>{{ t('loads.informations.filter.title') }}</va-card-title>
-      <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFormSubmit">
+      <form class="flex flex-row gap-3 px-3 justify-center items-center" @submit.prevent="onFilterSubmit">
         <va-input
           v-model="codeFilter"
           type="text"
@@ -47,6 +47,27 @@
         }}</va-button>
       </form>
     </va-card>
+
+    <va-card class="w-full">
+      <va-card-title>Nova Carga</va-card-title>
+      <va-card-content>
+        <form class="flex flex-row gap-3" @submit.prevent="onSubmit">
+          <va-input v-model="code" type="text" label="Código" placeholder="LD1234" />
+          <VueDatePicker
+            v-model="deliveryDate"
+            class="w-[30%]"
+            :enable-time-picker="false"
+            format="dd/MM/yy"
+            locale="pt-BR"
+            required
+          />
+          <va-button color="success" class="w-[6rem]" type="submit">
+            {{ t('loads.newLoad.form.buttons.submit') }}
+          </va-button>
+        </form>
+      </va-card-content>
+    </va-card>
+
     <va-card class="w-full">
       <va-card-title>{{ t('loads.informations.table.title') }}</va-card-title>
       <va-card-content class="overflow-auto">
@@ -93,19 +114,18 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import formatDate from '../../../../services/utils/dateConverter'
   import loadsService from '../../../../services/api/loads'
-  import { LoadDto } from '../../../../dtos'
+  import { ApiResponseDto, LoadDto } from '../../../../dtos'
   import { useGlobalStore } from '../../../../stores/global-store'
   import LoadEdit from './load-edit/LoadEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import VueDatePicker from '@vuepic/vue-datepicker'
   import { useToast } from 'vuestic-ui'
   import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
-  import { OrderDto } from '../../../../dtos/orderDto'
-  import LoadOrders from './load-orders/LoadOrders.vue'
+  import LoadOrders from './modal/LoadOrdersModal.vue'
   import router from '../../../../router'
 
   const { init } = useToast()
@@ -129,8 +149,46 @@
   const sortDirection = ref('asc')
   const loadOrdersLoadCode = ref('')
 
-  const onFormSubmit = () => {
+  const code = ref('')
+  const deliveryDate = ref(new Date())
+  const codeErrors = ref<string[]>([])
+
+  const onFilterSubmit = () => {
     fetchLoads()
+  }
+
+  const formReady = computed(() => {
+    return !codeErrors.value.length
+  })
+
+  const onSubmit = () => {
+    if (GlobalStore.user.profile !== 'admin') {
+      init({
+        message: `${t('messages.toast.profile_permission.error')}: ${GlobalStore.user.profile.toUpperCase()}`,
+        color: 'danger',
+      })
+      return
+    }
+
+    codeErrors.value = code.value ? [] : ['Code is required']
+
+    if (formReady.value) {
+      loadsService
+        .create(code.value, deliveryDate.value)
+        .then((response: ApiResponseDto) => {
+          if (response.status === 201) {
+            router.push({ name: 'load-info' })
+            init({ message: t('messages.toast.load.new.success'), color: 'success' })
+            handleNewLoadInputClear()
+            fetchLoads()
+          }
+        })
+        .catch((error: any) => {
+          console.log('Error:', error)
+          if (error.response.status === 422) init({ message: t('messages.toast.load.new.error_code'), color: 'danger' })
+          else init({ message: t('messages.toast.load.new.error'), color: 'danger' })
+        })
+    }
   }
 
   const handleFilterClear = () => {
@@ -139,11 +197,16 @@
     fetchLoads()
   }
 
+  const handleNewLoadInputClear = () => {
+    code.value = ''
+    deliveryDate.value = new Date()
+  }
+
   const fetchLoads = async () => {
     try {
       const response = await loadsService.list({
         page: currentPage.value,
-        perPage: 10,
+        perPage: 7,
         code: codeFilter.value,
         lesserDate: new Date(filterDates.value[0]),
         greaterDate: new Date(filterDates.value[1]),
@@ -176,7 +239,7 @@
   }
 
   const handleOrderRedirect = (loadCode: string) => {
-    router.push({ name: 'order-info', params: { id: String(loadCode) } })
+    router.push({ name: 'load-orders', params: { id: String(loadCode) } })
   }
 
   const handleLoadUpdate = (id: number) => {
@@ -210,7 +273,9 @@
       }
     } catch (error) {
       console.log('Error deleting user:', error)
-      init({ message: t('messages.toast.load.delete.error'), color: 'danger' })
+      init({ message: 'Existem listas associadas a esta carga', color: 'danger' })
+      isConfirmationModalOpen.value = false
+      isConfirmationModalLoading.value = false
     }
   }
 

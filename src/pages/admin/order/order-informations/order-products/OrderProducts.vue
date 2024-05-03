@@ -17,7 +17,7 @@
               <td>{{ orderProduct.product.name }}</td>
               <td>{{ orderProduct.product.ballast }}</td>
               <td>{{ orderProduct.quantity }}</td>
-              <td>{{ String(orderProduct.box).toUpperCase() }}</td>
+              <td>{{ orderProduct.box ? 'SIM' : 'NÃO' }}</td>
             </tr>
           </tbody>
         </table>
