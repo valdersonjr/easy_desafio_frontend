@@ -106,7 +106,7 @@
         profile: profile.value,
       })
         .then((response: ApiResponseDto) => {
-          if (response.status === 200) {
+          if (response.status === 201) {
             router.push({ name: 'login' })
             init({ message: t('Cadastro realizado com sucesso'), color: 'success' })
           }
