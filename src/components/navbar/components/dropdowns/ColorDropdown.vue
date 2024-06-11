@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-  import VaIconColor from '../../../icons/VaIconColor.vue'
   import ColorDropdownItem from './ColorDropdownItem.vue'
   import { useColors } from 'vuestic-ui'
   import { ref, watchEffect } from 'vue'

@@ -122,7 +122,6 @@
   import ordersService from '../../../../services/api/orders'
   import { OrderDto } from '../../../../dtos'
   import { useGlobalStore } from '../../../../stores/global-store'
-  import OrderEdit from './order-edit/OrderEdit.vue'
   import ConfirmationModal from '../../../../components/modals/ConfirmationModal.vue'
   import { useToast } from 'vuestic-ui'
   import SortingIconDiv from '../../../../components/sorting-icon-div/SortingIconDiv.vue'
