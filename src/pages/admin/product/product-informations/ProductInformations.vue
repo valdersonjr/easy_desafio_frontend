@@ -182,6 +182,7 @@
           if (response.status === 201) {
             init({ message: t('messages.toast.product.new.success'), color: 'success' })
             handleNewProductFormClear()
+            fetchProducts()
           }
         })
         .catch((error: any) => {
